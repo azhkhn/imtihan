@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('notification_users', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->integer('passport_id')->unique();
-            $table->string('email')->unique();
-            $table->string('avatar')->default('/images/avatar.svg');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->integer('type');
-            $table->rememberToken();
+            $table->foreignId('user_id');
+            $table->foreignId('notification_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('notification_users');
     }
 };
