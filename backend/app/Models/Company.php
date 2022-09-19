@@ -10,6 +10,9 @@ class Company extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
+
     protected $fillable = [
         'name',
         'subdomain',
@@ -24,7 +27,8 @@ class Company extends Model
         'address',
         'zip_code',
         'logo',
-        'plan_id',
+        'payment_plan_id',
     ];
-    //TODO: Invoice eklenecek
+
+    //TODO: Invoice waiting...
 }
