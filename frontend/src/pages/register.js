@@ -15,7 +15,7 @@ const Register = () => {
         redirectIfAuthenticated: '/dashboard',
     })
 
-    const [name, setName] = useState('')
+    const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -24,7 +24,7 @@ const Register = () => {
     const submitForm = event => {
         event.preventDefault()
 
-        register({ name, email, password, password_confirmation: passwordConfirmation, setErrors })
+        register({ full_name: fullName, email, password, password_confirmation: passwordConfirmation, setErrors })
     }
 
     return (
@@ -41,14 +41,14 @@ const Register = () => {
                 <form onSubmit={submitForm}>
                     {/* Name */}
                     <div>
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="name">Full Name</Label>
 
                         <Input
-                            id="name"
+                            id="full_name"
                             type="text"
-                            value={name}
+                            value={fullName}
                             className="block mt-1 w-full"
-                            onChange={event => setName(event.target.value)}
+                            onChange={event => setFullName(event.target.value)}
                             required
                             autoFocus
                         />

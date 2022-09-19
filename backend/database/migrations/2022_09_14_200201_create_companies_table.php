@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('address',600);
             $table->string('zip_code');
             $table->string('logo')->default('/companies/default.png');
-            $table->foreignId('plan_id');
+            $table->foreignId('payment_plan_id');
             $table->timestamps();
             $table->softDeletes();
         });
