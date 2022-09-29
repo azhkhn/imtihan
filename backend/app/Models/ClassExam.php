@@ -13,7 +13,7 @@ class ClassExam extends Model
     protected $fillable = [
         'company_id',
         'month_id',
-        'group_id',
+        'class_id',
         'status'
     ];
 }
