@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id')->index();
             $table->foreignId('month_id')->index();
-            $table->foreignId('group_id')->index();
+            $table->foreignId('class_id')->index();
             $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
