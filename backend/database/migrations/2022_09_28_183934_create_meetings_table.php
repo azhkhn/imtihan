@@ -23,6 +23,8 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        //TODO: Fields that do not match the DBdiagram. (Database/meetings)
+        //TODO: Help Wanted. (Database/meetings)
     }
 
     /**

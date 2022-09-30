@@ -20,4 +20,6 @@ class Meeting extends Model
         'user_id',
         'company_id'
     ];
+    //TODO: Fields that do not match the DBdiagram. (App/Models)
+    //TODO: Help Wanted. (App/Models)
 }
