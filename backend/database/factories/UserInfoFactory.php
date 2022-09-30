@@ -26,7 +26,7 @@ class UserInfoFactory extends Factory
             'address' => fake()->address(),
             'status' => UserInfo::STATUS_ACTIVE,
             'start_date' => fake()->date(),
-            'end_date' => Month::factory(),
+            'end_date' => fake()->date(),
             'class_id' => 1, ClassRoom::factory(),
             'language_id' => 1, //TODO: The Language Model waiting...
             'company_id' => Company::factory(),
