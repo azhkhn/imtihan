@@ -17,12 +17,12 @@ class UserInfo extends Model
         'phone',
         'address',
         'status',
-        'period_id',
-        'month_id',
-        'group_id',
+        'start_date',
+        'end_date',
+        'class_id',
         'language_id',
         'company_id',
-        'user_id'
+        'user_id',
     ];
 
     //TODO: getter setter eklenecek
