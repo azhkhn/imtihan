@@ -24,8 +24,6 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        //TODO: Fields that do not match the DBdiagram. (Database/bookings)
-        //TODO: Help Wanted. (Database/bookings)
     }
 
     /**
