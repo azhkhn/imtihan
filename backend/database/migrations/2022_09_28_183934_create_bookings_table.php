@@ -13,12 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meeting_settings', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->date('ignore_date');
+            $table->string('description');
+            $table->date('date');
+            $table->boolean('status')->default(1);
+            $table->foreignId('teacher_id');
+            $table->foreignId('user_id');
             $table->foreignId('company_id');
             $table->timestamps();
+            $table->softDeletes();
         });
+        //TODO: Fields that do not match the DBdiagram. (Database/bookings)
+        //TODO: Help Wanted. (Database/bookings)
     }
 
     /**
@@ -28,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meeting_settings');
+        Schema::dropIfExists('bookings');
     }
 };
