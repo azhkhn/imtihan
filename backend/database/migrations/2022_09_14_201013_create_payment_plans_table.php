@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('month');
             $table->string('description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

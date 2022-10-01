@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('avatar')->default('/images/avatar.svg');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('type');
+            $table->integer('role');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

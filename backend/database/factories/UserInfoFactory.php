@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ClassRoom;
 use App\Models\Company;
 use App\Models\Month;
 use App\Models\User;
@@ -24,9 +25,9 @@ class UserInfoFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'status' => UserInfo::STATUS_ACTIVE,
-            'period_id' => 1, //TODO: The Model Period waiting...
-            'month_id' => Month::factory(),
-            'group_id' => 1, //TODO: The Group Model waiting...
+            'start_date' => fake()->date(),
+            'end_date' => fake()->date(),
+            'class_id' => 1, ClassRoom::factory(),
             'language_id' => 1, //TODO: The Language Model waiting...
             'company_id' => Company::factory(),
             'user_id' => User::factory(),

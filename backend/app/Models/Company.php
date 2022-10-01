@@ -21,12 +21,12 @@ class Company extends Model
         'email',
         'web_url',
         'phone',
+        'logo',
         'country_id',
         'city_id',
         'state_id',
         'address',
         'zip_code',
-        'logo',
         'payment_plan_id',
     ];
 
