@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('class_exams', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('company_id')->index();
-            $table->foreignId('month_id')->index();
-            $table->foreignId('class_id')->index();
-            $table->boolean('status')->default(1);
+            $table->uuid()->primary();
+            $table->uuid('exam_id')->index();
+            $table->uuid('company_id')->index();
+            $table->uuid('class_id')->index();
+            $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

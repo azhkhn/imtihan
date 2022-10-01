@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('months', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('class_exam_categories', function (Blueprint $table) {
+            $table->uuid()->primary();
+            $table->uuid('class_exam_id')->index();
+            $table->uuid('category_id')->index();
+            $table->integer('length');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('months');
+        Schema::dropIfExists('class_exam_categories');
     }
 };
