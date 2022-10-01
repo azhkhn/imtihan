@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Meeting extends Model
+class Booking extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -14,12 +14,11 @@ class Meeting extends Model
      * @var string[]
      */
     protected $fillable = [
+        'description',
         'date',
         'status',
         'teacher_id',
         'user_id',
         'company_id'
     ];
-    //TODO: Fields that do not match the DBdiagram. (App/Models)
-    //TODO: Help Wanted. (App/Models)
 }
