@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->string('description');
             $table->date('date');
             $table->boolean('status')->default(1);
-            $table->foreignId('teacher_id');
-            $table->foreignId('user_id');
-            $table->foreignId('company_id');
+            $table->uuid('teacher_id')->index();
+            $table->uuid('user_id')->index();
+            $table->uuid('company_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

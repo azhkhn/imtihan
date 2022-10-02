@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('class_rooms', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->string('name');
             $table->timestamps();
             $table->softDeletes();

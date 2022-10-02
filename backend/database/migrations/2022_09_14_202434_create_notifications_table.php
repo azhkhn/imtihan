@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->text('message');
             $table->boolean('status')->default(0);
-            $table->foreignId('company_id')->index();
+            $table->uuid('company_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

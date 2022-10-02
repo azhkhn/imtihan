@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->string('name');
             $table->integer('plate_code');
-            $table->foreignId('country_id');
+            $table->uuid('country_id')->index();;
             $table->timestamps();
         });
     }

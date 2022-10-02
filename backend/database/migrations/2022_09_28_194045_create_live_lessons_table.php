@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('live_lessons', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->string('name');
             $table->dateTime('date');
             $table->string('url');
-            $table->foreignId('class_id');
-            $table->foreignId('question_category_id');
-            $table->foreignId('company_id');
+            $table->uuid('class_id')->index();
+            $table->uuid('question_category_id')->index();
+            $table->uuid('company_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

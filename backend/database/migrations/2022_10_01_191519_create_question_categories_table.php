@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->uuid('parent_id')->nullable()->index();
-            $table->uuid('language_id');
+            $table->uuid('language_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });
