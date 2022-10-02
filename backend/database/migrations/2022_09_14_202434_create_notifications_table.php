@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('message');
             $table->boolean('status')->default(0);
-            $table->foreignId('company_id')->index();
+            $table->uuid('company_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });
