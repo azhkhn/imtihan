@@ -27,7 +27,6 @@ class Company extends Model
         'state_id',
         'address',
         'zip_code',
-        'payment_plan_id',
     ];
 
     //TODO: Invoice waiting...

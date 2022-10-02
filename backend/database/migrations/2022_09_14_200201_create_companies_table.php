@@ -28,7 +28,6 @@ return new class extends Migration
             $table->foreignId('state_id');
             $table->string('address',600);
             $table->string('zip_code');
-            $table->foreignId('payment_plan_id');
             $table->timestamps();
             $table->softDeletes();
         });
