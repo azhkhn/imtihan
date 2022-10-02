@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('notification_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('notification_id');
+            $table->uuid('user_id')->index();
+            $table->uuid('notification_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });
