@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('question_options', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->text('description');
-            $table->uuid('question_id');
+            $table->uuid('question_id')->index();
             $table->boolean('is_correct')->default(false);
             $table->string('image_path')->nullable();
             $table->timestamps();
