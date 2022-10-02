@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('months', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('question_options', function (Blueprint $table) {
+            $table->uuid()->primary();
+            $table->text('description');
+            $table->uuid('question_id');
+            $table->boolean('is_correct')->default(false);
+            $table->string('image_path')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('months');
+        Schema::dropIfExists('question_options');
     }
 };

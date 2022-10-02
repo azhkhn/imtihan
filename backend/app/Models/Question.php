@@ -6,14 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ClassExam extends Model
+class Question extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'exam_id',
-        'company_id',
-        'class_id',
-        'status'
+        'name',
+        'description',
+        'category_id',
+        'is_image',
+        'is_option',
+        'image_path',
+        'language_id',
     ];
 }

@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_plans', function (Blueprint $table) {
-            $table->id();
-            $table->integer('month');
-            $table->string('description');
+        Schema::create('question_by_companies', function (Blueprint $table) {
+            $table->uuid()->primary();
+            $table->uuid('question_id')->index();
+            $table->uuid('company_id')->index();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_plans');
+        Schema::dropIfExists('question_by_companies');
     }
 };

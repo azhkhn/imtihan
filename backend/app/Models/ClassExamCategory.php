@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PaymentPlan extends Model
+class ClassExamCategory extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'month',
-        'description'
+        'class_exam_id',
+        'category_id',
+        'length',
     ];
 }

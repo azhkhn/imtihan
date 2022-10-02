@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('class_exams', function (Blueprint $table) {
+        Schema::create('exam_results', function (Blueprint $table) {
             $table->uuid()->primary();
-            $table->uuid('exam_id')->index();
-            $table->uuid('company_id')->index();
-            $table->uuid('class_id')->index();
-            $table->boolean('status')->default(true);
+            $table->integer('total_questions');
+            $table->integer('correct');
+            $table->integer('in_correct');
+            $table->integer('blank');
+            $table->float('point', 8, 5);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_exams');
+        Schema::dropIfExists('exam_results');
     }
 };

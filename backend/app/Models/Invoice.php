@@ -6,14 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ClassExam extends Model
+class Invoice extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'exam_id',
+        'price',
+        'start_date',
+        'end_date',
+        'discount',
+        'total',
+        'paid_at',
+        'payment_coupon_id',
         'company_id',
-        'class_id',
-        'status'
     ];
 }

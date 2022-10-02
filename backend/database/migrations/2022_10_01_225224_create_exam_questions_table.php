@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_packages', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description',400);
-            $table->decimal('price');
-            $table->foreignId('plan_id');
+        Schema::create('exam_questions', function (Blueprint $table) {
+            $table->uuid()->primary();
+            $table->uuid('exam_id')->index();
+            $table->uuid('question_id')->index();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_packages');
+        Schema::dropIfExists('exam_questions');
     }
 };

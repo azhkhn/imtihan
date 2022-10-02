@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('class_exams', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->uuid()->primary();
-            $table->uuid('exam_id')->index();
+            $table->float('price');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->float('discount')->nullable();
+            $table->float('total');
+            $table->dateTime('paid_at')->nullable();
+            $table->uuid('payment_coupon_id')->nullable()->index();
             $table->uuid('company_id')->index();
-            $table->uuid('class_id')->index();
-            $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_exams');
+        Schema::dropIfExists('invoices');
     }
 };
