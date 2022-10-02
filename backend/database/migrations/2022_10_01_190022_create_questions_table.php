@@ -17,10 +17,10 @@ return new class extends Migration
             $table->uuid()->primary();
             $table->string('name');
             $table->text('description');
-            $table->uuid('category_id');
+            $table->uuid('category_id')->index();
             $table->boolean('is_option')->default(false);
             $table->string('image_path')->nullable();
-            $table->uuid('language_id');
+            $table->uuid('language_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });
