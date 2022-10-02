@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('live_lessons', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->string('name');
             $table->dateTime('date');
             $table->string('url');

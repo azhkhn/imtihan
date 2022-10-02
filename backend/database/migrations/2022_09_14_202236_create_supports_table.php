@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('supports', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->string('subject');
             $table->text('message');
             $table->boolean('status')->default(0);
