@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('booking_settings', function (Blueprint $table) {
             $table->id();
             $table->date('ignore_date');
-            $table->foreignId('company_id');
+            $table->uuid('company_id')->index();
             $table->timestamps();
         });
     }
