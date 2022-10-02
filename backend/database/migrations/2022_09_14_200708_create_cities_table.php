@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('plate_code');
-            $table->foreignId('country_id');
+            $table->uuid('country_id')->index();;
             $table->timestamps();
         });
     }
