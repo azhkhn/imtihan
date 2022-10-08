@@ -14,6 +14,6 @@ class ClassExam extends Model
         'exam_id',
         'company_id',
         'class_id',
-        'status'
+        'is_active'
     ];
 }

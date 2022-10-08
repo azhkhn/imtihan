@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('subdomain');
-            $table->boolean('status')->default(1);
+            $table->boolean('is_active')->default(true);
             $table->char('tax_id', 11);
             $table->string('email');
             $table->string('web_url')->nullable();

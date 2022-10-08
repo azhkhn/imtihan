@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->text('message');
-            $table->boolean('status')->default(0);
+            $table->boolean('is_active')->default(true);
             $table->foreignId('company_id')->index();
             $table->timestamps();
             $table->softDeletes();

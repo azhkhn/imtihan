@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('question_category_id')->index();
             $table->foreignId('condition_category_id')->index();
             $table->float('value');
-            $table->boolean('status')->default(true);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

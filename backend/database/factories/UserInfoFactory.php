@@ -24,7 +24,7 @@ class UserInfoFactory extends Factory
         return [
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
-            'status' => UserInfo::STATUS_ACTIVE,
+            'is_active' => UserInfo::STATUS_ACTIVE,
             'start_date' => fake()->date(),
             'end_date' => fake()->date(),
             'class_id' => 1, ClassRoom::factory(),

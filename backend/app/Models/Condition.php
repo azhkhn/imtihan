@@ -15,6 +15,6 @@ class Condition extends Model
         'question_category_id',
         'condition_category_id',
         'value',
-        'status'
+        'is_active'
     ];
 }

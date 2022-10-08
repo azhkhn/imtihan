@@ -24,7 +24,7 @@ class CompanyFactory extends Factory
         return [
             'name' => fake()->name(),
             'subdomain' => fake()->domainName(),
-            'status' => Company::STATUS_ACTIVE,
+            'is_active' => Company::STATUS_ACTIVE,
             'tax_id' => rand(),
             'email' => fake()->email(),
             'web_url' => fake()->url(),

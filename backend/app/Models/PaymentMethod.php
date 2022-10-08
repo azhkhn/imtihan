@@ -14,6 +14,6 @@ class PaymentMethod extends Model
         'name',
         'code',
         'description',
-        'status',
+        'is_active',
     ];
 }

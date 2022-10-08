@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('phone',300)->nullable();
             $table->string('address',600)->nullable();
-            $table->boolean('status')->default(1);
+            $table->boolean('is_active')->default(true);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->foreignId('class_id')->nullable()->index();

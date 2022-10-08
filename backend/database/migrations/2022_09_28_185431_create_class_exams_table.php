@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('exam_id')->index();
             $table->foreignId('company_id')->index();
             $table->foreignId('class_id')->index();
-            $table->boolean('status')->default(true);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

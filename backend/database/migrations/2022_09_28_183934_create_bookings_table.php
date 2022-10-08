@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->date('date');
-            $table->boolean('status')->default(1);
+            $table->boolean('is_active')->default(true);
             $table->foreignId('teacher_id')->index();
             $table->foreignId('user_id')->index();
             $table->foreignId('company_id')->index();

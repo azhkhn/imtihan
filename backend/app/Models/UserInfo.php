@@ -16,7 +16,7 @@ class UserInfo extends Model
     protected $fillable = [
         'phone',
         'address',
-        'status',
+        'is_active',
         'start_date',
         'end_date',
         'class_id',
