@@ -23,8 +23,7 @@ jobs:
     - name: Install Dependencies
       run: |
         cd backend
-        composer update --lock
-        composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        composer install --ignore-platform-reqs
     - name: Generate key
       run: |
         cd backend
