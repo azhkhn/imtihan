@@ -23,7 +23,7 @@ jobs:
     - name: Install Dependencies
       run: |
         cd backend
-        composer install --ignore-platform-reqs
+        composer install
     - name: Generate key
       run: |
         cd backend
