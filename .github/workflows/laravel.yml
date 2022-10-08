@@ -13,6 +13,7 @@ jobs:
 
     defaults:
       run:
+        shell: bash
         working-directory: backend
 
     steps:
