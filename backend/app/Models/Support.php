@@ -13,7 +13,7 @@ class Support extends Model
     protected $fillable = [
         'subject',
         'message',
-        'status',
+        'is_active',
         'user_id'
     ];
 }

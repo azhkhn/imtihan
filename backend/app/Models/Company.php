@@ -16,7 +16,7 @@ class Company extends Model
     protected $fillable = [
         'name',
         'subdomain',
-        'status',
+        'is_active',
         'tax_id',
         'email',
         'web_url',

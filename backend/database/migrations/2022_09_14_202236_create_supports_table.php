@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('subject');
             $table->text('message');
-            $table->boolean('status')->default(0);
+            $table->boolean('is_active')->default(false);
             $table->foreignId('user_id')->index();
             $table->timestamps();
             $table->softDeletes();
