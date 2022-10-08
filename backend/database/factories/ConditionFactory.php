@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Condition;
+use App\Models\ConditionCategory;
 use App\Models\QuestionCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,7 +22,7 @@ class ConditionFactory extends Factory
         return [
             'name' => fake()->name(),
             'question_category_id' => QuestionCategory::factory(),
-            'condition_category_id' => fake()->date(),
+            'condition_category_id' => ConditionCategory::factory(),
             'value' => fake()->randomNumber(),
             'is_active' => Condition::STATUS_ACTIVE,
         ];
