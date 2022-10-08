@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exams', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
-            $table->uuid('user_id')->index();
+            $table->foreignId('user_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('question_categories', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->uuid('parent_id')->nullable()->index();
-            $table->uuid('language_id')->index();
+            $table->foreignId('parent_id')->nullable()->index();
+            $table->foreignId('language_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

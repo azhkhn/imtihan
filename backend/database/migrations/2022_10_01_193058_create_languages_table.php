@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('languages', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
             $table->string('code');
             $table->boolean('status');
