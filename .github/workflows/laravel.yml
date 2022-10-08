@@ -23,7 +23,7 @@ jobs:
     - name: Install Dependencies
       run: |
         cd backend
-        composer install
+        composer update
     - name: Generate key
       run: |
         cd backend
