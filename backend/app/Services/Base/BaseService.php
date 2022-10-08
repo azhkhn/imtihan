@@ -2,8 +2,6 @@
 
 namespace App\Services\Base;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
 class BaseService
@@ -20,9 +18,8 @@ class BaseService
     /**
      * Display a listing of the resource.
      *
-     * @return AnonymousResourceCollection
      */
-    public function list(): AnonymousResourceCollection
+    public function list()
     {
         return $this->model::latest()->get();
     }
@@ -30,10 +27,8 @@ class BaseService
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\LanguageRequest  $request
-     * @return Response
      */
-    public function create($request): Response
+    public function create($request): void
     {
         $this->model::create($request->validated());
     }
@@ -42,9 +37,8 @@ class BaseService
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
      */
-    public function show($id): Response
+    public function show($id)
     {
         return $this->model::findOrFail($id);
     }
@@ -54,9 +48,9 @@ class BaseService
      * Update the specified resource in storage.
      *
      * @param  $request
-     * @param  int  $id
+     * @param int $id
      */
-    public function update($request, $id): void
+    public function update($request, int $id): void
     {
         $this->model::findOrFail($id)->update($request->validated());
     }
@@ -64,9 +58,9 @@ class BaseService
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      */
-    public function destroy($id): void
+    public function destroy(int $id): void
     {
         $this->model::findOrFail($id)->delete();
     }
