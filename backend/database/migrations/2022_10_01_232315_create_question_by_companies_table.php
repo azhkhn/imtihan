@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('question_by_companies', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->uuid('question_id')->index();
             $table->uuid('company_id')->index();
             $table->timestamps();

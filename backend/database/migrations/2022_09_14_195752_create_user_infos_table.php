@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_infos', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('phone',300)->nullable();
             $table->string('address',600)->nullable();
             $table->boolean('status')->default(1);

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('question_options', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->text('description');
             $table->uuid('question_id')->index();
             $table->boolean('is_correct')->default(false);

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('condition_categories', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->string('key')->unique();
             $table->uuid('language_id')->index();
