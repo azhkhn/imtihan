@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('booking_settings', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->date('ignore_date');
             $table->uuid('company_id')->index();
             $table->timestamps();

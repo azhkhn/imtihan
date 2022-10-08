@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('class_rooms', function (Blueprint $table) {
+        Schema::create('conditions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->uuid('question_category_id')->index();
+            $table->uuid('condition_category_id')->index();
+            $table->float('value');
+            $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_rooms');
+        Schema::dropIfExists('conditions');
     }
 };

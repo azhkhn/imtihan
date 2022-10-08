@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exam_user_answers', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->timestamps();
         });
     }

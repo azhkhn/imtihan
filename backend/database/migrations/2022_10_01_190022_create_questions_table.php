@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->text('description');
             $table->uuid('category_id')->index();

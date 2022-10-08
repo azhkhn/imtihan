@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exam_results', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->integer('total_questions');
             $table->integer('correct');
             $table->integer('in_correct');

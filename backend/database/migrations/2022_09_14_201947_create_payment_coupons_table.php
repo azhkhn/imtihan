@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('payment_coupons', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('code');
             $table->integer('discount');
             $table->date('start_date');
