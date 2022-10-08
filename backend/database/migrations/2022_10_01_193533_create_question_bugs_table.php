@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('question_bugs', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('description');
-            $table->uuid('question_id')->index();
+            $table->foreignId('question_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

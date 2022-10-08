@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('supports', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('subject');
             $table->text('message');
             $table->boolean('status')->default(0);
-            $table->uuid('user_id')->index();
+            $table->foreignId('user_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

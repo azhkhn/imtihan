@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
             $table->text('description');
-            $table->uuid('category_id')->index();
+            $table->foreignId('category_id')->index();
             $table->boolean('is_option')->default(false);
             $table->string('image_path')->nullable();
-            $table->uuid('language_id')->index();
+            $table->foreignId('language_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

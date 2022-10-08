@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('payment_settings', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->float('price');
             $table->boolean('is_default')->default(true);
             $table->timestamps();

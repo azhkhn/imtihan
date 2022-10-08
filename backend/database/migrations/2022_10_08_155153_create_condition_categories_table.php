@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('condition_categories', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
             $table->string('key')->unique();
-            $table->uuid('language_id')->index();
+            $table->foreignId('language_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exam_result_categories', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->integer('total_questions');
             $table->integer('correct');
             $table->integer('in_correct');
             $table->integer('blank');
-            $table->uuid('category_id')->index();
-            $table->uuid('exam_id')->index();
-            $table->uuid('user_id')->index();
+            $table->foreignId('category_id')->index();
+            $table->foreignId('exam_id')->index();
+            $table->foreignId('user_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });
