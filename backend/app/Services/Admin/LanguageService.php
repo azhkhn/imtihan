@@ -2,41 +2,13 @@
 
 namespace App\Services\Admin;
 
-use App\Http\Requests\Admin\LanguageRequest;
 use App\Models\Language;
-use Illuminate\Support\Str;
+use App\Services\Base\BaseService;
 
-class LanguageService
+class LanguageService extends BaseService
 {
-
-    /**
-     * @param LanguageRequest $request
-     */
-    public function store(LanguageRequest $request): void
+    public function __construct()
     {
-        Language::create([
-            'title' => Str::title($request->title),
-            'code' => Str::lower($request->code)
-        ]);
-    }
-
-    /**
-     * @param LanguageRequest $request
-     * @param $id
-     */
-    public function update(LanguageRequest $request, $id): void
-    {
-        Language::find($id)->update([
-            'title' => Str::title($request->title),
-            'code' => Str::lower($request->code)
-        ]);
-    }
-
-    /**
-     * @param $id
-     */
-    public function destroy($id) : void
-    {
-        Language::find($id)->delete();
+        parent::__construct(Language::class);
     }
 }
