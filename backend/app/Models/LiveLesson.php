@@ -16,7 +16,6 @@ class LiveLesson extends Model
         'url',
         'class_id',
         'question_category_id',
-        'company_id'
+        'company_id',
     ];
-
 }

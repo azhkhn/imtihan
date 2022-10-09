@@ -2,11 +2,8 @@
 
 namespace App\Services\Base;
 
-use Illuminate\Http\Response;
-
 class BaseService
 {
-
     /**
      * @var string
      */
@@ -17,7 +14,6 @@ class BaseService
 
     /**
      * Display a listing of the resource.
-     *
      */
     public function list()
     {
@@ -26,7 +22,6 @@ class BaseService
 
     /**
      * Store a newly created resource in storage.
-     *
      */
     public function create($request): void
     {
@@ -43,12 +38,11 @@ class BaseService
         return $this->model::findOrFail($id);
     }
 
-
     /**
      * Update the specified resource in storage.
      *
-     * @param  $request
-     * @param int $id
+     * @param    $request
+     * @param  int  $id
      */
     public function update($request, int $id): void
     {
@@ -58,7 +52,7 @@ class BaseService
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      */
     public function destroy(int $id): void
     {

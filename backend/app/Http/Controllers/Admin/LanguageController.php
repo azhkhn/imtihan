@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Language\LanguageStoreRequest;
 use App\Http\Requests\Admin\Language\LanguageUpdateRequest;
 use App\Http\Resources\Admin\LanguageResource;
 use App\Services\Admin\LanguageService;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,19 +30,20 @@ class LanguageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Admin\Language\LanguageStoreRequest $request
+     * @param  \App\Http\Requests\Admin\Language\LanguageStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(LanguageStoreRequest $request): \Illuminate\Http\Response
     {
         $this->service->create($request);
+
         return response()->noContent(Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $language
+     * @param  int  $language
      * @return LanguageResource
      */
     public function show($language)
@@ -54,25 +54,27 @@ class LanguageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Admin\Language\LanguageUpdateRequest $request
-     * @param int $language
+     * @param  \App\Http\Requests\Admin\Language\LanguageUpdateRequest  $request
+     * @param  int  $language
      * @return \Illuminate\Http\Response
      */
     public function update(LanguageUpdateRequest $request, $language): \Illuminate\Http\Response
     {
         $this->service->update($request, $language);
+
         return response()->noContent(Response::HTTP_OK);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $language
+     * @param  int  $language
      * @return \Illuminate\Http\Response
      */
     public function destroy($language): \Illuminate\Http\Response
     {
         $this->service->destroy($language);
+
         return response()->noContent(Response::HTTP_OK);
     }
 }

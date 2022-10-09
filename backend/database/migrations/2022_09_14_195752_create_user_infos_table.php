@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('phone',300)->nullable();
-            $table->string('address',600)->nullable();
+            $table->string('phone', 300)->nullable();
+            $table->string('address', 600)->nullable();
             $table->boolean('is_active')->default(true);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();

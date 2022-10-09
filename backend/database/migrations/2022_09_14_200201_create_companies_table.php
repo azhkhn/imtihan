@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreignId('country_id')->index();
             $table->foreignId('city_id')->index();
             $table->foreignId('state_id')->index();
-            $table->string('address',600);
+            $table->string('address', 600);
             $table->string('zip_code');
             $table->timestamps();
             $table->softDeletes();

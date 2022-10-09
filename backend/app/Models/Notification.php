@@ -13,6 +13,6 @@ class Notification extends Model
     protected $fillable = [
         'message',
         'is_active',
-        'company_id'
+        'company_id',
     ];
 }

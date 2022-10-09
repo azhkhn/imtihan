@@ -4,7 +4,6 @@ namespace Tests\Feature\Admin;
 
 use App\Models\Language;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class LanguageControllerTest extends TestCase
@@ -32,7 +31,7 @@ class LanguageControllerTest extends TestCase
     public function test_language_show()
     {
         $language = Language::factory()->create();
-        $response = $this->get($this->apiUrl . $language->id);
+        $response = $this->get($this->apiUrl.$language->id);
         $response->assertJsonStructure(['data'])
             ->assertJsonFragment(['id' => $language->id]);
     }
@@ -40,7 +39,7 @@ class LanguageControllerTest extends TestCase
     public function test_language_update()
     {
         $language = Language::factory()->create();
-        $response = $this->putJson($this->apiUrl . $language->id, [
+        $response = $this->putJson($this->apiUrl.$language->id, [
             'name' => 'Test',
         ]);
         $response->assertStatus(200);
@@ -49,7 +48,7 @@ class LanguageControllerTest extends TestCase
     public function test_language_delete()
     {
         $language = Language::factory()->create();
-        $response = $this->deleteJson($this->apiUrl . $language->id);
+        $response = $this->deleteJson($this->apiUrl.$language->id);
         $response->assertStatus(200);
     }
 }

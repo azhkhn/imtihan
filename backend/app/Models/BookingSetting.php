@@ -11,6 +11,6 @@ class BookingSetting extends Model
 
     protected $fillable = [
         'ignore_date',
-        'company_id'
+        'company_id',
     ];
 }

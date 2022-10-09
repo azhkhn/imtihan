@@ -14,6 +14,6 @@ class Support extends Model
         'subject',
         'message',
         'is_active',
-        'user_id'
+        'user_id',
     ];
 }
