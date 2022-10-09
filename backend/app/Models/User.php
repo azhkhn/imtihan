@@ -14,8 +14,11 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     const Admin = 1;
+
     const Manager = 2;
+
     const Teacher = 3;
+
     const Normal = 4;
 
     /**

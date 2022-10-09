@@ -11,6 +11,7 @@ class Booking extends Model
     use HasFactory, SoftDeletes;
 
     const STATUS_ACTIVE = 1;
+
     const STATUS_INACTIVE = 0;
 
     /**
@@ -22,6 +23,6 @@ class Booking extends Model
         'is_active',
         'teacher_id',
         'user_id',
-        'company_id'
+        'company_id',
     ];
 }

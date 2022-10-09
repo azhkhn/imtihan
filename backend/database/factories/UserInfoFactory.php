@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\ClassRoom;
 use App\Models\Company;
-use App\Models\Month;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Database\Eloquent\Factories\Factory;

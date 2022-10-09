@@ -10,7 +10,6 @@ class LanguageResource extends JsonResource
      * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
@@ -18,7 +17,7 @@ class LanguageResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'code' => $this->code,
-            'status' => $this->status,
+            'is_active' => $this->is_active,
         ];
     }
 }

@@ -2,11 +2,19 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponser;
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponser;
+
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -41,10 +49,32 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->renderable(function (Exception $exception, $request) {
+            if ($request->is('api/*')) {
+                if ($exception instanceof MethodNotAllowedHttpException) {
+                    return $this->errorResponse('The specified method for the request is invalid', Response::HTTP_METHOD_NOT_ALLOWED);
+                }
+
+                if ($exception instanceof NotFoundHttpException) {
+                    return $this->errorResponse('The specified URL cannot be found', Response::HTTP_NOT_FOUND);
+                }
+
+                if ($exception instanceof HttpException) {
+                    return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+                }
+
+                if (config('app.debug')) {
+                    return parent::render($request, $exception);
+                }
+
+                return $this->errorResponse('Unexpected Exception. Try later', Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
         });
     }
 }
