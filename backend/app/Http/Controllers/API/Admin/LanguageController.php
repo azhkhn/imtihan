@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Language\LanguageStoreRequest;
 use App\Http\Requests\Admin\Language\LanguageUpdateRequest;
 use App\Http\Resources\Admin\LanguageResource;
@@ -10,7 +10,7 @@ use App\Services\Admin\LanguageService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
-class LanguageController extends Controller
+class LanguageController extends ApiController
 {
     public function __construct(LanguageService $service)
     {
