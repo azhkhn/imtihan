@@ -9,12 +9,12 @@ trait ApiResponser
     /**
      * Build a successful response
      *
-     * @param  array|string  $data
-     * @param  string  $message
+     * @param  $data
+     * @param string|null $message
      * @param  int  $code
      * @return JsonResponse
      */
-    protected function successResponse(array|string $data, $message, int $code = 200): JsonResponse
+    protected function successResponse($data, string $message = null, int $code = 200): JsonResponse
     {
         return response()->json([
             'success' => true,
