@@ -52,25 +52,32 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->renderable(function (Exception $exception, $request) {
-            if ($exception instanceof MethodNotAllowedHttpException) {
-                return $this->errorResponse('The specified method for the request is invalid', Response::HTTP_METHOD_NOT_ALLOWED);
-            }
-
-            if ($exception instanceof NotFoundHttpException) {
-                return $this->errorResponse('The specified URL cannot be found', Response::HTTP_NOT_FOUND);
-            }
-
-            if ($exception instanceof HttpException) {
-                return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
-            }
-
-            if (config('app.debug')) {
-                return parent::render($request, $exception);
-            }
-
-            return $this->errorResponse('Unexpected Exception. Try later', Response::HTTP_INTERNAL_SERVER_ERROR);
+        $this->reportable(function (Throwable $e) {
+            //
         });
+
+        $this->renderable(function (Exception $exception, $request) {
+            if ($request->is('api/*')) {
+                if ($exception instanceof MethodNotAllowedHttpException) {
+                    return $this->errorResponse('The specified method for the request is invalid', Response::HTTP_METHOD_NOT_ALLOWED);
+                }
+
+                if ($exception instanceof NotFoundHttpException) {
+                    return $this->errorResponse('The specified URL cannot be found', Response::HTTP_NOT_FOUND);
+                }
+
+                if ($exception instanceof HttpException) {
+                    return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+                }
+
+                if (config('app.debug')) {
+                    return parent::render($request, $exception);
+                }
+
+                return $this->errorResponse('Unexpected Exception. Try later', Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+        });
+
     }
 
 }
