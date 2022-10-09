@@ -6,6 +6,7 @@ use App\Traits\ApiResponser;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -67,6 +68,10 @@ class Handler extends ExceptionHandler
 
                 if ($exception instanceof HttpException) {
                     return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+                }
+
+                if ($exception instanceof ValidationException) {
+                    return $this->errorResponse($exception->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
                 }
 
                 if (config('app.debug')) {

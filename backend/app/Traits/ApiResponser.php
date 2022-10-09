@@ -26,11 +26,11 @@ trait ApiResponser
     /**
      * Build an error response
      *
-     * @param  string  $message
+     * @param array|string $message
      * @param  int  $code
      * @return JsonResponse
      */
-    protected function errorResponse(string $message, int $code): JsonResponse
+    protected function errorResponse(array|string $message, int $code): JsonResponse
     {
         return response()->json([
             'success' => false,
