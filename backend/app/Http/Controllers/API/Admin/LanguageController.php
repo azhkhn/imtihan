@@ -30,7 +30,7 @@ class LanguageController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param LanguageStoreRequest $request
+     * @param  LanguageStoreRequest  $request
      * @return JsonResponse
      */
     public function store(LanguageStoreRequest $request): JsonResponse
@@ -54,7 +54,7 @@ class LanguageController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param LanguageUpdateRequest $request
+     * @param  LanguageUpdateRequest  $request
      * @param  int  $language
      * @return JsonResponse
      */

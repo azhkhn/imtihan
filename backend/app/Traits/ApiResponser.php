@@ -9,8 +9,8 @@ trait ApiResponser
     /**
      * Build a successful response
      *
-     * @param  $data
-     * @param string|null $message
+     * @param    $data
+     * @param  string|null  $message
      * @param  int  $code
      * @return JsonResponse
      */

@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\Admin;
 
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LanguageResource extends JsonResource
