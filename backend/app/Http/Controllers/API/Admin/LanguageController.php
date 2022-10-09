@@ -48,7 +48,7 @@ class LanguageController extends ApiController
      */
     public function show($language): JsonResponse
     {
-        return $this->successResponse(new LanguageResource($this->service->find($language)));
+        return $this->successResponse(new LanguageResource($this->service->show($language)));
     }
 
     /**

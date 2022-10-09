@@ -17,7 +17,7 @@ class LanguageControllerTest extends TestCase
         Language::factory(20)->create();
         $response = $this->get($this->apiUrl);
 
-        $response->assertJsonStructure(['data'])
+        $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonCount(20, 'data');
     }
 
@@ -32,7 +32,7 @@ class LanguageControllerTest extends TestCase
     {
         $language = Language::factory()->create();
         $response = $this->get($this->apiUrl.$language->id);
-        $response->assertJsonStructure(['data'])
+        $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $language->id]);
     }
 

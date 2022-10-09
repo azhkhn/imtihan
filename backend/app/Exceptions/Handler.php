@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Exception $exception, $request) {
+        $this->renderable(function (Exception $exception, $request) {
             if ($exception instanceof MethodNotAllowedHttpException) {
                 return $this->errorResponse('The specified method for the request is invalid', Response::HTTP_METHOD_NOT_ALLOWED);
             }
