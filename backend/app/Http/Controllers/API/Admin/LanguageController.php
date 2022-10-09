@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Language\LanguageStoreRequest;
 use App\Http\Requests\Admin\Language\LanguageUpdateRequest;
 use App\Http\Resources\Admin\LanguageResource;
 use App\Services\Admin\LanguageService;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class LanguageController extends ApiController
@@ -20,61 +20,61 @@ class LanguageController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return AnonymousResourceCollection
+     * @return JsonResponse
      */
-    public function index(): AnonymousResourceCollection
+    public function index(): JsonResponse
     {
-        return LanguageResource::collection($this->service->list());
+        return $this->successResponse(LanguageResource::collection($this->service->list()));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\Language\LanguageStoreRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param LanguageStoreRequest $request
+     * @return JsonResponse
      */
-    public function store(LanguageStoreRequest $request): \Illuminate\Http\Response
+    public function store(LanguageStoreRequest $request): JsonResponse
     {
         $this->service->create($request);
 
-        return response()->noContent(Response::HTTP_CREATED);
+        return $this->successResponse([], 'Language created successfully', Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $language
-     * @return LanguageResource
+     * @return JsonResponse
      */
-    public function show($language)
+    public function show($language): JsonResponse
     {
-        return new LanguageResource($this->service->show($language));
+        return $this->successResponse(new LanguageResource($this->service->find($language)));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\Language\LanguageUpdateRequest  $request
+     * @param LanguageUpdateRequest $request
      * @param  int  $language
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function update(LanguageUpdateRequest $request, $language): \Illuminate\Http\Response
+    public function update(LanguageUpdateRequest $request, $language): JsonResponse
     {
         $this->service->update($request, $language);
 
-        return response()->noContent(Response::HTTP_OK);
+        return $this->successResponse([], 'Language updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $language
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function destroy($language): \Illuminate\Http\Response
+    public function destroy($language): JsonResponse
     {
         $this->service->destroy($language);
 
-        return response()->noContent(Response::HTTP_OK);
+        return $this->successResponse([], 'Language deleted successfully');
     }
 }
