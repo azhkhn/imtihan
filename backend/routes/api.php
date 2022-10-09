@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\API\Admin\LanguageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
