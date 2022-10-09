@@ -37,7 +37,7 @@ class LanguageController extends ApiController
     {
         $this->service->create($request);
 
-        return $this->successResponse([], 'Language created successfully', Response::HTTP_CREATED);
+        return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);
     }
 
     /**
@@ -62,7 +62,7 @@ class LanguageController extends ApiController
     {
         $this->service->update($request, $language);
 
-        return $this->successResponse([], 'Language updated successfully');
+        return $this->successResponse([], __('response.updated'));
     }
 
     /**
@@ -75,6 +75,6 @@ class LanguageController extends ApiController
     {
         $this->service->destroy($language);
 
-        return $this->successResponse([], 'Language deleted successfully');
+        return $this->successResponse([], __('response.deleted'));
     }
 }
