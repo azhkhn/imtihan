@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Traits\ApiResponser;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
@@ -72,6 +73,10 @@ class Handler extends ExceptionHandler
 
                 if ($exception instanceof ValidationException) {
                     return $this->errorResponse($exception->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
+                }
+
+                if ($exception instanceof AuthenticationException) {
+                    return $this->errorResponse(__('unauthorized'), Response::HTTP_UNAUTHORIZED);
                 }
 
                 if (config('app.debug')) {
