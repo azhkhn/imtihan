@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\API\ApiController;
-use App\Http\Requests\Admin\ClassRoom\StoreRequestClassRoom;
-use App\Http\Requests\Admin\ClassRoom\UpdateRequestClassRoom;
+use App\Http\Requests\Admin\ClassRoom\StoreClassRoomRequest;
+use App\Http\Requests\Admin\ClassRoom\UpdateClassRoomRequest;
 use App\Http\Resources\Admin\ClassRoomResource;
 use App\Services\Admin\ClassRoomService;
 use Illuminate\Http\JsonResponse;
@@ -30,10 +30,10 @@ class ClassRoomController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreRequestClassRoom  $request
+     * @param  StoreClassRoomRequest  $request
      * @return JsonResponse
      */
-    public function store(StoreRequestClassRoom $request): JsonResponse
+    public function store(StoreClassRoomRequest $request): JsonResponse
     {
         $this->classRoomService->create($request);
 
@@ -54,11 +54,11 @@ class ClassRoomController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRequestClassRoom  $request
+     * @param  UpdateClassRoomRequest  $request
      * @param  int  $class_room
      * @return JsonResponse
      */
-    public function update(UpdateRequestClassRoom $request, $class_room): JsonResponse
+    public function update(UpdateClassRoomRequest $request, $class_room): JsonResponse
     {
         $this->classRoomService->update($request, $class_room);
 

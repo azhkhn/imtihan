@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\ClassRoom;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequestClassRoom extends FormRequest
+class StoreClassRoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
