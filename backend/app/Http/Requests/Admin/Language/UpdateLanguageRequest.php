@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Language;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LanguageUpdateRequest extends FormRequest
+class UpdateLanguageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
