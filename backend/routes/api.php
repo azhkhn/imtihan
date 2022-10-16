@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\Admin\ClassRoomController;
 use App\Http\Controllers\API\Admin\LanguageController;
+use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::apiResource('languages', LanguageController::class);
         Route::apiResource('class-rooms', ClassRoomController::class);
-        Route::apiResource('payment-methods', PaymentMethodController::class);
+        Route::prefix('payments')->group(function () {
+            Route::apiResource('coupons', PaymentCouponController::class);
+            Route::apiResource('methods', PaymentMethodController::class);
+        });
     });
 });
