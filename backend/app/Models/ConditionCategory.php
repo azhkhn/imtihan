@@ -15,4 +15,9 @@ class ConditionCategory extends Model
         'key',
         'language_id',
     ];
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
 }
