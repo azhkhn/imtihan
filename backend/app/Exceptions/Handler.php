@@ -59,31 +59,28 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function (Exception $exception, $request) {
             if ($request->is('api/*')) {
-                if ($exception instanceof MethodNotAllowedHttpException) {
-                    return $this->errorResponse(__('response.method_not_allowed'), Response::HTTP_METHOD_NOT_ALLOWED);
+                switch ($exception) {
+                    case $exception instanceof NotFoundHttpException:
+                        return $this->errorResponse(__('response.not_found'), Response::HTTP_NOT_FOUND);
+                        break;
+                    case $exception instanceof MethodNotAllowedHttpException:
+                        return $this->errorResponse(__('response.method_not_allowed'), Response::HTTP_METHOD_NOT_ALLOWED);
+                        break;
+                    case $exception instanceof HttpException:
+                        return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+                        break;
+                    case $exception instanceof ValidationException:
+                        return $this->errorResponse($exception->validator->errors()->first(), Response::HTTP_UNPROCESSABLE_ENTITY);
+                        break;
+                    case $exception instanceof AuthenticationException:
+                        return $this->errorResponse(__('response.unauthorized'), Response::HTTP_UNAUTHORIZED);
+                        break;
+                    case config('app.debug'):
+                        return parent::render($request, $exception);
+                        break;
+                    default:
+                        return $this->errorResponse(__('response.internal_server_error'), Response::HTTP_INTERNAL_SERVER_ERROR);
                 }
-
-                if ($exception instanceof NotFoundHttpException) {
-                    return $this->errorResponse(__('response.not_found'), Response::HTTP_NOT_FOUND);
-                }
-
-                if ($exception instanceof HttpException) {
-                    return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
-                }
-
-                if ($exception instanceof ValidationException) {
-                    return $this->errorResponse($exception->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
-                }
-
-                if ($exception instanceof AuthenticationException) {
-                    return $this->errorResponse(__('unauthorized'), Response::HTTP_UNAUTHORIZED);
-                }
-
-                if (config('app.debug')) {
-                    return parent::render($request, $exception);
-                }
-
-                return $this->errorResponse(__('response.internal_server_error'), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         });
     }

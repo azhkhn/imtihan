@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\API\ApiController;
-use App\Http\Requests\Admin\Language\LanguageStoreRequest;
-use App\Http\Requests\Admin\Language\LanguageUpdateRequest;
+use App\Http\Requests\Admin\Language\StoreLanguageRequest;
+use App\Http\Requests\Admin\Language\UpdateLanguageRequest;
 use App\Http\Resources\Admin\LanguageResource;
 use App\Services\Admin\LanguageService;
 use Illuminate\Http\JsonResponse;
@@ -30,10 +30,10 @@ class LanguageController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  LanguageStoreRequest  $request
+     * @param  StoreLanguageRequest  $request
      * @return JsonResponse
      */
-    public function store(LanguageStoreRequest $request): JsonResponse
+    public function store(StoreLanguageRequest $request): JsonResponse
     {
         $this->service->create($request);
 
@@ -54,11 +54,11 @@ class LanguageController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  LanguageUpdateRequest  $request
+     * @param  UpdateLanguageRequest  $request
      * @param  int  $language
      * @return JsonResponse
      */
-    public function update(LanguageUpdateRequest $request, $language): JsonResponse
+    public function update(UpdateLanguageRequest $request, $language): JsonResponse
     {
         $this->service->update($request, $language);
 

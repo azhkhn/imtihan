@@ -5,6 +5,9 @@ use App\Http\Controllers\API\Admin\LanguageController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
+use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
+use App\Http\Controllers\API\Admin\Condition\ConditionController;
+use App\Http\Controllers\API\Admin\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +29,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::apiResource('coupons', PaymentCouponController::class);
             Route::apiResource('methods', PaymentMethodController::class);
             Route::apiResource('settings', PaymentSettingController::class);
+        });
+        Route::prefix('condition')->group(function () {
+            Route::apiResource('conditions', ConditionController::class);
+            Route::apiResource('categories', ConditionCategoryController::class);
         });
     });
 });
