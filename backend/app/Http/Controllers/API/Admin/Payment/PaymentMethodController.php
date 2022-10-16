@@ -24,6 +24,10 @@ class PaymentMethodController extends ApiController
      */
     public function index(): JsonResponse
     {
+        abort_unless(auth()->user()->tokenCan('admin.payment-method.list'),
+            Response::HTTP_FORBIDDEN
+        );
+
         return $this->successResponse(PaymentMethodResource::collection($this->paymentMethodService->list()));
     }
 
@@ -35,6 +39,10 @@ class PaymentMethodController extends ApiController
      */
     public function store(StorePaymentMethodRequest $request): JsonResponse
     {
+        abort_unless(auth()->user()->tokenCan('admin.payment-method.create'),
+            Response::HTTP_FORBIDDEN
+        );
+
         $this->paymentMethodService->create($request);
 
         return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);
@@ -48,6 +56,10 @@ class PaymentMethodController extends ApiController
      */
     public function show(int $payment_method): JsonResponse
     {
+        abort_unless(auth()->user()->tokenCan('admin.payment-method.show'),
+            Response::HTTP_FORBIDDEN
+        );
+
         return $this->successResponse(new PaymentMethodResource($this->paymentMethodService->show($payment_method)));
     }
 
@@ -60,6 +72,10 @@ class PaymentMethodController extends ApiController
      */
     public function update(UpdatePaymentMethodRequest $request, $payment_method): JsonResponse
     {
+        abort_unless(auth()->user()->tokenCan('admin.payment-method.update'),
+            Response::HTTP_FORBIDDEN
+        );
+
         $this->paymentMethodService->update($request, $payment_method);
 
         return $this->successResponse([], __('response.updated'));
@@ -73,6 +89,10 @@ class PaymentMethodController extends ApiController
      */
     public function destroy($payment_method): JsonResponse
     {
+        abort_unless(auth()->user()->tokenCan('admin.payment-method.delete'),
+            Response::HTTP_FORBIDDEN
+        );
+
         $this->paymentMethodService->destroy($payment_method);
 
         return $this->successResponse([], __('response.deleted'));

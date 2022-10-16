@@ -21,7 +21,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::apiResource('languages', LanguageController::class);
         Route::apiResource('class-rooms', ClassRoomController::class);
-        Route::prefix('payments')->group(function () {
+        Route::prefix('payment')->group(function () {
             Route::apiResource('coupons', PaymentCouponController::class);
             Route::apiResource('methods', PaymentMethodController::class);
         });

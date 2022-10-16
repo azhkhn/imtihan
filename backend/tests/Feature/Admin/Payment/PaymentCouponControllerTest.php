@@ -13,7 +13,7 @@ class PaymentCouponControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected string $apiUrl = '/api/admin/payment-coupons/';
+    protected string $apiUrl = '/api/admin/payment/coupons/';
 
     public function test_payment_coupon_list()
     {

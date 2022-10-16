@@ -12,7 +12,7 @@ class PaymentMethodControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected string $apiUrl = '/api/admin/payment-methods/';
+    protected string $apiUrl = '/api/admin/payment/methods/';
 
     public function test_payment_method_list()
     {
