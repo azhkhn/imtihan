@@ -21,7 +21,7 @@ class QuestionCategoryFactory extends Factory
         return [
             'name' => fake()->name(),
             'description' => fake()->text(),
-            'parent_id' => QuestionCategory::factory(),
+            'parent_id' => QuestionCategory::factory(['parent_id' => null]),
             'language_id' => Language::factory(),
         ];
     }

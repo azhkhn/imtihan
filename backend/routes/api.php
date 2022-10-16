@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
+use App\Http\Controllers\API\Admin\Condition\ConditionController;
 use App\Http\Controllers\API\Admin\LanguageController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::apiResource('languages', LanguageController::class);
-        Route::prefix('conditions')->group(function () {
+        Route::prefix('condition')->group(function () {
+            Route::apiResource('conditions', ConditionController::class);
             Route::apiResource('categories', ConditionCategoryController::class);
         });
     });

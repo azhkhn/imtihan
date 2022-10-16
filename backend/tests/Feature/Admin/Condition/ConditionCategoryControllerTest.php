@@ -12,7 +12,7 @@ class ConditionCategoryControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected string $apiUrl = '/api/admin/conditions/categories/';
+    protected string $apiUrl = '/api/admin/condition/categories/';
 
     public function test_condition_category_list()
     {
@@ -33,8 +33,6 @@ class ConditionCategoryControllerTest extends TestCase
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.condition-category.create']);
-
-        $response = $this->get($this->apiUrl);
 
         $response = $this->postJson($this->apiUrl, $conditionCategory->toArray());
         $response->assertStatus(201);

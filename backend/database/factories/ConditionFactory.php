@@ -23,7 +23,7 @@ class ConditionFactory extends Factory
             'name' => fake()->name(),
             'question_category_id' => QuestionCategory::factory(),
             'condition_category_id' => ConditionCategory::factory(),
-            'value' => fake()->randomNumber(),
+            'value' => fake()->randomFloat(1, 0, 100),
             'is_active' => Condition::STATUS_ACTIVE,
         ];
     }
