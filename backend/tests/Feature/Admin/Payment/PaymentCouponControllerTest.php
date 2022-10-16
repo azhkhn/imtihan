@@ -5,7 +5,6 @@ namespace Tests\Feature\Admin\Payment;
 use App\Models\PaymentCoupon;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
@@ -60,12 +59,6 @@ class PaymentCouponControllerTest extends TestCase
 
         $response = $this->putJson($this->apiUrl.$paymentCoupon->id, [
             'name' => 'test',
-            'code' => 'test',
-            'type' => 'test',
-            'value' => 1,
-            'start_date' => '2021-01-01',
-            'end_date' => '2021-01-01',
-            'status' => 1,
         ]);
         $response->assertStatus(200);
     }

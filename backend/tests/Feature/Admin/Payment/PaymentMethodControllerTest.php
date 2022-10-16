@@ -29,7 +29,7 @@ class PaymentMethodControllerTest extends TestCase
 
     public function test_payment_method_create()
     {
-        $paymentMethod = PaymentMethod::factory()->create();
+        $paymentMethod = PaymentMethod::factory()->make();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.payment-method.create']);

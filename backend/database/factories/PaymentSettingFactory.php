@@ -18,7 +18,7 @@ class PaymentSettingFactory extends Factory
     public function definition()
     {
         return [
-            'price' => fake()->randomNumber(),
+            'price' => fake()->randomFloat(2, 1, 100),
             'is_default' => PaymentSetting::STATUS_ACTIVE,
         ];
     }
