@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\API\Admin\ClassRoomController;
+use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
+use App\Http\Controllers\API\Admin\Condition\ConditionController;
 use App\Http\Controllers\API\Admin\LanguageController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
-use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
-use App\Http\Controllers\API\Admin\Condition\ConditionController;
 use Illuminate\Support\Facades\Route;
 
 /*
