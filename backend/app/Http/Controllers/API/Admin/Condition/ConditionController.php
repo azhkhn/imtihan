@@ -8,7 +8,6 @@ use App\Http\Requests\Admin\Condition\UpdateConditionRequest;
 use App\Http\Resources\Admin\Condition\ConditionResource;
 use App\Services\Admin\Condition\ConditionService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ConditionController extends ApiController
@@ -35,7 +34,7 @@ class ConditionController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreConditionRequest $request
+     * @param  StoreConditionRequest  $request
      * @return JsonResponse
      */
     public function store(StoreConditionRequest $request): JsonResponse
@@ -52,7 +51,7 @@ class ConditionController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param int $condition
+     * @param  int  $condition
      * @return JsonResponse
      */
     public function show($condition): JsonResponse
@@ -67,8 +66,8 @@ class ConditionController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateConditionRequest $request
-     * @param int $condition
+     * @param  UpdateConditionRequest  $request
+     * @param  int  $condition
      * @return JsonResponse
      */
     public function update(UpdateConditionRequest $request, $condition): JsonResponse
@@ -85,7 +84,7 @@ class ConditionController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $condition
+     * @param  int  $condition
      * @return JsonResponse
      */
     public function destroy($condition): JsonResponse

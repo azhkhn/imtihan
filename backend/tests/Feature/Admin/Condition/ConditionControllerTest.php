@@ -3,8 +3,6 @@
 namespace Tests\Feature\Admin\Condition;
 
 use App\Models\Condition;
-use App\Models\ConditionCategory;
-use App\Models\QuestionCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
@@ -47,7 +45,7 @@ class ConditionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.condition.show']);
 
-        $response = $this->get($this->apiUrl . $condition->id);
+        $response = $this->get($this->apiUrl.$condition->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $condition->id]);
     }
@@ -59,7 +57,7 @@ class ConditionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.condition.update']);
 
-        $response = $this->putJson($this->apiUrl . $condition->id, [
+        $response = $this->putJson($this->apiUrl.$condition->id, [
             'name' => 'test',
             'is_active' => true,
         ]);
@@ -73,7 +71,7 @@ class ConditionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.condition.delete']);
 
-        $response = $this->delete($this->apiUrl . $condition->id);
+        $response = $this->delete($this->apiUrl.$condition->id);
         $response->assertStatus(200);
     }
 }
