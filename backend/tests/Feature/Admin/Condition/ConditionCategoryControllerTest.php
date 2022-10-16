@@ -12,7 +12,7 @@ class ConditionCategoryControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected string $apiUrl = '/api/admin/condition-categories/';
+    protected string $apiUrl = '/api/admin/conditions/categories/';
 
     public function test_condition_category_list()
     {

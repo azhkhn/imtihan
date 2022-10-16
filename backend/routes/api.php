@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::apiResource('languages', LanguageController::class);
-        Route::apiResource('condition-categories', ConditionCategoryController::class);
+        Route::prefix('conditions')->group(function () {
+            Route::apiResource('categories', ConditionCategoryController::class);
+        });
     });
 });
