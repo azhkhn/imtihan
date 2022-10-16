@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Language;
+namespace App\Http\Requests\Admin\Condition;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LanguageUpdateRequest extends FormRequest
+class StoreConditionCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class LanguageUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|max:255',
-            'code' => 'string|max:3',
-            'status' => 'boolean',
+            'name' => 'required|string',
+            'key' => 'required|string',
+            'language_id' => 'required|integer',
         ];
     }
 }

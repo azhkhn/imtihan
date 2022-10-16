@@ -19,7 +19,7 @@ class ConditionCategoryFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'key' => fake()->randomKey(),
+            'key' => fake()->unique()->domainName(),
             'language_id' => Language::factory(),
         ];
     }
