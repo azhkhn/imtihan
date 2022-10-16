@@ -29,7 +29,7 @@ class ClassRoomControllerTest extends TestCase
 
     public function test_class_room_create()
     {
-        $classRoom = ClassRoom::factory()->create();
+        $classRoom = ClassRoom::factory()->make();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.class-room.create']);
