@@ -4,7 +4,7 @@ namespace App\Http\Resources\Admin\Post;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AnnouncementResource extends JsonResource
+class SliderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,7 @@ class AnnouncementResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'content' => $this->content,
+            'src' => $this->src,
             'company_id' => $this->company_id,
         ];
     }
