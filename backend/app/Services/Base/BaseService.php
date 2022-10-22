@@ -34,9 +34,9 @@ class BaseService
      *
      * @param  int  $id
      */
-    public function show($id)
+    public function show($id, $with = [])
     {
-        return $this->model::findOrFail($id);
+        return $this->model::with($with)->findOrFail($id);
     }
 
     /**
