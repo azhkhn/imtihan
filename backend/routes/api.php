@@ -8,6 +8,7 @@ use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
 use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
+use App\Http\Controllers\API\Admin\Question\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         });
 
         Route::apiResources([
+            'questions' => QuestionController::class,
             'question/categories' => QuestionCatergoryController::class,
         ]);
     });

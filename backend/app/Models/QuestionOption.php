@@ -18,6 +18,6 @@ class QuestionOption extends Model
         'description',
         'question_id',
         'is_correct',
-        'image_path',
+        'src',
     ];
 }

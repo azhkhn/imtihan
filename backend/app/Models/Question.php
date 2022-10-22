@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
@@ -19,7 +20,28 @@ class Question extends Model
         'description',
         'category_id',
         'is_option',
-        'image_path',
+        'src',
         'language_id',
     ];
+
+
+    /**
+     * Get the category that owns the Question
+     *
+     * @return HasOne
+     */
+    public function category(): HasOne
+    {
+        return $this->hasOne(QuestionCategory::class, 'id', 'category_id');
+    }
+
+    /**
+     * Get the language that owns the Question
+     *
+     * @return HasOne
+     */
+    public function language(): HasOne
+    {
+        return $this->hasOne(Language::class, 'id', 'language_id');
+    }
 }

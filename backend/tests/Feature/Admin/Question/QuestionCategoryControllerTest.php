@@ -14,12 +14,6 @@ class QuestionCategoryControllerTest extends TestCase
 
     protected string $apiUrl = '/api/admin/question/categories/';
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-
     public function test_question_category_list()
     {
         QuestionCategory::factory(20)->create();
@@ -35,7 +29,7 @@ class QuestionCategoryControllerTest extends TestCase
 
     public function test_question_category_create()
     {
-        $questionCategory = QuestionCategory::factory()->create();
+        $questionCategory = QuestionCategory::factory()->make();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.question.category.create']);
