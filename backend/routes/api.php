@@ -7,6 +7,7 @@ use App\Http\Controllers\API\Admin\LanguageController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
+use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::apiResource('conditions', ConditionController::class);
             Route::apiResource('categories', ConditionCategoryController::class);
         });
+
+        Route::apiResources([
+            'question/categories' => QuestionCatergoryController::class,
+        ]);
     });
 });

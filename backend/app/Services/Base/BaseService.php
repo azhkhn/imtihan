@@ -15,10 +15,11 @@ class BaseService
     /**
      * Display a listing of the resource.
      */
-    public function list()
+    public function list($with = [])
     {
-        return $this->model::latest()->get();
+        return $this->model::with($with)->latest()->get();
     }
+
 
     /**
      * Store a newly created resource in storage.
