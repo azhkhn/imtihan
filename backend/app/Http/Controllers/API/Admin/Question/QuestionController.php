@@ -31,7 +31,7 @@ class QuestionController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(QuestionResource::collection($this->questionService->list(['category', 'language'])));
+        return $this->successResponse(QuestionResource::collection($this->questionService->list(['category', 'language', 'options'])));
     }
 
     /**
@@ -45,6 +45,8 @@ class QuestionController extends ApiController
         abort_unless(auth()->user()->tokenCan('admin.question.create'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->questionService->create($request);
 
         return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);
     }
@@ -61,7 +63,7 @@ class QuestionController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(new QuestionResource($this->questionService->show($question, ['category', 'language'])));
+        return $this->successResponse(new QuestionResource($this->questionService->show($question, ['category', 'language', 'options'])));
     }
 
     /**

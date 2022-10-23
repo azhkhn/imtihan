@@ -30,6 +30,7 @@ class StoreQuestionRequest extends FormRequest
             'is_option' => 'required|numeric',
             'src' => 'required|string',
             'language_id' => 'required|numeric|exists:languages,id',
+            'options' => 'required|array',
         ];
     }
 }

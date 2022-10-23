@@ -30,6 +30,7 @@ class UpdateQuestionRequest extends FormRequest
             'is_option' => 'numeric',
             'src' => 'string',
             'language_id' => 'numeric|exists:languages,id',
+            'options' => 'array',
         ];
     }
 }

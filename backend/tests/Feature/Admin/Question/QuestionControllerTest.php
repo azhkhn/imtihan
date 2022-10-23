@@ -3,6 +3,7 @@
 namespace Tests\Feature\Admin\Question;
 
 use App\Models\Question;
+use App\Models\QuestionOption;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
@@ -17,31 +18,42 @@ class QuestionControllerTest extends TestCase
 
     public function test_question_list()
     {
-        Question::factory(20)->create();
+        $question = Question::factory()->create();
+        QuestionOption::factory(4)->for($question)->create();
+
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.question.list']);
 
         $response = $this->get($this->apiUrl);
 
-        $response->assertJsonStructure(['success', 'message', 'data'])
-            ->assertJsonCount(20, 'data');
+       $response->assertJsonStructure(['success', 'message', 'data'])
+            ->assertJsonCount(1, 'data');
     }
 
     public function test_question_create()
     {
-        $question = Question::factory()->make();
+        $question = Question::factory()->create();
+        $options = QuestionOption::factory(4)->for($question)->make();
+
+        $data = [
+            ...$question->toArray(),
+            'options' => $options->toArray(),
+        ];
+
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.question.create']);
 
-        $response = $this->postJson($this->apiUrl, $question->toArray());
+        $response = $this->postJson($this->apiUrl, $data);
         $response->assertStatus(201);
     }
 
     public function test_question_show()
     {
         $question = Question::factory()->create();
+        QuestionOption::factory(4)->for($question)->create();
+
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.question.show']);
@@ -53,22 +65,26 @@ class QuestionControllerTest extends TestCase
 
     public function test_question_update()
     {
-        $question = Question::factory()->create();
         $user = User::factory()->create();
+        $question = Question::factory()->create();
+        $options = QuestionOption::factory(4)->for($question)->create();
+
+        $data = [
+            ...$question->toArray(),
+            'options' => $options->toArray(),
+        ];
 
         Sanctum::actingAs($user, ['admin.question.update']);
 
-        $response = $this->putJson($this->apiUrl . $question->id, [
-            'name' => "Test Question",
-            'description' => "Test Question Description",
-        ]);
+        $response = $this->putJson($this->apiUrl . $question->id, $data);
         $response->assertStatus(200);
     }
 
     public function test_question_delete()
     {
-        $question = Question::factory()->create();
         $user = User::factory()->create();
+        $question = Question::factory()->create();
+        QuestionOption::factory(4)->for($question)->create();
 
         Sanctum::actingAs($user, ['admin.question.delete']);
 
