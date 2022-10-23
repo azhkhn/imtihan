@@ -60,6 +60,8 @@ class Handler extends ExceptionHandler
         $this->renderable(function (Exception $exception, $request) {
             if ($request->is('api/*')) {
                 switch ($exception) {
+                    case config('app.debug'):
+                        break;
                     case $exception instanceof NotFoundHttpException:
                         return $this->errorResponse(__('response.not_found'), Response::HTTP_NOT_FOUND);
                         break;
@@ -74,9 +76,6 @@ class Handler extends ExceptionHandler
                         break;
                     case $exception instanceof AuthenticationException:
                         return $this->errorResponse(__('response.unauthorized'), Response::HTTP_UNAUTHORIZED);
-                        break;
-                    case config('app.debug'):
-                        return parent::render($request, $exception);
                         break;
                     default:
                         return $this->errorResponse(__('response.internal_server_error'), Response::HTTP_INTERNAL_SERVER_ERROR);

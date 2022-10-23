@@ -14,7 +14,7 @@ class LanguageController extends ApiController
 {
     public function __construct(LanguageService $service)
     {
-        $this->service = $service;
+        $this->languageService = $service;
     }
 
     /**
@@ -24,7 +24,7 @@ class LanguageController extends ApiController
      */
     public function index(): JsonResponse
     {
-        return $this->successResponse(LanguageResource::collection($this->service->list()));
+        return $this->successResponse(LanguageResource::collection($this->languageService->list()));
     }
 
     /**
@@ -35,7 +35,7 @@ class LanguageController extends ApiController
      */
     public function store(StoreLanguageRequest $request): JsonResponse
     {
-        $this->service->create($request);
+        $this->languageService->create($request);
 
         return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);
     }
@@ -48,7 +48,7 @@ class LanguageController extends ApiController
      */
     public function show($language): JsonResponse
     {
-        return $this->successResponse(new LanguageResource($this->service->show($language)));
+        return $this->successResponse(new LanguageResource($this->languageService->show($language)));
     }
 
     /**
@@ -60,7 +60,7 @@ class LanguageController extends ApiController
      */
     public function update(UpdateLanguageRequest $request, $language): JsonResponse
     {
-        $this->service->update($request, $language);
+        $this->languageService->update($request, $language);
 
         return $this->successResponse([], __('response.updated'));
     }
@@ -73,7 +73,7 @@ class LanguageController extends ApiController
      */
     public function destroy($language): JsonResponse
     {
-        $this->service->destroy($language);
+        $this->languageService->destroy($language);
 
         return $this->successResponse([], __('response.deleted'));
     }

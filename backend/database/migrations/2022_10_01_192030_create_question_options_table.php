@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('question_id')->index();
             $table->boolean('is_correct')->default(false);
-            $table->string('image_path')->nullable();
+            $table->string('src')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

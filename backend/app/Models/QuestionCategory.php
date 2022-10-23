@@ -16,4 +16,9 @@ class QuestionCategory extends Model
         'parent_id',
         'language_id',
     ];
+
+    public function childrens()
+    {
+        return $this->hasMany(QuestionCategory::class, 'parent_id', 'id');
+    }
 }

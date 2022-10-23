@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('category_id')->index();
             $table->boolean('is_option')->default(false);
-            $table->string('image_path')->nullable();
+            $table->string('src')->nullable();
             $table->foreignId('language_id')->index();
             $table->timestamps();
             $table->softDeletes();

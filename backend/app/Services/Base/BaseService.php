@@ -15,9 +15,9 @@ class BaseService
     /**
      * Display a listing of the resource.
      */
-    public function list()
+    public function list($with = [])
     {
-        return $this->model::latest()->get();
+        return $this->model::with($with)->latest()->get();
     }
 
     /**
@@ -33,9 +33,9 @@ class BaseService
      *
      * @param  int  $id
      */
-    public function show($id)
+    public function show($id, $with = [])
     {
-        return $this->model::findOrFail($id);
+        return $this->model::with($with)->findOrFail($id);
     }
 
     /**

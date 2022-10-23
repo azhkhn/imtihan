@@ -22,7 +22,7 @@ class QuestionOptionFactory extends Factory
             'description' => fake()->text(),
             'question_id' => Question::factory(),
             'is_correct' => QuestionOption::STATUS_INACTIVE,
-            'image_path' => fake()->imageUrl(),
+            'src' => fake()->imageUrl(),
         ];
     }
 }

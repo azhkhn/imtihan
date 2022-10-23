@@ -24,7 +24,7 @@ class QuestionFactory extends Factory
             'description' => fake()->text(),
             'category_id' => QuestionCategory::factory(),
             'is_option' => Question::STATUS_INACTIVE,
-            'image_path' => fake()->imageUrl(),
+            'src' => fake()->imageUrl(),
             'language_id' => Language::factory(),
         ];
     }
