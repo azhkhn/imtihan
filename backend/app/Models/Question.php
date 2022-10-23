@@ -25,7 +25,6 @@ class Question extends Model
         'language_id',
     ];
 
-
     /**
      * Get the category that owns the Question
      *

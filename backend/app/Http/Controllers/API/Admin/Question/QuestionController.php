@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends ApiController
 {
-
     public function __construct(QuestionService $service)
     {
         $this->questionService = $service;

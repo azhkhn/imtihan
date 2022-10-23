@@ -45,7 +45,7 @@ class QuestionCategoryControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.question.category.show']);
 
-        $response = $this->get($this->apiUrl . $questionCategory->id);
+        $response = $this->get($this->apiUrl.$questionCategory->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $questionCategory->id]);
     }
@@ -57,7 +57,7 @@ class QuestionCategoryControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.question.category.update']);
 
-        $response = $this->putJson($this->apiUrl . $questionCategory->id, [
+        $response = $this->putJson($this->apiUrl.$questionCategory->id, [
             'name' => 'test',
             'description' => 'test',
         ]);
@@ -71,7 +71,7 @@ class QuestionCategoryControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.question.category.delete']);
 
-        $response = $this->deleteJson($this->apiUrl . $questionCategory->id);
+        $response = $this->deleteJson($this->apiUrl.$questionCategory->id);
         $response->assertStatus(200);
     }
 }

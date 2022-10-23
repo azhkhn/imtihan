@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class QuestionControllerTest extends TestCase
 {
-
     use RefreshDatabase;
 
     protected string $apiUrl = '/api/admin/questions/';
@@ -27,8 +26,8 @@ class QuestionControllerTest extends TestCase
 
         $response = $this->get($this->apiUrl);
 
-       $response->assertJsonStructure(['success', 'message', 'data'])
-            ->assertJsonCount(1, 'data');
+        $response->assertJsonStructure(['success', 'message', 'data'])
+             ->assertJsonCount(1, 'data');
     }
 
     public function test_question_create()
@@ -58,7 +57,7 @@ class QuestionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.question.show']);
 
-        $response = $this->get($this->apiUrl . $question->id);
+        $response = $this->get($this->apiUrl.$question->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $question->id]);
     }
@@ -76,7 +75,7 @@ class QuestionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.question.update']);
 
-        $response = $this->putJson($this->apiUrl . $question->id, $data);
+        $response = $this->putJson($this->apiUrl.$question->id, $data);
         $response->assertStatus(200);
     }
 
@@ -88,7 +87,7 @@ class QuestionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.question.delete']);
 
-        $response = $this->delete($this->apiUrl . $question->id);
+        $response = $this->delete($this->apiUrl.$question->id);
         $response->assertStatus(200);
     }
 }

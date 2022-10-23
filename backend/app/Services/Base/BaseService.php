@@ -20,7 +20,6 @@ class BaseService
         return $this->model::with($with)->latest()->get();
     }
 
-
     /**
      * Store a newly created resource in storage.
      */

@@ -6,10 +6,8 @@ use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Question\StoreQuestionCategoryRequest;
 use App\Http\Requests\Admin\Question\UpdateQuestionCategoryRequest;
 use App\Http\Resources\Admin\Question\QuestionCategoryResource;
-use App\Models\QuestionCategory;
 use App\Services\Admin\Question\QuestionCategoryService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuestionCatergoryController extends ApiController
@@ -36,7 +34,7 @@ class QuestionCatergoryController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreQuestionCategoryRequest $request
+     * @param  StoreQuestionCategoryRequest  $request
      * @return JsonResponse
      */
     public function store(StoreQuestionCategoryRequest $request): JsonResponse
@@ -53,7 +51,7 @@ class QuestionCatergoryController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param int $category
+     * @param  int  $category
      * @return JsonResponse
      */
     public function show($category)
@@ -68,8 +66,8 @@ class QuestionCatergoryController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateQuestionCategoryRequest $request
-     * @param int $category
+     * @param  UpdateQuestionCategoryRequest  $request
+     * @param  int  $category
      * @return JsonResponse
      */
     public function update(UpdateQuestionCategoryRequest $request, $category)
@@ -86,7 +84,7 @@ class QuestionCatergoryController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $category
+     * @param  int  $category
      * @return JsonResponse
      */
     public function destroy($category): JsonResponse
