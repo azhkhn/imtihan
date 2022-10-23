@@ -7,6 +7,8 @@ use App\Http\Controllers\API\Admin\LanguageController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
+use App\Http\Controllers\API\Admin\Post\AnnouncementController;
+use App\Http\Controllers\API\Admin\Post\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::prefix('condition')->group(function () {
             Route::apiResource('conditions', ConditionController::class);
             Route::apiResource('categories', ConditionCategoryController::class);
+        });
+        Route::prefix('post')->group(function () {
+            Route::apiResource('announcements', AnnouncementController::class);
+            Route::apiResource('sliders', SliderController::class);
         });
     });
 });
