@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\City;
 use App\Models\Company;
 use App\Models\Country;
-use App\Models\PaymentPlan;
 use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,17 +24,16 @@ class CompanyFactory extends Factory
             'name' => fake()->name(),
             'subdomain' => fake()->domainName(),
             'is_active' => Company::STATUS_ACTIVE,
-            'tax_id' => rand(),
+            'tax_id' => rand(11, 11),
             'email' => fake()->email(),
             'web_url' => fake()->url(),
             'phone' => fake()->phoneNumber(),
+            'logo' => fake()->image(),
             'country_id' => Country::factory(),
             'city_id' => City::factory(),
             'state_id' => State::factory(),
             'address' => fake()->address(),
             'zip_code' => fake()->postcode(),
-            'logo' => fake()->image(),
-            'payment_plan_id' => PaymentPlan::factory(),
         ];
     }
 }
