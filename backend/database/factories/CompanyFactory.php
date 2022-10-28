@@ -28,7 +28,7 @@ class CompanyFactory extends Factory
             'email' => fake()->email(),
             'web_url' => fake()->url(),
             'phone' => fake()->phoneNumber(),
-            'logo' => fake()->image(),
+            'logo' => fake()->imageUrl(),
             'country_id' => Country::factory(),
             'city_id' => City::factory(),
             'state_id' => State::factory(),
