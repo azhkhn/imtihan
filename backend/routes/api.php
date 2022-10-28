@@ -11,6 +11,7 @@ use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
 use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Admin\Post\AnnouncementController;
 use App\Http\Controllers\API\Admin\Post\SliderController;
+use App\Http\Controllers\API\Manager\Booking\BookingController;
 use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,8 +51,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::prefix('manager')->group(function () {
-        Route::prefix('booking')->group(function () {
-            Route::apiResource('settings', BookingSettingController::class);
-        });
+        Route::apiResources([
+            'bookings' => BookingController::class,
+            'bookings/settings' => BookingSettingController::class,
+        ]);
     });
 });
