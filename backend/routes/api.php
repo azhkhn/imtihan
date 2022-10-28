@@ -11,6 +11,7 @@ use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
 use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Admin\Post\AnnouncementController;
 use App\Http\Controllers\API\Admin\Post\SliderController;
+use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::prefix('post')->group(function () {
             Route::apiResource('announcements', AnnouncementController::class);
             Route::apiResource('sliders', SliderController::class);
+        });
+    });
+
+    Route::prefix('manager')->group(function () {
+        Route::prefix('booking')->group(function () {
+            Route::apiResource('settings', BookingSettingController::class);
         });
     });
 });
