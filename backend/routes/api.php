@@ -55,7 +55,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('manager')->group(function () {
         Route::apiResources([
             'bookings' => BookingController::class,
-            'bookings/settings' => BookingSettingController::class,
+            'booking/settings' => BookingSettingController::class,
         ]);
     });
 });
