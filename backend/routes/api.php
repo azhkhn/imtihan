@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Admin\ClassRoomController;
+use App\Http\Controllers\API\Admin\CompanyController;
 use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
 use App\Http\Controllers\API\Admin\Condition\ConditionController;
 use App\Http\Controllers\API\Admin\LanguageController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
 use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Admin\Post\AnnouncementController;
 use App\Http\Controllers\API\Admin\Post\SliderController;
+use App\Http\Controllers\API\Manager\Booking\BookingController;
+use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('admin')->group(function () {
+        Route::apiResource('companies', CompanyController::class);
         Route::apiResource('languages', LanguageController::class);
         Route::apiResource('class-rooms', ClassRoomController::class);
         Route::prefix('payment')->group(function () {
@@ -46,5 +50,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::apiResource('announcements', AnnouncementController::class);
             Route::apiResource('sliders', SliderController::class);
         });
+    });
+
+    Route::prefix('manager')->group(function () {
+        Route::apiResources([
+            'bookings' => BookingController::class,
+            'booking/settings' => BookingSettingController::class,
+        ]);
     });
 });
