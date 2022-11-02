@@ -16,7 +16,7 @@ class AnnouncementControllerTest extends TestCase
 
     public function test_announcement_list()
     {
-        Announcement::factory(20)->create();
+        Announcement::factory(20)->state(['company_id' => null])->create();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.post.announcement.list']);
@@ -29,7 +29,7 @@ class AnnouncementControllerTest extends TestCase
 
     public function test_announcement_create()
     {
-        $announcement = Announcement::factory()->make();
+        $announcement = Announcement::factory()->state(['company_id' => null])->make();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.post.announcement.create']);
@@ -40,7 +40,7 @@ class AnnouncementControllerTest extends TestCase
 
     public function test_announcement_show()
     {
-        $announcement = Announcement::factory()->create();
+        $announcement = Announcement::factory()->state(['company_id' => null])->create();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.post.announcement.show']);
@@ -52,7 +52,7 @@ class AnnouncementControllerTest extends TestCase
 
     public function test_announcement_update()
     {
-        $announcement = Announcement::factory()->create();
+        $announcement = Announcement::factory()->state(['company_id' => null])->create();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.post.announcement.update']);
@@ -66,7 +66,7 @@ class AnnouncementControllerTest extends TestCase
 
     public function test_announcement_delete()
     {
-        $announcement = Announcement::factory()->create();
+        $announcement = Announcement::factory()->state(['company_id' => null])->create();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.post.announcement.delete']);
