@@ -6,6 +6,7 @@ use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Company\StoreCompanyRequest;
 use App\Http\Requests\Admin\Company\StoreCompanyUserRequest;
 use App\Http\Requests\Admin\Company\UpdateCompanyUserRequest;
+use App\Http\Resources\Admin\Company\CompanyUserResource;
 use App\Models\User;
 use App\Services\Admin\Company\CompanyUserService;
 use Illuminate\Http\JsonResponse;
@@ -29,7 +30,7 @@ class CompanyUserController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse($this->userService->list([], ['role' => User::Manager]));
+        return $this->successResponse(CompanyUserResource::collection($this->userService->list([], ['role' => User::Manager])));
     }
 
     /**
@@ -63,7 +64,7 @@ class CompanyUserController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse($this->userService->show($user));
+        return $this->successResponse(new CompanyUserResource($this->userService->show($user)));
     }
 
     /**

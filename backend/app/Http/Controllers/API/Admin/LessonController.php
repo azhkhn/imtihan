@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Admin;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Lesson\StoreLessonRequest;
 use App\Http\Requests\Admin\Lesson\UpdateLessonRequest;
+use App\Http\Resources\Admin\LessonResource;
 use App\Services\Admin\LessonService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +28,7 @@ class LessonController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse($this->lessonService->list());
+        return $this->successResponse(LessonResource::collection($this->lessonService->list()));
     }
 
     /**
@@ -59,7 +60,7 @@ class LessonController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse($this->lessonService->show($lesson));
+        return $this->successResponse(new LessonResource($this->lessonService->show($lesson)));
     }
 
     /**

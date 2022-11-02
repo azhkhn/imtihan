@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\Admin\ClassRoomController;
+use App\Http\Controllers\API\Admin\Company\CompanyController;
 use App\Http\Controllers\API\Admin\Company\CompanyUserController;
-use App\Http\Controllers\API\Admin\CompanyController;
 use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
 use App\Http\Controllers\API\Admin\Condition\ConditionController;
 use App\Http\Controllers\API\Admin\LanguageController;
