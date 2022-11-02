@@ -5,6 +5,7 @@ use App\Http\Controllers\API\Admin\CompanyController;
 use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
 use App\Http\Controllers\API\Admin\Condition\ConditionController;
 use App\Http\Controllers\API\Admin\LanguageController;
+use App\Http\Controllers\API\Admin\LessonController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
@@ -32,6 +33,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('companies', CompanyController::class);
         Route::apiResource('languages', LanguageController::class);
         Route::apiResource('class-rooms', ClassRoomController::class);
+        Route::apiResource('lessons', LessonController::class);
         Route::prefix('payment')->group(function () {
             Route::apiResource('coupons', PaymentCouponController::class);
             Route::apiResource('methods', PaymentMethodController::class);
