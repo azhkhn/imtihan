@@ -15,9 +15,9 @@ class BaseService
     /**
      * Display a listing of the resource.
      */
-    public function list($with = [])
+    public function list($with = [], $where = [])
     {
-        return $this->model::with($with)->latest()->get();
+        return $this->model::with($with)->where($where)->latest()->get();
     }
 
     /**
