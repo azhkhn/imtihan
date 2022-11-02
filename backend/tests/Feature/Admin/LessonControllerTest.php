@@ -47,7 +47,7 @@ class LessonControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.lesson.show']);
 
-        $response = $this->get($this->apiUrl . $lesson->id);
+        $response = $this->get($this->apiUrl.$lesson->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $lesson->id]);
     }
@@ -59,7 +59,7 @@ class LessonControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.lesson.update']);
 
-        $response = $this->putJson($this->apiUrl . $lesson->id, [
+        $response = $this->putJson($this->apiUrl.$lesson->id, [
             'name' => 'updated name',
             'content' => 'updated content',
         ]);
@@ -75,7 +75,7 @@ class LessonControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.lesson.delete']);
 
-        $response = $this->delete($this->apiUrl . $lesson->id);
+        $response = $this->delete($this->apiUrl.$lesson->id);
 
         $response->assertStatus(200);
     }

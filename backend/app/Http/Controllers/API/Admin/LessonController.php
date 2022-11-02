@@ -34,7 +34,7 @@ class LessonController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreLessonRequest $request
+     * @param  StoreLessonRequest  $request
      * @return JsonResponse
      */
     public function store(StoreLessonRequest $request)
@@ -66,7 +66,7 @@ class LessonController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateLessonRequest $request
+     * @param  UpdateLessonRequest  $request
      * @param  int  $lesson
      * @return JsonResponse
      */

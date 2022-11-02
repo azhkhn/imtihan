@@ -48,7 +48,7 @@ class CompanyUserControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.company.user.show']);
 
-        $response = $this->get($this->apiUrl . $companyUser->id);
+        $response = $this->get($this->apiUrl.$companyUser->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $companyUser->id]);
     }
@@ -60,7 +60,7 @@ class CompanyUserControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.company.user.update']);
 
-        $response = $this->putJson($this->apiUrl . $companyUser->id, [
+        $response = $this->putJson($this->apiUrl.$companyUser->id, [
             'full_name' => 'Test User',
         ]);
         $response->assertStatus(200);
@@ -73,7 +73,7 @@ class CompanyUserControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['admin.company.user.delete']);
 
-        $response = $this->delete($this->apiUrl . $companyUser->id);
+        $response = $this->delete($this->apiUrl.$companyUser->id);
         $response->assertStatus(200);
     }
 }

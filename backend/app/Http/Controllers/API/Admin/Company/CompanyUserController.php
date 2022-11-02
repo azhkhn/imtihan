@@ -70,7 +70,7 @@ class CompanyUserController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateCompanyUserRequest $request
+     * @param  UpdateCompanyUserRequest  $request
      * @param  int  $user
      * @return JsonResponse
      */
@@ -88,7 +88,7 @@ class CompanyUserController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $user
+     * @param  int  $user
      * @return JsonResponse
      */
     public function destroy($user)
