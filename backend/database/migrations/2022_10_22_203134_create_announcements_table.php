@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('content');
             $table->string('src')->nullable();
-            $table->foreignId('company_id')->index();
+            $table->foreignId('company_id')->index()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

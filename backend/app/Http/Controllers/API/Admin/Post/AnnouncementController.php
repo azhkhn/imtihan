@@ -28,7 +28,7 @@ class AnnouncementController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(AnnouncementResource::collection($this->announcementService->list()));
+        return $this->successResponse(AnnouncementResource::collection($this->announcementService->list([], ['company_id' => null])));
     }
 
     /**

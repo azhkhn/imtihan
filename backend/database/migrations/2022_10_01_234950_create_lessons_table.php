@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->index();
             $table->foreignId('language_id')->index();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

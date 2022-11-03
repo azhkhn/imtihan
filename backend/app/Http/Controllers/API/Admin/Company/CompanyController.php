@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API\Admin;
+namespace App\Http\Controllers\API\Admin\Company;
 
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Company\StoreCompanyRequest;
 use App\Http\Requests\Admin\Company\UpdateCompanyRequest;
-use App\Http\Resources\Admin\CompanyResource;
+use App\Http\Resources\Admin\Company\CompanyResource;
 use App\Services\Admin\CompanyService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

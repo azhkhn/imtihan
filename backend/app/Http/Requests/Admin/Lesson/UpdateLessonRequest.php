@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Post;
+namespace App\Http\Requests\Admin\Lesson;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAnnouncementRequest extends FormRequest
+class UpdateLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,8 @@ class UpdateAnnouncementRequest extends FormRequest
         return [
             'name' => 'string|max:255',
             'content' => 'string',
-            'src' => 'string',
-            'company_id' => 'nullable|numeric',
+            'category_id' => 'integer|exists:question_categories,id',
+            'language_id' => 'integer|exists:languages,id',
         ];
     }
 }

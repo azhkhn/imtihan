@@ -1,17 +1,19 @@
 <?php
 
 use App\Http\Controllers\API\Admin\ClassRoomController;
-use App\Http\Controllers\API\Admin\CompanyController;
+use App\Http\Controllers\API\Admin\Company\CompanyController;
+use App\Http\Controllers\API\Admin\Company\CompanyUserController;
 use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
 use App\Http\Controllers\API\Admin\Condition\ConditionController;
 use App\Http\Controllers\API\Admin\LanguageController;
+use App\Http\Controllers\API\Admin\LessonController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
-use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
-use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Admin\Post\AnnouncementController;
 use App\Http\Controllers\API\Admin\Post\SliderController;
+use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
+use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Manager\Booking\BookingController;
 use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +31,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::apiResource('companies', CompanyController::class);
+        Route::apiResources([
+            'companies' => CompanyController::class,
+            'company/users' => CompanyUserController::class,
+        ]);
         Route::apiResource('languages', LanguageController::class);
         Route::apiResource('class-rooms', ClassRoomController::class);
+        Route::apiResource('lessons', LessonController::class);
         Route::prefix('payment')->group(function () {
             Route::apiResource('coupons', PaymentCouponController::class);
             Route::apiResource('methods', PaymentMethodController::class);

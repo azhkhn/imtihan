@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\ClassRoom;
 use App\Models\Company;
+use App\Models\Language;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,7 +28,7 @@ class UserInfoFactory extends Factory
             'start_date' => fake()->date(),
             'end_date' => fake()->date(),
             'class_id' => 1, ClassRoom::factory(),
-            'language_id' => 1, //TODO: The Language Model waiting...
+            'language_id' => Language::factory(),
             'company_id' => Company::factory(),
             'user_id' => User::factory(),
         ];
