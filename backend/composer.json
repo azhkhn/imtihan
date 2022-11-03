@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "codenteq/e-exam",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "The Laravel E-Exam.",
+    "keywords": ["laravel", "nextjs", "framework", "e-exam"],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
