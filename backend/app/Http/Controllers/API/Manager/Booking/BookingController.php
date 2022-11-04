@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\API\Manager\Booking;
 
+use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Manager\Booking\StoreBookingRequest;
 use App\Http\Requests\Manager\Booking\UpdateBookingRequest;
 use App\Http\Resources\Manager\Booking\BookingResource;
+use App\Models\Booking;
 use App\Services\Manager\Booking\BookingService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +30,7 @@ class BookingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(BookingResource::collection($this->bookingService->list()));
+        return $this->successResponse(BookingResource::collection($this->bookingService->list([], ['company_id' => Helper::userInfo()->company_id])));
     }
 
     /**
@@ -43,6 +45,7 @@ class BookingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
+        $request->merge(['company_id' => Helper::userInfo()->company_id]);
         $this->bookingService->create($request);
 
         return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);
@@ -60,14 +63,14 @@ class BookingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(new BookingResource($this->bookingService->show($booking)));
+        return $this->successResponse(new BookingResource($this->bookingService->show($booking, [], ['company_id' => Helper::userInfo()->company_id])));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  UpdateBookingRequest  $booking
-     * @param  int  $booking
+     * @param  int  $id
      * @return JsonResponse
      */
     public function update(UpdateBookingRequest $request, $booking): JsonResponse
@@ -75,6 +78,8 @@ class BookingController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.booking.update'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('update', $this->bookingService->show($booking));
 
         $this->bookingService->update($request, $booking);
 
@@ -92,6 +97,8 @@ class BookingController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.booking.delete'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('delete', $this->bookingService->show($booking));
 
         $this->bookingService->destroy($booking);
 

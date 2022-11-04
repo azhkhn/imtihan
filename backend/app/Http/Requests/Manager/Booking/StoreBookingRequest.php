@@ -29,7 +29,7 @@ class StoreBookingRequest extends FormRequest
             'is_active' => 'required|boolean',
             'teacher_id' => 'required|numeric',
             'user_id' => 'required|numeric',
-            'company_id' => 'required|numeric',
+            'company_id' => 'nullable',
         ];
     }
 }
