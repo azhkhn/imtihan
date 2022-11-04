@@ -27,8 +27,9 @@ class PackageCreator extends Command
      */
     public function handle()
     {
-        if (!$this->option('name')) {
+        if (! $this->option('name')) {
             $this->error('Please enter the name');
+
             return false;
         }
 
@@ -37,7 +38,6 @@ class PackageCreator extends Command
         return true;
     }
 
-
     /**
      * Create Controller Resource and Request
      *
@@ -45,17 +45,18 @@ class PackageCreator extends Command
      */
     public function generator(): void
     {
-        $path = $this->option('path') == 'default' ? 'API/' . $this->option('name') . 'Controller'
-            : 'API/' . $this->option('path') . '/' . $this->option('name') . 'Controller';
+        $path = $this->option('path') == 'default' ? 'API/'.$this->option('name').'Controller'
+            : 'API/'.$this->option('path').'/'.$this->option('name').'Controller';
 
         $this->call('make:controller', [
             'name' => $path,
             '--api' => true,
             '--resource' => true,
-            '--model' => $this->option('name')
+            '--model' => $this->option('name'),
         ]);
-        $this->call('make:request', ['name' => $this->option('path') . '/Store' . $this->option('name') . 'Request']);
-        $this->call('make:request', ['name' => $this->option('path') . '/Update' . $this->option('name') . 'Request']);
-        $this->call('make:resource', ['name' => $this->option('path') . '/' . $this->option('name') . 'Resource']);
+        $this->call('make:request', ['name' => $this->option('path').'/Store'.$this->option('name').'Request']);
+        $this->call('make:request', ['name' => $this->option('path').'/Update'.$this->option('name').'Request']);
+        $this->call('make:resource', ['name' => $this->option('path').'/'.$this->option('name').'Resource']);
+        $this->call('make:test', ['name' => $this->option('path').'/'.$this->option('name').'ControllerTest']);
     }
 }

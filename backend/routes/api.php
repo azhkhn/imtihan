@@ -63,5 +63,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
             'bookings' => BookingController::class,
             'booking/settings' => BookingSettingController::class,
         ]);
+        Route::apiResources([
+            'post/announcements' => \App\Http\Controllers\API\Manager\Post\AnnouncementController::class,
+        ]);
     });
 });

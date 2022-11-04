@@ -3,6 +3,7 @@
 namespace Tests\Feature\Admin\Condition;
 
 use App\Models\ConditionCategory;
+use App\Models\Language;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
@@ -53,6 +54,7 @@ class ConditionCategoryControllerTest extends TestCase
     public function test_condition_category_update()
     {
         $conditionCategory = ConditionCategory::factory()->create();
+        $language = Language::factory()->create();
         $user = User::factory()->create();
 
         Sanctum::actingAs($user, ['admin.condition-category.update']);
@@ -60,7 +62,7 @@ class ConditionCategoryControllerTest extends TestCase
         $response = $this->putJson($this->apiUrl.$conditionCategory->id, [
             'name' => 'test',
             'key' => 'test',
-            'language_id' => 1,
+            'language_id' => $language->id,
         ]);
         $response->assertStatus(200);
     }
