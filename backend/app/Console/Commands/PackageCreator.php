@@ -57,5 +57,6 @@ class PackageCreator extends Command
         $this->call('make:request', ['name' => $this->option('path') . '/Store' . $this->option('name') . 'Request']);
         $this->call('make:request', ['name' => $this->option('path') . '/Update' . $this->option('name') . 'Request']);
         $this->call('make:resource', ['name' => $this->option('path') . '/' . $this->option('name') . 'Resource']);
+        $this->call('make:test', ['name' => $this->option('path') . '/' . $this->option('name') . 'ControllerTest']);
     }
 }
