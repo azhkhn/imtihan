@@ -27,7 +27,7 @@ class UserInfoFactory extends Factory
             'is_active' => UserInfo::STATUS_ACTIVE,
             'start_date' => fake()->date(),
             'end_date' => fake()->date(),
-            'class_id' => 1, ClassRoom::factory(),
+            'class_id' => ClassRoom::factory(),
             'language_id' => Language::factory(),
             'company_id' => Company::factory(),
             'user_id' => User::factory(),
