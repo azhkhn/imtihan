@@ -26,7 +26,7 @@ class StoreConditionCategoryRequest extends FormRequest
         return [
             'name' => 'required|string',
             'key' => 'required|string',
-            'language_id' => 'required|integer',
+            'language_id' => 'required|numeric|exists:languages,id',
         ];
     }
 }

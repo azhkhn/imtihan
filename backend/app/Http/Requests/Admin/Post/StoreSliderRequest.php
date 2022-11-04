@@ -26,7 +26,7 @@ class StoreSliderRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'src' => 'required|string',
-            'company_id' => 'required|integer',
+            'company_id' => 'required|numeric|exists:companies,id',
         ];
     }
 }
