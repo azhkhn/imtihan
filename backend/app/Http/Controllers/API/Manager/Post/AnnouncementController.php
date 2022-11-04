@@ -9,7 +9,6 @@ use App\Http\Requests\Manager\Post\UpdateAnnouncementRequest;
 use App\Http\Resources\Manager\Post\AnnouncementResource;
 use App\Services\Manager\Post\AnnouncementService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class AnnouncementController extends ApiController
@@ -69,7 +68,7 @@ class AnnouncementController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateAnnouncementRequest $request
+     * @param  UpdateAnnouncementRequest  $request
      * @param    $announcement
      * @return JsonResponse
      */

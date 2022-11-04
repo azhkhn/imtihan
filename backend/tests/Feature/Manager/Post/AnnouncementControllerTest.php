@@ -7,8 +7,6 @@ use App\Models\Company;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Benchmark;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
@@ -55,7 +53,7 @@ class AnnouncementControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.post.announcement.show']);
 
-        $response = $this->get($this->apiUrl . $announcement->id);
+        $response = $this->get($this->apiUrl.$announcement->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $announcement->id]);
     }
@@ -69,7 +67,7 @@ class AnnouncementControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.post.announcement.update']);
 
-        $response = $this->putJson($this->apiUrl . $announcement->id, [
+        $response = $this->putJson($this->apiUrl.$announcement->id, [
             'title' => 'test',
             'content' => 'test',
         ]);
@@ -85,7 +83,7 @@ class AnnouncementControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.post.announcement.delete']);
 
-        $response = $this->delete($this->apiUrl . $announcement->id);
+        $response = $this->delete($this->apiUrl.$announcement->id);
         $response->assertStatus(200);
     }
 }
