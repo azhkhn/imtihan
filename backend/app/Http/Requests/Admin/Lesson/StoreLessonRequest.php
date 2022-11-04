@@ -26,8 +26,8 @@ class StoreLessonRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'content' => 'required|string',
-            'category_id' => 'required|integer|exists:question_categories,id',
-            'language_id' => 'required|integer|exists:languages,id',
+            'category_id' => 'required|numeric|exists:question_categories,id',
+            'language_id' => 'required|numeric|exists:languages,id',
         ];
     }
 }

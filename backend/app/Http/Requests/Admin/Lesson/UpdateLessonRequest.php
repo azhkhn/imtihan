@@ -26,8 +26,8 @@ class UpdateLessonRequest extends FormRequest
         return [
             'name' => 'string|max:255',
             'content' => 'string',
-            'category_id' => 'integer|exists:question_categories,id',
-            'language_id' => 'integer|exists:languages,id',
+            'category_id' => 'numeric|exists:question_categories,id',
+            'language_id' => 'numeric|exists:languages,id',
         ];
     }
 }

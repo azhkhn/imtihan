@@ -32,9 +32,9 @@ class UpdateCompanyRequest extends FormRequest
             'web_url' => 'string|max:255',
             'phone' => 'string|max:255',
             'logo' => 'string',
-            'country_id' => 'numeric',
-            'city_id' => 'numeric',
-            'state_id' => 'numeric',
+            'country_id' => 'numeric|exists:countries,id',
+            'city_id' => 'numeric|exists:cities,id',
+            'state_id' => 'numeric|exists:states,id',
             'address' => 'string|max:600',
             'zip_code' => 'string|max:255',
         ];

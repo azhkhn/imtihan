@@ -27,7 +27,7 @@ class UpdateAnnouncementRequest extends FormRequest
             'name' => 'string|max:255',
             'content' => 'string',
             'src' => 'string',
-            'company_id' => 'nullable|numeric',
+            'company_id' => 'nullable|numeric|exists:companies,id',
         ];
     }
 }

@@ -25,8 +25,8 @@ class UpdateConditionRequest extends FormRequest
     {
         return [
             'name' => 'string|max:255',
-            'question_category_id' => 'integer',
-            'condition_category_id' => 'integer',
+            'question_category_id' => 'numeric|exists:question_categories,id',
+            'condition_category_id' => 'numeric|exists:condition_categories,id',
             'value' => 'numeric',
             'is_active' => 'boolean',
         ];

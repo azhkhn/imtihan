@@ -32,9 +32,9 @@ class StoreCompanyRequest extends FormRequest
             'web_url' => 'string|max:255',
             'phone' => 'required|string|max:255',
             'logo' => 'required|string',
-            'country_id' => 'required|numeric',
-            'city_id' => 'required|numeric',
-            'state_id' => 'required|numeric',
+            'country_id' => 'required|numeric|exists:countries,id',
+            'city_id' => 'required|numeric|exists:cities,id',
+            'state_id' => 'required|numeric|exists:states,id',
             'address' => 'required|string|max:600',
             'zip_code' => 'required|string|max:255',
         ];
