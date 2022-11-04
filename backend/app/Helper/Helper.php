@@ -6,7 +6,7 @@ class Helper
 {
     public static function userInfo()
     {
-        return cache()->remember('info', 60 * 60 * 24, function () {
+        return cache()->remember('info_' . auth()->id(), 60 * 60 * 24, function () {
             return auth()->user()->info;
         });
     }
