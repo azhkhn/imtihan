@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\API\Manager\Booking;
 
+use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Manager\Booking\StoreBookingSettingRequest;
 use App\Http\Requests\Manager\Booking\UpdateBookingSettingRequest;
 use App\Http\Resources\Manager\Booking\BookingSettingResource;
 use App\Services\Manager\Booking\BookingSettingService;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -28,7 +30,7 @@ class BookingSettingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(BookingSettingResource::collection($this->bookingSettingService->list()));
+        return $this->successResponse(BookingSettingResource::collection($this->bookingSettingService->list([], ['company_id' => Helper::userInfo()->company_id])));
     }
 
     /**
@@ -60,21 +62,24 @@ class BookingSettingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(new BookingSettingResource($this->bookingSettingService->show($booking_setting)));
+        return $this->successResponse(new BookingSettingResource($this->bookingSettingService->show($booking_setting, [], ['company_id' => Helper::userInfo()->company_id])));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateBookingSettingRequest  $booking_setting
-     * @param  int  $booking_setting
+     * @param UpdateBookingSettingRequest $request
+     * @param int $booking_setting
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(UpdateBookingSettingRequest $request, $booking_setting): JsonResponse
     {
         abort_unless(auth()->user()->tokenCan('manager.booking-setting.update'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('update', $this->bookingSettingService->show($booking_setting));
 
         $this->bookingSettingService->update($request, $booking_setting);
 
@@ -92,6 +97,8 @@ class BookingSettingController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.booking-setting.delete'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('delete', $this->bookingSettingService->show($booking_setting));
 
         $this->bookingSettingService->destroy($booking_setting);
 

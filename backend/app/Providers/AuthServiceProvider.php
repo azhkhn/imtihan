@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Booking;
+use App\Models\BookingSetting;
+use App\Policies\Manager\Booking\BookingSettingPolicy;
 use App\Policies\Manager\BookingPolicy;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -17,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         Booking::class => BookingPolicy::class,
+        BookingSetting::class => BookingSettingPolicy::class,
     ];
 
     /**

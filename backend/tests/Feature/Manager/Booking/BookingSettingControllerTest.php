@@ -3,7 +3,9 @@
 namespace Tests\Feature\Manager\Booking;
 
 use App\Models\BookingSetting;
+use App\Models\Company;
 use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
@@ -16,8 +18,10 @@ class BookingSettingControllerTest extends TestCase
 
     public function test_booking_setting_list()
     {
-        BookingSetting::factory(20)->create();
-        $user = User::factory()->create();
+        $company = Company::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        BookingSetting::factory(20)->state(['company_id' => $company->id])->create();
 
         Sanctum::actingAs($user, ['manager.booking-setting.list']);
 
@@ -29,8 +33,10 @@ class BookingSettingControllerTest extends TestCase
 
     public function test_booking_setting_create()
     {
-        $bookingSetting = BookingSetting::factory()->make();
-        $user = User::factory()->create();
+        $company = Company::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        $bookingSetting = BookingSetting::factory()->state(['company_id' => $company->id])->make();
 
         Sanctum::actingAs($user, ['manager.booking-setting.create']);
 
@@ -40,8 +46,10 @@ class BookingSettingControllerTest extends TestCase
 
     public function test_booking_setting_show()
     {
-        $bookingSetting = BookingSetting::factory()->create();
-        $user = User::factory()->create();
+        $company = Company::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        $bookingSetting = BookingSetting::factory()->state(['company_id' => $company->id])->create();
 
         Sanctum::actingAs($user, ['manager.booking-setting.show']);
 
@@ -52,8 +60,10 @@ class BookingSettingControllerTest extends TestCase
 
     public function test_booking_setting_update()
     {
-        $bookingSetting = BookingSetting::factory()->create();
-        $user = User::factory()->create();
+        $company = Company::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        $bookingSetting = BookingSetting::factory()->state(['company_id' => $company->id])->create();
 
         Sanctum::actingAs($user, ['manager.booking-setting.update']);
 
@@ -65,8 +75,10 @@ class BookingSettingControllerTest extends TestCase
 
     public function test_booking_setting_delete()
     {
-        $bookingSetting = BookingSetting::factory()->create();
-        $user = User::factory()->create();
+        $company = Company::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        $bookingSetting = BookingSetting::factory()->state(['company_id' => $company->id])->create();
 
         Sanctum::actingAs($user, ['manager.booking-setting.delete']);
 
