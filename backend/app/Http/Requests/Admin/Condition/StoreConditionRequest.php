@@ -25,8 +25,8 @@ class StoreConditionRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'question_category_id' => 'required|integer',
-            'condition_category_id' => 'required|integer',
+            'question_category_id' => 'required|numeric|exists:question_categories,id',
+            'condition_category_id' => 'required|numeric|exists:condition_categories,id',
             'value' => 'required|numeric',
             'is_active' => 'boolean',
         ];

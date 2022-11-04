@@ -26,7 +26,7 @@ class UpdateSliderRequest extends FormRequest
         return [
             'name' => 'string|max:255',
             'src' => 'string',
-            'company_id' => 'integer',
+            'company_id' => 'numeric|exists:companies,id',
         ];
     }
 }
