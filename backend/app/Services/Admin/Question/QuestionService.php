@@ -22,7 +22,7 @@ class QuestionService extends BaseService
         });
     }
 
-    public function update($request, int $id): void
+    public function update($request, int $id, $where = []): void
     {
         $question = $this->model::findOrFail($id);
         DB::transaction(function () use ($request, $question) {
