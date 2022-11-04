@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Models\Booking;
 use App\Models\BookingSetting;
 use App\Policies\Manager\Booking\BookingSettingPolicy;
-use App\Policies\Manager\BookingPolicy;
+use App\Policies\Manager\Booking\BookingPolicy;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

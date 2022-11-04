@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies\Manager;
+namespace App\Policies\Manager\Booking;
 
 use App\Models\Booking;
 use App\Models\User;
