@@ -19,11 +19,11 @@ class ExamResultFactory extends Factory
     public function definition()
     {
         return [
-            'total_questions' => fake()->randomNumber(),
-            'correct' => fake()->randomNumber(),
-            'in_correct' => fake()->randomNumber(),
-            'blank' => fake()->randomNumber(),
-            'point' => fake()->randomNumber(),
+            'total_questions' => $this->faker->randomNumber,
+            'correct' => $this->faker->randomNumber,
+            'in_correct' => $this->faker->randomNumber,
+            'blank' => $this->faker->randomNumber,
+            'point' => $this->faker->randomNumber,
             'exam_id' => Exam::factory(),
             'user_id' => User::factory(),
         ];

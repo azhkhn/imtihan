@@ -21,7 +21,7 @@ class ClassExamCategoryFactory extends Factory
         return [
             'class_exam_id' => ClassExam::factory(),
             'category_id' => QuestionCategory::factory(),
-            'length' => fake()->randomNumber(),
+            'length' => $this->faker->randomNumber,
         ];
     }
 }

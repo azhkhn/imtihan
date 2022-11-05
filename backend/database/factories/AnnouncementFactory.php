@@ -18,9 +18,9 @@ class AnnouncementFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->title(),
-            'content' => fake()->paragraph(),
-            'src' => fake()->imageUrl(),
+            'name' => $this->faker->title,
+            'content' => $this->faker->paragraph,
+            'src' => $this->faker->imageUrl,
             'company_id' => Company::factory(),
         ];
     }

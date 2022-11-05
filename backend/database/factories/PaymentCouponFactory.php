@@ -17,10 +17,10 @@ class PaymentCouponFactory extends Factory
     public function definition()
     {
         return [
-            'code' => fake()->currencyCode(),
-            'discount' => fake()->randomNumber(),
-            'start_date' => fake()->date(),
-            'end_date' => fake()->date(),
+            'code' => $this->faker->currencyCode,
+            'discount' => $this->faker->randomNumber,
+            'start_date' => $this->faker->date,
+            'end_date' => $this->faker->date,
         ];
     }
 }

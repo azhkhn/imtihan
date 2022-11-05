@@ -20,10 +20,10 @@ class ConditionFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'name' => $this->faker->name,
             'question_category_id' => QuestionCategory::factory(),
             'condition_category_id' => ConditionCategory::factory(),
-            'value' => fake()->randomFloat(1, 0, 100),
+            'value' => $this->faker->randomFloat(1, 0, 100),
             'is_active' => Condition::STATUS_ACTIVE,
         ];
     }

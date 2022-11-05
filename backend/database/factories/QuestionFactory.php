@@ -20,11 +20,11 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
+            'name' => $this->faker->name,
+            'description' => $this->faker->name,
             'category_id' => QuestionCategory::factory(),
             'is_option' => Question::STATUS_INACTIVE,
-            'src' => fake()->imageUrl(),
+            'src' => $this->faker->imageUrl,
             'language_id' => Language::factory(),
         ];
     }
