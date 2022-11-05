@@ -20,7 +20,7 @@ class QuestionResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'category' => new QuestionCategoryResource($this->category),
-            'is_option' => $this->is_option,
+            'is_image_option' => $this->is_image_option,
             'options' => QuestionOptionResource::collection($this->options),
             'src' => $this->src,
             'language' => new LanguageResource($this->language),

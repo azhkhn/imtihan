@@ -23,7 +23,7 @@ class QuestionFactory extends Factory
             'name' => $this->faker->name,
             'description' => $this->faker->name,
             'category_id' => QuestionCategory::factory(),
-            'is_option' => Question::STATUS_INACTIVE,
+            'is_image_option' => Question::STATUS_INACTIVE,
             'src' => $this->faker->imageUrl,
             'language_id' => Language::factory(),
         ];
