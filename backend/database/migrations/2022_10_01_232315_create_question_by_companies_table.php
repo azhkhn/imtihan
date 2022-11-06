@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('question_id')->index();
             $table->foreignId('company_id')->index();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

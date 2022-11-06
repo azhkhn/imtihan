@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Manager\Booking;
+namespace App\Http\Requests\Manager\Question;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBookingRequest extends FormRequest
+class StoreQuestionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,13 @@ class StoreBookingRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'date' => 'required|date',
-            'is_active' => 'required|boolean',
-            'teacher_id' => 'required|numeric',
-            'user_id' => 'required|numeric',
-            'company_id' => 'nullable',
+            'category_id' => 'required|numeric|exists:question_categories,id',
+            'is_image_option' => 'required|numeric',
+            'src' => 'nullable|string',
+            'language_id' => 'required|numeric|exists:languages,id',
+            'options' => 'required|array',
         ];
     }
 }

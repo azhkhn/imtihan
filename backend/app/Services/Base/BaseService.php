@@ -33,9 +33,9 @@ class BaseService
      *
      * @param  int  $id
      */
-    public function show($id, $with = [])
+    public function show(int $id, $with = [], $where = [])
     {
-        return $this->model::with($with)->findOrFail($id);
+        return $this->model::with($with)->where($where)->findOrFail($id);
     }
 
     /**
@@ -44,9 +44,9 @@ class BaseService
      * @param    $request
      * @param  int  $id
      */
-    public function update($request, int $id): void
+    public function update($request, int $id, $where = []): void
     {
-        $this->model::findOrFail($id)->update($request->validated());
+        $this->model::where($where)->findOrFail($id)->update($request->validated());
     }
 
     /**
@@ -54,8 +54,8 @@ class BaseService
      *
      * @param  int  $id
      */
-    public function destroy(int $id): void
+    public function destroy(int $id, $where = []): void
     {
-        $this->model::findOrFail($id)->delete();
+        $this->model::where($where)->findOrFail($id)->delete();
     }
 }
