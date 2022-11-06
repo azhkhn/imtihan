@@ -46,7 +46,7 @@ class Question extends Model
     }
 
     /**
-     * Get all of the options for the Question
+     * Get all the options for the Question
      *
      * @return HasMany
      */

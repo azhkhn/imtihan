@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->group(function () {
+//Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::apiResources([
             'companies' => CompanyController::class,
@@ -68,8 +68,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResources([
             'post/announcements' => \App\Http\Controllers\API\Manager\Post\AnnouncementController::class,
         ]);
-        Route::apiResources([
-            'questions' => \App\Http\Controllers\API\Manager\Question\QuestionController::class,
-        ]);
+
+        Route::apiResource('questions', \App\Http\Controllers\API\Manager\Question\QuestionController::class);
+        Route::get('question/bugs', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'getBugList']);
+        Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'destroyBug']);
     });
-});
+//});

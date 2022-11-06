@@ -6,9 +6,11 @@ use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Manager\Question\StoreQuestionRequest;
 use App\Http\Requests\Manager\Question\UpdateQuestionRequest;
+use App\Http\Resources\Manager\Question\QuestionBugResource;
 use App\Http\Resources\Manager\Question\QuestionResource;
 use App\Services\Manager\QuestionService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends ApiController
@@ -72,7 +74,7 @@ class QuestionController extends ApiController
      * @param int $question
      * @return JsonResponse
      */
-    public function update(UpdateQuestionRequest $request, $question)
+    public function update(UpdateQuestionRequest $request, $question): JsonResponse
     {
         abort_unless(auth()->user()->tokenCan('manager.question.update'),
             Response::HTTP_FORBIDDEN
@@ -96,6 +98,36 @@ class QuestionController extends ApiController
         );
 
         $this->questionService->destroy($question);
+
+        return $this->successResponse([], __('response.deleted'));
+    }
+
+    /**
+     *  Display a listing of the resource.
+     *
+     * @return JsonResponse
+     */
+    public function getBugList(): JsonResponse
+    {
+        abort_unless(auth()->user()->tokenCan('manager.question.bug.list'),
+            Response::HTTP_FORBIDDEN
+        );
+
+        return $this->successResponse(QuestionBugResource::collection($this->questionService->getBugList()));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return JsonResponse
+     */
+    public function destroyBug(int $question)
+    {
+        abort_unless(auth()->user()->tokenCan('manager.question.bug.delete'),
+            Response::HTTP_FORBIDDEN
+        );
+
+        $this->questionService->destroyBug($question);
 
         return $this->successResponse([], __('response.deleted'));
     }

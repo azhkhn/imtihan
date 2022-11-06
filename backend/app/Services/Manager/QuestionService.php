@@ -4,6 +4,7 @@ namespace App\Services\Manager;
 
 use App\Helper\Helper;
 use App\Models\Question;
+use App\Models\QuestionBug;
 use App\Models\QuestionByCompany;
 use App\Services\Base\BaseService;
 use Illuminate\Support\Facades\DB;
@@ -52,5 +53,16 @@ class QuestionService extends BaseService
             $question->question->delete();
             $question->delete();
         });
+    }
+
+    public function getBugList()
+    {
+        $companyQuestionIds = $this->model::whereCompanyId(Helper::userInfo()->company_id)->pluck('question_id');
+        return QuestionBug::whereIn('question_id', $companyQuestionIds)->with('question')->latest()->get();
+    }
+
+    public function destroyBug($id)
+    {
+        QuestionBug::findOrFail($id)->delete();
     }
 }
