@@ -19,7 +19,7 @@ class QuestionResource extends JsonResource
             'name' => $this->question->name,
             'description' => $this->question->description,
             'category_id' => $this->question->category_id,
-            'is_option' => $this->question->is_option,
+            'is_image_option' => $this->question->is_image_option,
             'src' => $this->question->src,
             'language_id' => $this->question->language_id,
             'options' => $this->question->options,

@@ -27,7 +27,7 @@ class StoreQuestionRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|numeric|exists:question_categories,id',
-            'is_option' => 'required|numeric',
+            'is_image_option' => 'required|numeric',
             'src' => 'nullable|string',
             'language_id' => 'required|numeric|exists:languages,id',
             'options' => 'required|array',

@@ -27,7 +27,7 @@ class UpdateQuestionRequest extends FormRequest
             'name' => 'string|max:255',
             'description' => 'string',
             'category_id' => 'numeric|exists:question_categories,id',
-            'is_option' => 'numeric',
+            'is_image_option' => 'numeric',
             'src' => 'nullable|string',
             'language_id' => 'numeric|exists:languages,id',
             'options' => 'array',
