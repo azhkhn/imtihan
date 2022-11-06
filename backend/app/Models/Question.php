@@ -20,7 +20,7 @@ class Question extends Model
         'name',
         'description',
         'category_id',
-        'is_option',
+        'is_image_option',
         'src',
         'language_id',
     ];

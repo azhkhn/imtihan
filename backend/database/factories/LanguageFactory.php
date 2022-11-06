@@ -18,8 +18,8 @@ class LanguageFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'code' => fake()->languageCode(),
+            'name' => $this->faker->name,
+            'code' => $this->faker->languageCode,
             'is_active' => Language::STATUS_ACTIVE,
         ];
     }

@@ -20,8 +20,8 @@ class BookingFactory extends Factory
     public function definition()
     {
         return [
-            'description' => fake()->text(),
-            'date' => fake()->date(),
+            'description' => $this->faker->text,
+            'date' => $this->faker->date,
             'is_active' => Booking::STATUS_ACTIVE,
             'teacher_id' => User::factory(),
             'user_id' => User::factory(),

@@ -20,9 +20,9 @@ class LiveLessonFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'date' => fake()->date(),
-            'url' => fake()->url(),
+            'name' => $this->faker->name,
+            'date' => $this->faker->date,
+            'url' => $this->faker->url,
             'class_id' => ClassRoom::factory(),
             'question_category_id' => QuestionCategory::factory(),
             'company_id' => Company::factory(),

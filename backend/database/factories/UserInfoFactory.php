@@ -22,11 +22,11 @@ class UserInfoFactory extends Factory
     public function definition()
     {
         return [
-            'phone' => fake()->phoneNumber(),
-            'address' => fake()->address(),
+            'phone' => $this->faker->phoneNumber,
+            'address' => $this->faker->address,
             'is_active' => UserInfo::STATUS_ACTIVE,
-            'start_date' => fake()->date(),
-            'end_date' => fake()->date(),
+            'start_date' => $this->faker->date,
+            'end_date' => $this->faker->date,
             'class_id' => ClassRoom::factory(),
             'language_id' => Language::factory(),
             'company_id' => Company::factory(),
