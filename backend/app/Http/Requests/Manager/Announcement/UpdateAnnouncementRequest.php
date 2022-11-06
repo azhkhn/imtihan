@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Post;
+namespace App\Http\Requests\Manager\Announcement;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,8 +26,8 @@ class UpdateAnnouncementRequest extends FormRequest
         return [
             'name' => 'string|max:255',
             'content' => 'string',
-            'src' => 'string',
-            'company_id' => 'nullable|numeric|exists:companies,id',
+            'src' => 'nullable|string',
+            'company_id' => 'nullable',
         ];
     }
 }

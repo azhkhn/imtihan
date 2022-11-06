@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Manager\Post;
+namespace Tests\Feature\Manager;
 
 use App\Models\Announcement;
 use App\Models\Company;
@@ -14,7 +14,7 @@ class AnnouncementControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected string $apiUrl = '/api/manager/post/announcements/';
+    protected string $apiUrl = '/api/manager/announcements/';
 
     public function test_announcement_list()
     {
@@ -23,7 +23,7 @@ class AnnouncementControllerTest extends TestCase
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         Announcement::factory(20)->state(['company_id' => $company->id])->create();
 
-        Sanctum::actingAs($user, ['manager.post.announcement.list']);
+        Sanctum::actingAs($user, ['manager.announcement.list']);
 
         $response = $this->get($this->apiUrl);
 
@@ -38,7 +38,7 @@ class AnnouncementControllerTest extends TestCase
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $announcement = Announcement::factory()->state(['company_id' => $company->id])->make();
 
-        Sanctum::actingAs($user, ['manager.post.announcement.create']);
+        Sanctum::actingAs($user, ['manager.announcement.create']);
 
         $response = $this->postJson($this->apiUrl, $announcement->toArray());
         $response->assertStatus(201);
@@ -51,7 +51,7 @@ class AnnouncementControllerTest extends TestCase
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $announcement = Announcement::factory()->state(['company_id' => $company->id])->create();
 
-        Sanctum::actingAs($user, ['manager.post.announcement.show']);
+        Sanctum::actingAs($user, ['manager.announcement.show']);
 
         $response = $this->get($this->apiUrl.$announcement->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
@@ -65,7 +65,7 @@ class AnnouncementControllerTest extends TestCase
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $announcement = Announcement::factory()->state(['company_id' => $company->id])->create();
 
-        Sanctum::actingAs($user, ['manager.post.announcement.update']);
+        Sanctum::actingAs($user, ['manager.announcement.update']);
 
         $response = $this->putJson($this->apiUrl.$announcement->id, [
             'title' => 'test',
@@ -81,7 +81,7 @@ class AnnouncementControllerTest extends TestCase
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $announcement = Announcement::factory()->state(['company_id' => $company->id])->create();
 
-        Sanctum::actingAs($user, ['manager.post.announcement.delete']);
+        Sanctum::actingAs($user, ['manager.announcement.delete']);
 
         $response = $this->delete($this->apiUrl.$announcement->id);
         $response->assertStatus(200);

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Post;
+namespace App\Http\Requests\Manager\Announcement;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSliderRequest extends FormRequest
+class StoreAnnouncementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class UpdateSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|max:255',
-            'src' => 'string',
-            'company_id' => 'numeric|exists:companies,id',
+            'name' => 'required|string|max:255',
+            'content' => 'required|string',
+            'src' => 'nullable|string',
+            'company_id' => 'nullable',
         ];
     }
 }

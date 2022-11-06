@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin\Post;
+namespace App\Services\Admin;
 
 use App\Models\Announcement;
 use App\Services\Base\BaseService;

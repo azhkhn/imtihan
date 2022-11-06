@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Manager\Post;
+namespace App\Http\Resources\Admin\Announcement;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +18,7 @@ class AnnouncementResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'content' => $this->content,
-            'src' => $this->src,
+            'company_id' => $this->company_id,
         ];
     }
 }

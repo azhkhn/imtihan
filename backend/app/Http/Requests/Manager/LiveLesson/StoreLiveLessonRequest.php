@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Post;
+namespace App\Http\Requests\Manager\LiveLesson;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSliderRequest extends FormRequest
+class StoreLiveLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,10 @@ class StoreSliderRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'src' => 'required|string',
+            'date' => 'required|date',
+            'url' => 'required|string|max:255',
+            'class_id' => 'required|numeric|exists:class_rooms,id',
+            'question_category_id' => 'required|numeric|exists:question_categories,id',
             'company_id' => 'required|numeric|exists:companies,id',
         ];
     }

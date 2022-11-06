@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Admin\Post;
+namespace App\Http\Resources\Manager\Announcement;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SliderResource extends JsonResource
+class AnnouncementResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +17,8 @@ class SliderResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'content' => $this->content,
             'src' => $this->src,
-            'company_id' => $this->company_id,
         ];
     }
 }

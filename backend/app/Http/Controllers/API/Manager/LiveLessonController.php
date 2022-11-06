@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API\Manager;
 
 use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
-use App\Http\Requests\Manager\StoreLiveLessonRequest;
-use App\Http\Requests\Manager\UpdateLiveLessonRequest;
+use App\Http\Requests\Manager\LiveLesson\StoreLiveLessonRequest;
+use App\Http\Requests\Manager\LiveLesson\UpdateLiveLessonRequest;
 use App\Http\Resources\Manager\LiveLessonResource;
 use App\Services\Manager\LiveLessonService;
 use Illuminate\Http\JsonResponse;
