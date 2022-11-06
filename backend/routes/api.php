@@ -66,5 +66,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResources([
             'post/announcements' => \App\Http\Controllers\API\Manager\Post\AnnouncementController::class,
         ]);
+        Route::apiResources([
+            'questions' => \App\Http\Controllers\API\Manager\Question\QuestionController::class,
+        ]);
     });
 });
