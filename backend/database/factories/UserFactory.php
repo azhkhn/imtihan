@@ -19,12 +19,12 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'full_name' => fake()->name(),
+            'full_name' => $this->faker->name,
             'passport_id' => rand(),
-            'email' => fake()->unique()->safeEmail(),
+            'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'avatar' => fake()->imageUrl(),
+            'avatar' => $this->faker->imageUrl,
             'role' => User::Admin,
             'remember_token' => Str::random(10),
         ];

@@ -18,8 +18,8 @@ class SliderFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'src' => fake()->imageUrl(),
+            'name' => $this->faker->name,
+            'src' => $this->faker->imageUrl,
             'company_id' => Company::factory(),
         ];
     }

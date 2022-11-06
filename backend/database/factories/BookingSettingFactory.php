@@ -18,7 +18,7 @@ class BookingSettingFactory extends Factory
     public function definition()
     {
         return [
-            'ignore_date' => fake()->date(),
+            'ignore_date' => $this->faker->date,
             'company_id' => Company::factory(),
         ];
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Question;
+namespace App\Http\Requests\Manager;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreQuestionRequest extends FormRequest
+class StoreLiveLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,11 @@ class StoreQuestionRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'category_id' => 'required|numeric|exists:question_categories,id',
-            'is_image_option' => 'required|numeric',
-            'src' => 'required|string',
-            'language_id' => 'required|numeric|exists:languages,id',
-            'options' => 'required|array',
+            'date' => 'required|date',
+            'url' => 'required|string|max:255',
+            'class_id' => 'required|numeric|exists:class_rooms,id',
+            'question_category_id' => 'required|numeric|exists:question_categories,id',
+            'company_id' => 'required|numeric|exists:companies,id',
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Question;
+namespace App\Http\Requests\Manager;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateQuestionRequest extends FormRequest
+class UpdateLiveLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,11 @@ class UpdateQuestionRequest extends FormRequest
     {
         return [
             'name' => 'string|max:255',
-            'description' => 'string',
-            'category_id' => 'numeric|exists:question_categories,id',
-            'is_image_option' => 'numeric',
-            'src' => 'string',
-            'language_id' => 'numeric|exists:languages,id',
-            'options' => 'array',
+            'date' => 'date',
+            'url' => 'string|max:255',
+            'class_id' => 'numeric|exists:class_rooms,id',
+            'question_category_id' => 'numeric|exists:question_categories,id',
+            'company_id' => 'numeric|exists:companies,id',
         ];
     }
 }

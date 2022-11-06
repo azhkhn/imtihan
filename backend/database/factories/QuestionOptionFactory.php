@@ -19,10 +19,10 @@ class QuestionOptionFactory extends Factory
     public function definition()
     {
         return [
-            'description' => fake()->text(),
+            'description' => $this->faker->text,
             'question_id' => Question::factory(),
             'is_correct' => QuestionOption::STATUS_INACTIVE,
-            'src' => fake()->imageUrl(),
+            'src' => $this->faker->imageUrl,
         ];
     }
 }

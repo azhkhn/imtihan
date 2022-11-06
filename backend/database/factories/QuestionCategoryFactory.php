@@ -19,8 +19,8 @@ class QuestionCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
+            'name' => $this->faker->name,
+            'description' => $this->faker->text,
             'parent_id' => QuestionCategory::factory(['parent_id' => null]),
             'language_id' => Language::factory(),
         ];

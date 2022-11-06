@@ -19,7 +19,7 @@ class NotificationFactory extends Factory
     public function definition()
     {
         return [
-            'message' => fake()->text(),
+            'message' => $this->faker->text,
             'is_active' => Notification::STATUS_ACTIVE,
             'company_id' => Company::factory(),
         ];

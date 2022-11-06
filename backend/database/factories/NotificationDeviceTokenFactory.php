@@ -19,7 +19,7 @@ class NotificationDeviceTokenFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'token' => fake()->iosMobileToken(),
+            'token' => $this->faker->iosMobileToken,
         ];
     }
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->foreignId('category_id')->index();
-            $table->boolean('is_option')->default(false);
+            $table->boolean('is_image_option')->default(false);
             $table->string('src')->nullable();
             $table->foreignId('language_id')->index();
             $table->timestamps();

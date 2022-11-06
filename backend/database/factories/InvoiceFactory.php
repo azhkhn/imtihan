@@ -19,12 +19,12 @@ class InvoiceFactory extends Factory
     public function definition()
     {
         return [
-            'price' => fake()->randomNumber(),
-            'start_date' => fake()->date(),
-            'end_date' => fake()->date(),
-            'discount' => fake()->randomNumber(),
-            'total' => fake()->randomNumber(),
-            'paid_at' => fake()->dateTime(),
+            'price' => $this->faker->randomNumber,
+            'start_date' => $this->faker->date,
+            'end_date' => $this->faker->date,
+            'discount' => $this->faker->randomNumber,
+            'total' => $this->faker->randomNumber,
+            'paid_at' => $this->faker->dateTime,
             'payment_coupon_id' => PaymentCoupon::factory(),
             'company_id' => Company::factory(),
         ];
