@@ -7,7 +7,6 @@ use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Manager\Booking\StoreBookingRequest;
 use App\Http\Requests\Manager\Booking\UpdateBookingRequest;
 use App\Http\Resources\Manager\Booking\BookingResource;
-use App\Models\Booking;
 use App\Services\Manager\Booking\BookingService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

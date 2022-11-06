@@ -10,7 +10,6 @@ class BookingPolicy
 {
     use HandlesAuthorization;
 
-
     /**
      * Determine whether the user can update the model.
      *
@@ -34,5 +33,4 @@ class BookingPolicy
     {
         return $user->info->company_id === $booking->company_id;
     }
-
 }

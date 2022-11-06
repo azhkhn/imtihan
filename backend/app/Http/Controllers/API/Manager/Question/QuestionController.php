@@ -10,12 +10,10 @@ use App\Http\Resources\Manager\Question\QuestionBugResource;
 use App\Http\Resources\Manager\Question\QuestionResource;
 use App\Services\Manager\QuestionService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends ApiController
 {
-
     public function __construct(QuestionService $service)
     {
         $this->questionService = $service;
@@ -38,7 +36,7 @@ class QuestionController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreQuestionRequest $request
+     * @param  StoreQuestionRequest  $request
      * @return JsonResponse
      */
     public function store(StoreQuestionRequest $request): JsonResponse
@@ -55,7 +53,7 @@ class QuestionController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param int $question
+     * @param  int  $question
      * @return JsonResponse
      */
     public function show($question): JsonResponse
@@ -70,8 +68,8 @@ class QuestionController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param int $request
-     * @param int $question
+     * @param  int  $request
+     * @param  int  $question
      * @return JsonResponse
      */
     public function update(UpdateQuestionRequest $request, $question): JsonResponse
@@ -88,7 +86,7 @@ class QuestionController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $question
+     * @param  int  $question
      * @return JsonResponse
      */
     public function destroy($question): JsonResponse

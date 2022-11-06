@@ -68,9 +68,10 @@ class BookingSettingController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateBookingSettingRequest $request
-     * @param int $booking_setting
+     * @param  UpdateBookingSettingRequest  $request
+     * @param  int  $booking_setting
      * @return JsonResponse
+     *
      * @throws AuthorizationException
      */
     public function update(UpdateBookingSettingRequest $request, $booking_setting): JsonResponse

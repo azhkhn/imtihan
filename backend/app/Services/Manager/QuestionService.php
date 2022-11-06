@@ -8,7 +8,6 @@ use App\Models\QuestionBug;
 use App\Models\QuestionByCompany;
 use App\Services\Base\BaseService;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class QuestionService extends BaseService
 {
@@ -58,6 +57,7 @@ class QuestionService extends BaseService
     public function getBugList()
     {
         $companyQuestionIds = $this->model::whereCompanyId(Helper::userInfo()->company_id)->pluck('question_id');
+
         return QuestionBug::whereIn('question_id', $companyQuestionIds)->with('question')->latest()->get();
     }
 

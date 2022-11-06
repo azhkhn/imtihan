@@ -25,5 +25,4 @@ class QuestionByCompany extends Model
     {
         return $this->belongsTo(Question::class);
     }
-
 }

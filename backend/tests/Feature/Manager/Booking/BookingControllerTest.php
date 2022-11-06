@@ -2,13 +2,11 @@
 
 namespace Tests\Feature\Manager\Booking;
 
-use App\Helper\Helper;
 use App\Models\Booking;
 use App\Models\Company;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Log;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
@@ -55,7 +53,7 @@ class BookingControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.booking.show']);
 
-        $response = $this->get($this->apiUrl . $booking->id);
+        $response = $this->get($this->apiUrl.$booking->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $booking->id]);
     }
@@ -69,7 +67,7 @@ class BookingControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.booking.update']);
 
-        $response = $this->putJson($this->apiUrl . $booking->id, [
+        $response = $this->putJson($this->apiUrl.$booking->id, [
             'description' => 'test',
         ]);
         $response->assertStatus(200);
@@ -84,7 +82,7 @@ class BookingControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.booking.delete']);
 
-        $response = $this->delete($this->apiUrl . $booking->id);
+        $response = $this->delete($this->apiUrl.$booking->id);
         $response->assertStatus(200);
     }
 }

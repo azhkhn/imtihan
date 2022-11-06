@@ -68,7 +68,7 @@ class QuestionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.question.show']);
 
-        $response = $this->get($this->apiUrl . $question->question_id);
+        $response = $this->get($this->apiUrl.$question->question_id);
 
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonCount(4, 'data.options');
@@ -94,7 +94,7 @@ class QuestionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.question.update']);
 
-        $response = $this->putJson($this->apiUrl . $question->question_id, $data);
+        $response = $this->putJson($this->apiUrl.$question->question_id, $data);
 
         $response->assertStatus(200);
     }
@@ -111,7 +111,7 @@ class QuestionControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.question.delete']);
 
-        $response = $this->delete($this->apiUrl . $question->question_id);
+        $response = $this->delete($this->apiUrl.$question->question_id);
 
         $response->assertStatus(200);
     }
@@ -121,7 +121,7 @@ class QuestionControllerTest extends TestCase
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Manager])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
-        $question  = QuestionByCompany::factory()->state(['company_id' => $company->id])->create();
+        $question = QuestionByCompany::factory()->state(['company_id' => $company->id])->create();
         QuestionBug::factory(20)->state(['question_id' => $question->question_id])->create();
 
         Sanctum::actingAs($user, ['manager.question.bug.list']);
@@ -137,12 +137,12 @@ class QuestionControllerTest extends TestCase
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Manager])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
-        $question  = QuestionByCompany::factory()->state(['company_id' => $company->id])->create();
+        $question = QuestionByCompany::factory()->state(['company_id' => $company->id])->create();
         $bug = QuestionBug::factory()->state(['question_id' => $question->question_id])->create();
 
         Sanctum::actingAs($user, ['manager.question.bug.delete']);
 
-        $response = $this->delete('/api/manager/question/bugs/' . $bug->id);
+        $response = $this->delete('/api/manager/question/bugs/'.$bug->id);
 
         $response->assertStatus(200);
     }

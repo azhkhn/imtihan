@@ -31,7 +31,7 @@ class BaseService
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      */
     public function show(int $id, $with = [], $where = [])
     {
