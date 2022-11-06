@@ -21,19 +21,20 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'subdomain' => fake()->domainName(),
+
+            'name' => $this->faker->name,
+            'subdomain' => $this->faker->domainName,
             'is_active' => Company::STATUS_ACTIVE,
             'tax_id' => rand(11, 11),
-            'email' => fake()->email(),
-            'web_url' => fake()->url(),
-            'phone' => fake()->phoneNumber(),
-            'logo' => fake()->imageUrl(),
+            'email' => $this->faker->email,
+            'web_url' => $this->faker->url,
+            'phone' => $this->faker->phoneNumber,
+            'logo' => $this->faker->imageUrl,
             'country_id' => Country::factory(),
             'city_id' => City::factory(),
             'state_id' => State::factory(),
-            'address' => fake()->address(),
-            'zip_code' => fake()->postcode(),
+            'address' => $this->faker->address,
+            'zip_code' => $this->faker->postcode,
         ];
     }
 }

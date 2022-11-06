@@ -18,8 +18,8 @@ class ConditionCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'key' => fake()->unique()->domainName(),
+            'name' => $this->faker->name,
+            'key' => $this->faker->unique()->domainName,
             'language_id' => Language::factory(),
         ];
     }

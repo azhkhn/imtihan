@@ -19,8 +19,8 @@ class SupportFactory extends Factory
     public function definition()
     {
         return [
-            'subject' => fake()->title(),
-            'message' => fake()->text(),
+            'subject' => $this->faker->title,
+            'message' => $this->faker->text,
             'is_active' => Support::STATUS_INACTIVE,
             'user_id' => User::factory(),
         ];

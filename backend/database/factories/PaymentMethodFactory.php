@@ -18,9 +18,9 @@ class PaymentMethodFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'code' => fake()->creditCardType(),
-            'description' => fake()->text(),
+            'name' => $this->faker->name,
+            'code' => $this->faker->creditCardType,
+            'description' => $this->faker->text,
             'is_active' => PaymentMethod::STATUS_ACTIVE,
         ];
     }

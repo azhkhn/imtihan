@@ -18,7 +18,7 @@ class ExamFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'name' => $this->faker->name,
             'user_id' => User::factory(),
         ];
     }

@@ -18,7 +18,7 @@ class QuestionBugFactory extends Factory
     public function definition()
     {
         return [
-            'description' => fake()->text(),
+            'description' => $this->faker->text,
             'question_id' => Question::factory(),
         ];
     }

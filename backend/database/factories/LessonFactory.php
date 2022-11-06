@@ -19,8 +19,8 @@ class LessonFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'content' => fake()->text(),
+            'name' => $this->faker->name,
+            'content' => $this->faker->text,
             'category_id' => QuestionCategory::factory(),
             'language_id' => Language::factory(),
         ];
