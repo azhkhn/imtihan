@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API\Manager;
+namespace App\Http\Controllers\API\Manager\Lesson;
 
 use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
-use App\Http\Requests\Manager\LiveLesson\StoreLiveLessonRequest;
-use App\Http\Requests\Manager\LiveLesson\UpdateLiveLessonRequest;
-use App\Http\Resources\Manager\LiveLessonResource;
-use App\Services\Manager\LiveLessonService;
+use App\Http\Requests\Manager\Lesson\StoreLiveLessonRequest;
+use App\Http\Requests\Manager\Lesson\UpdateLiveLessonRequest;
+use App\Http\Resources\Manager\Lesson\LiveLessonResource;
+use App\Services\Manager\Lesson\LiveLessonService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

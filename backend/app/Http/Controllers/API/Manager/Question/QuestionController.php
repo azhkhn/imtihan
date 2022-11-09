@@ -45,6 +45,7 @@ class QuestionController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
+        $request->merge(['company_id' => Helper::userInfo()->company_id]);
         $this->questionService->create($request);
 
         return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);

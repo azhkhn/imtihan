@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Manager;
+namespace Tests\Feature\Manager\Lesson;
 
 use App\Models\Company;
 use App\Models\LiveLesson;

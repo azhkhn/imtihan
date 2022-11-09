@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Manager\LiveLesson;
+namespace App\Http\Requests\Manager\Lesson;
 
 use Illuminate\Foundation\Http\FormRequest;
 

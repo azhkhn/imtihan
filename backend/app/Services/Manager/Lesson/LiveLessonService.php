@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Manager;
+namespace App\Services\Manager\Lesson;
 
 use App\Models\LiveLesson;
 use App\Services\Base\BaseService;
