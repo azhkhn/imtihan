@@ -62,7 +62,7 @@ class LessonController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(new LessonResource($this->lessonService->show($lesson, ['company_id' => Helper::userInfo()->company_id])));
+        return $this->successResponse(new LessonResource($this->lessonService->show($lesson, ['lesson'], ['company_id' => Helper::userInfo()->company_id])));
     }
 
     /**
