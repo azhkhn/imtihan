@@ -46,7 +46,7 @@ class LessonControllerTest extends TestCase
         $response->assertStatus(201);
     }
 
-    /*public function test_lesson_show()
+    public function test_lesson_show()
     {
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Manager])->create();
@@ -59,8 +59,7 @@ class LessonControllerTest extends TestCase
 
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $lesson->lesson_id]);
-    }*/
-    //TODO: test_lesson_show Call to undefined relationship [company_id] on model [App\Models\LessonByCompany].
+    }
 
     public function test_lesson_update()
     {
