@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Admin\AnnouncementController;
 use App\Http\Controllers\API\Admin\ClassRoomController;
 use App\Http\Controllers\API\Admin\Company\CompanyController;
 use App\Http\Controllers\API\Admin\Company\CompanyUserController;
@@ -10,13 +11,11 @@ use App\Http\Controllers\API\Admin\LessonController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
-use App\Http\Controllers\API\Admin\Post\AnnouncementController;
-use App\Http\Controllers\API\Admin\Post\SliderController;
 use App\Http\Controllers\API\Admin\Question\QuestionCatergoryController;
 use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Manager\Booking\BookingController;
 use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
-use App\Http\Controllers\API\Manager\LiveLessonController;
+use App\Http\Controllers\API\Manager\Lesson\LiveLessonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,47 +29,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware(['auth:sanctum'])->group(function () {
-Route::prefix('admin')->group(function () {
-    Route::apiResources([
-        'companies' => CompanyController::class,
-        'company/users' => CompanyUserController::class,
-    ]);
-    Route::apiResource('languages', LanguageController::class);
-    Route::apiResource('class-rooms', ClassRoomController::class);
-    Route::apiResource('lessons', LessonController::class);
-    Route::prefix('payment')->group(function () {
-        Route::apiResource('coupons', PaymentCouponController::class);
-        Route::apiResource('methods', PaymentMethodController::class);
-        Route::apiResource('settings', PaymentSettingController::class);
-    });
-    Route::prefix('condition')->group(function () {
-        Route::apiResource('conditions', ConditionController::class);
-        Route::apiResource('categories', ConditionCategoryController::class);
-    });
-
-    Route::apiResources([
-        'questions' => QuestionController::class,
-        'question/categories' => QuestionCatergoryController::class,
-    ]);
-    Route::prefix('post')->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::apiResource('languages', LanguageController::class);
+        Route::apiResource('class-rooms', ClassRoomController::class);
+        Route::apiResource('lessons', LessonController::class);
         Route::apiResource('announcements', AnnouncementController::class);
-        Route::apiResource('sliders', SliderController::class);
+        Route::apiResources([
+            'companies' => CompanyController::class,
+            'company/users' => CompanyUserController::class,
+        ]);
+        Route::prefix('payment')->group(function () {
+            Route::apiResource('coupons', PaymentCouponController::class);
+            Route::apiResource('methods', PaymentMethodController::class);
+            Route::apiResource('settings', PaymentSettingController::class);
+        });
+        Route::prefix('condition')->group(function () {
+            Route::apiResource('conditions', ConditionController::class);
+            Route::apiResource('categories', ConditionCategoryController::class);
+        });
+        Route::apiResources([
+            'questions' => QuestionController::class,
+            'question/categories' => QuestionCatergoryController::class,
+        ]);
+    });
+
+    Route::prefix('manager')->group(function () {
+        Route::apiResource('live-lessons', LiveLessonController::class);
+        Route::apiResource('lessons', \App\Http\Controllers\API\Manager\Lesson\LessonController::class);
+        Route::apiResource('announcements', \App\Http\Controllers\API\Manager\AnnouncementController::class);
+        Route::apiResource('questions', \App\Http\Controllers\API\Manager\Question\QuestionController::class);
+        Route::get('question/bugs', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'getBugList']);
+        Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'destroyBug']);
+        Route::apiResources([
+            'bookings' => BookingController::class,
+            'booking/settings' => BookingSettingController::class,
+        ]);
     });
 });
-
-Route::prefix('manager')->group(function () {
-    Route::apiResource('live-lessons', LiveLessonController::class);
-    Route::apiResources([
-        'bookings' => BookingController::class,
-        'booking/settings' => BookingSettingController::class,
-    ]);
-    Route::apiResources([
-        'post/announcements' => \App\Http\Controllers\API\Manager\Post\AnnouncementController::class,
-    ]);
-
-    Route::apiResource('questions', \App\Http\Controllers\API\Manager\Question\QuestionController::class);
-    Route::get('question/bugs', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'getBugList']);
-    Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'destroyBug']);
-});
-//});
