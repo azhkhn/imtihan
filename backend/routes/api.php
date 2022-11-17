@@ -69,5 +69,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::prefix('teacher')->group(function () {
         Route::apiResource('announcements', \App\Http\Controllers\API\Teacher\Announcement\AnnouncementController::class);
+        Route::apiResource('lessons', \App\Http\Controllers\API\Teacher\Lesson\LessonController::class);
     });
 });
