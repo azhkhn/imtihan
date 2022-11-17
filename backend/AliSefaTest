@@ -1,0 +1,5 @@
+Warning: TTY mode requires /dev/tty to be read/writable.
+PHPUnit 9.5.26 by Sebastian Bergmann and contributors.
+
+Required argument for option "--filter" is missing
+
