@@ -8,7 +8,6 @@ use App\Http\Requests\Manager\Booking\StoreBookingSettingRequest;
 use App\Http\Requests\Manager\Booking\UpdateBookingSettingRequest;
 use App\Http\Resources\Manager\Booking\BookingSettingResource;
 use App\Services\Manager\Booking\BookingSettingService;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -71,8 +70,6 @@ class BookingSettingController extends ApiController
      * @param  UpdateBookingSettingRequest  $request
      * @param  int  $booking_setting
      * @return JsonResponse
-     *
-     * @throws AuthorizationException
      */
     public function update(UpdateBookingSettingRequest $request, $booking_setting): JsonResponse
     {
