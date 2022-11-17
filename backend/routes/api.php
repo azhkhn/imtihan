@@ -72,6 +72,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('lessons', \App\Http\Controllers\API\Teacher\Lesson\LessonController::class);
         Route::apiResource('live-lessons', \App\Http\Controllers\API\Teacher\Lesson\LiveLessonController::class);
         Route::apiResources([
+            'bookings' => \App\Http\Controllers\API\Teacher\Booking\BookingController::class,
             'booking/settings' => \App\Http\Controllers\API\Teacher\Booking\BookingSettingController::class,
         ]);
     });
