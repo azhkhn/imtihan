@@ -36,7 +36,7 @@ class LiveLessonControllerTest extends TestCase
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Teacher])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
-        $liveLesson = LiveLesson::factory()->state(['company_id' => $company->id])->make();
+        $liveLesson = LiveLesson::factory()->make();
 
         Sanctum::actingAs($user, ['teacher.live-lesson.create']);
 

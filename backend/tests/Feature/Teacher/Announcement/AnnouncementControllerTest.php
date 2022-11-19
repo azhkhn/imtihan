@@ -36,7 +36,7 @@ class AnnouncementControllerTest extends TestCase
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Teacher])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
-        $announcement = Announcement::factory()->state(['company_id' => $company->id])->make();
+        $announcement = Announcement::factory()->make();
 
         Sanctum::actingAs($user, ['teacher.announcement.create']);
 
