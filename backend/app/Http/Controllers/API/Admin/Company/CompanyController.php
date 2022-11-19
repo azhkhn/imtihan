@@ -6,7 +6,7 @@ use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Company\StoreCompanyRequest;
 use App\Http\Requests\Admin\Company\UpdateCompanyRequest;
 use App\Http\Resources\Admin\Company\CompanyResource;
-use App\Services\Admin\CompanyService;
+use App\Services\Admin\Company\CompanyService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -8,7 +8,7 @@ use App\Http\Requests\Manager\Question\StoreQuestionRequest;
 use App\Http\Requests\Manager\Question\UpdateQuestionRequest;
 use App\Http\Resources\Manager\Question\QuestionBugResource;
 use App\Http\Resources\Manager\Question\QuestionResource;
-use App\Services\Manager\QuestionService;
+use App\Services\Manager\Question\QuestionService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Admin\Question;
 
-use App\Http\Resources\Admin\LanguageResource;
+use App\Http\Resources\Admin\Language\LanguageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class QuestionResource extends JsonResource

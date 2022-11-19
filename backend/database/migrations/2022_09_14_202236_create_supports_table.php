@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('message');
             $table->boolean('is_active')->default(false);
             $table->foreignId('user_id')->index();
+            $table->foreignId('company_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });
