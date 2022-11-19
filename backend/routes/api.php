@@ -76,4 +76,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
             'booking/settings' => \App\Http\Controllers\API\Teacher\Booking\BookingSettingController::class,
         ]);
     });
+
+    Route::prefix('user')->group(function () {
+        Route::apiResource('bookings', \App\Http\Controllers\API\User\Booking\BookingController::class);
+    });
 });
