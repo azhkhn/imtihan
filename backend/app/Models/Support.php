@@ -19,5 +19,6 @@ class Support extends Model
         'message',
         'is_active',
         'user_id',
+        'company_id',
     ];
 }

@@ -30,8 +30,7 @@ class BookingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(BookingResource::collection($this->bookingService->list([], ['company_id' => Helper::userInfo()->company_id, /*'user_id' => auth()->id()*/])));
-        //TODO: 'user_id' => auth()->id() interpreted as not working.
+        return $this->successResponse(BookingResource::collection($this->bookingService->list([], ['company_id' => Helper::userInfo()->company_id, 'user_id' => auth()->id()])));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use App\Models\Support;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,6 +24,7 @@ class SupportFactory extends Factory
             'message' => $this->faker->text,
             'is_active' => Support::STATUS_INACTIVE,
             'user_id' => User::factory(),
+            'company_id' => Company::factory(),
         ];
     }
 }

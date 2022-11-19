@@ -16,6 +16,7 @@ use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Manager\Booking\BookingController;
 use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
 use App\Http\Controllers\API\Manager\Lesson\LiveLessonController;
+use App\Http\Controllers\API\User\Support\SupportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,5 +80,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::prefix('user')->group(function () {
         Route::apiResource('bookings', \App\Http\Controllers\API\User\Booking\BookingController::class);
+        Route::apiResource('supports', SupportController::class);
     });
 });
