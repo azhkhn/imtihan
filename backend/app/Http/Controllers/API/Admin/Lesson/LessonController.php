@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API\Admin;
+namespace App\Http\Controllers\API\Admin\Lesson;
 
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Lesson\StoreLessonRequest;
 use App\Http\Requests\Admin\Lesson\UpdateLessonRequest;
-use App\Http\Resources\Admin\LessonResource;
-use App\Services\Admin\LessonService;
+use App\Http\Resources\Admin\Lesson\LessonResource;
+use App\Services\Admin\Lesson\LessonService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

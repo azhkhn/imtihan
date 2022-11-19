@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API\Admin;
+namespace App\Http\Controllers\API\Manager\Announcement;
 
+use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
-use App\Http\Requests\Admin\Announcement\StoreAnnouncementRequest;
-use App\Http\Requests\Admin\Announcement\UpdateAnnouncementRequest;
-use App\Http\Resources\Admin\Announcement\AnnouncementResource;
-use App\Services\Admin\AnnouncementService;
+use App\Http\Requests\Manager\Announcement\StoreAnnouncementRequest;
+use App\Http\Requests\Manager\Announcement\UpdateAnnouncementRequest;
+use App\Http\Resources\Manager\Announcement\AnnouncementResource;
+use App\Services\Manager\Post\AnnouncementService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,13 +23,13 @@ class AnnouncementController extends ApiController
      *
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index()
     {
-        abort_unless(auth()->user()->tokenCan('admin.announcement.list'),
+        abort_unless(auth()->user()->tokenCan('manager.announcement.list'),
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(AnnouncementResource::collection($this->announcementService->list([], ['company_id' => null])));
+        return $this->successResponse(AnnouncementResource::collection($this->announcementService->list([], ['company_id' => Helper::userInfo()->company_id])));
     }
 
     /**
@@ -39,10 +40,11 @@ class AnnouncementController extends ApiController
      */
     public function store(StoreAnnouncementRequest $request): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('admin.announcement.create'),
+        abort_unless(auth()->user()->tokenCan('manager.announcement.create'),
             Response::HTTP_FORBIDDEN
         );
 
+        $request->merge(['company_id' => Helper::userInfo()->company_id]);
         $this->announcementService->create($request);
 
         return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);
@@ -54,9 +56,9 @@ class AnnouncementController extends ApiController
      * @param  int  $announcement
      * @return JsonResponse
      */
-    public function show(int $announcement): JsonResponse
+    public function show($announcement)
     {
-        abort_unless(auth()->user()->tokenCan('admin.announcement.show'),
+        abort_unless(auth()->user()->tokenCan('manager.announcement.show'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -66,13 +68,13 @@ class AnnouncementController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateAnnouncementRequest  $announcement
-     * @param  int  $announcement
+     * @param  UpdateAnnouncementRequest  $request
+     * @param    $announcement
      * @return JsonResponse
      */
     public function update(UpdateAnnouncementRequest $request, $announcement): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('admin.announcement.update'),
+        abort_unless(auth()->user()->tokenCan('manager.announcement.update'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -89,7 +91,7 @@ class AnnouncementController extends ApiController
      */
     public function destroy($announcement): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('admin.announcement.delete'),
+        abort_unless(auth()->user()->tokenCan('manager.announcement.delete'),
             Response::HTTP_FORBIDDEN
         );
 

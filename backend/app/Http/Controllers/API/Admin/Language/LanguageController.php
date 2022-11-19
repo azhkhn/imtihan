@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API\Admin;
+namespace App\Http\Controllers\API\Admin\Language;
 
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\Language\StoreLanguageRequest;
 use App\Http\Requests\Admin\Language\UpdateLanguageRequest;
-use App\Http\Resources\Admin\LanguageResource;
-use App\Services\Admin\LanguageService;
+use App\Http\Resources\Admin\Language\LanguageResource;
+use App\Services\Admin\Language\LanguageService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

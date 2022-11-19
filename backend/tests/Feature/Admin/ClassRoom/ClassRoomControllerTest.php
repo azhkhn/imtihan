@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace Tests\Feature\Admin\ClassRoom;
 
 use App\Models\ClassRoom;
 use App\Models\User;

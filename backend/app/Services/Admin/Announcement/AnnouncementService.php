@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin;
+namespace App\Services\Admin\Announcement;
 
 use App\Models\Announcement;
 use App\Services\Base\BaseService;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace Tests\Feature\Admin\Language;
 
 use App\Models\Language;
 use App\Models\User;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin;
+namespace App\Services\Admin\ClassRoom;
 
 use App\Models\ClassRoom;
 use App\Services\Base\BaseService;

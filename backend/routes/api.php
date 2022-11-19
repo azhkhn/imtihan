@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\API\Admin\AnnouncementController;
-use App\Http\Controllers\API\Admin\ClassRoomController;
+use App\Http\Controllers\API\Admin\Announcement\AnnouncementController;
+use App\Http\Controllers\API\Admin\ClassRoom\ClassRoomController;
 use App\Http\Controllers\API\Admin\Company\CompanyController;
 use App\Http\Controllers\API\Admin\Company\CompanyUserController;
 use App\Http\Controllers\API\Admin\Condition\ConditionCategoryController;
 use App\Http\Controllers\API\Admin\Condition\ConditionController;
-use App\Http\Controllers\API\Admin\LanguageController;
-use App\Http\Controllers\API\Admin\LessonController;
+use App\Http\Controllers\API\Admin\Language\LanguageController;
+use App\Http\Controllers\API\Admin\Lesson\LessonController;
 use App\Http\Controllers\API\Admin\Payment\PaymentCouponController;
 use App\Http\Controllers\API\Admin\Payment\PaymentMethodController;
 use App\Http\Controllers\API\Admin\Payment\PaymentSettingController;
@@ -58,7 +58,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('manager')->group(function () {
         Route::apiResource('live-lessons', LiveLessonController::class);
         Route::apiResource('lessons', \App\Http\Controllers\API\Manager\Lesson\LessonController::class);
-        Route::apiResource('announcements', \App\Http\Controllers\API\Manager\AnnouncementController::class);
+        Route::apiResource('announcements', \App\Http\Controllers\API\Manager\Announcement\AnnouncementController::class);
         Route::apiResource('questions', \App\Http\Controllers\API\Manager\Question\QuestionController::class);
         Route::get('question/bugs', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'getBugList']);
         Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'destroyBug']);

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API\Admin;
+namespace App\Http\Controllers\API\Admin\ClassRoom;
 
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\Admin\ClassRoom\StoreClassRoomRequest;
 use App\Http\Requests\Admin\ClassRoom\UpdateClassRoomRequest;
-use App\Http\Resources\Admin\ClassRoomResource;
-use App\Services\Admin\ClassRoomService;
+use App\Http\Resources\Admin\ClassRoom\ClassRoomResource;
+use App\Services\Admin\ClassRoom\ClassRoomService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

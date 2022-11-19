@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Manager;
+namespace Tests\Feature\Manager\Announcement;
 
 use App\Models\Announcement;
 use App\Models\Company;
