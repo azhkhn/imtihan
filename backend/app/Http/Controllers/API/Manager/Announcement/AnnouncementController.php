@@ -78,6 +78,8 @@ class AnnouncementController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
+        $this->authorize('update', $this->announcementService->show($announcement));
+
         $this->announcementService->update($request, $announcement);
 
         return $this->successResponse([], __('response.updated'));
@@ -94,6 +96,8 @@ class AnnouncementController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.announcement.delete'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('delete', $this->announcementService->show($announcement));
 
         $this->announcementService->destroy($announcement);
 

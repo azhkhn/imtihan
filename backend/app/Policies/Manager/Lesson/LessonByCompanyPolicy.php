@@ -29,7 +29,7 @@ class LessonByCompanyPolicy
      * @param  \App\Models\LessonByCompany  $lessonByCompany
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function destroy(User $user, LessonByCompany $lessonByCompany)
+    public function delete(User $user, LessonByCompany $lessonByCompany)
     {
         return $user->info->company_id === $lessonByCompany->company_id;
     }

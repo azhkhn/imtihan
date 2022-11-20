@@ -29,7 +29,7 @@ class QuestionByCompanyPolicy
      * @param  \App\Models\QuestionByCompany  $questionByCompany
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function destroy(User $user, QuestionByCompany $questionByCompany)
+    public function delete(User $user, QuestionByCompany $questionByCompany)
     {
         return $user->info->company_id === $questionByCompany->company_id;
     }

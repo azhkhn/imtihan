@@ -78,6 +78,8 @@ class LessonController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
+        $this->authorize('update', $this->lessonService->show($lesson));
+
         $this->lessonService->update($request, $lesson);
 
         return $this->successResponse([], __('response.updated'));
@@ -94,6 +96,8 @@ class LessonController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.lesson.delete'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('delete', $this->lessonService->show($lesson));
 
         $this->lessonService->destroy($lesson);
 

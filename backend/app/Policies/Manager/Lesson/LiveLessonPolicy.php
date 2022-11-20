@@ -29,7 +29,7 @@ class LiveLessonPolicy
      * @param  \App\Models\LiveLesson  $liveLesson
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function destroy(User $user, LiveLesson $liveLesson)
+    public function delete(User $user, LiveLesson $liveLesson)
     {
         return $user->info->company_id === $liveLesson->company_id;
     }

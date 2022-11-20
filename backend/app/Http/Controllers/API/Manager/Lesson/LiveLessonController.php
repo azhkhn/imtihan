@@ -78,6 +78,8 @@ class LiveLessonController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
+        $this->authorize('update', $this->liveLessonService->show($live_lesson));
+
         $this->liveLessonService->update($request, $live_lesson);
 
         return $this->successResponse([], __('response.updated'));
@@ -94,6 +96,8 @@ class LiveLessonController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.live-lesson.delete'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('delete', $this->liveLessonService->show($live_lesson));
 
         $this->liveLessonService->destroy($live_lesson);
 
