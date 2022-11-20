@@ -81,6 +81,12 @@ class SupportController extends ApiController
      */
     public function destroy($support): JsonResponse
     {
-        //
+        abort_unless(auth()->user()->tokenCan('user.support.delete'),
+            Response::HTTP_FORBIDDEN
+        );
+
+        $this->supportService->destroy($support);
+
+        return $this->successResponse([], __('response.deleted'));
     }
 }

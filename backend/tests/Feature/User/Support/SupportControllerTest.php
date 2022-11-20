@@ -43,4 +43,17 @@ class SupportControllerTest extends TestCase
         $response = $this->postJson($this->apiUrl, $support->toArray());
         $response->assertStatus(201);
     }
+
+    public function test_support_delete()
+    {
+        $company = Company::factory()->create();
+        $user = User::factory()->state(['role' => User::Normal])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        $booking = Support::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+
+        Sanctum::actingAs($user, ['user.support.delete']);
+
+        $response = $this->delete($this->apiUrl.$booking->id);
+        $response->assertStatus(200);
+    }
 }
