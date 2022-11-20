@@ -21,7 +21,6 @@ class ClassExamFactory extends Factory
     public function definition()
     {
         return [
-            'exam_id' => Exam::factory(),
             'company_id' => Company::factory(),
             'class_id' => ClassRoom::factory(),
             'is_active' => ClassExam::STATUS_ACTIVE,
