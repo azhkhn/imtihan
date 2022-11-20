@@ -52,29 +52,6 @@ class BookingController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $booking
-     * @return JsonResponse
-     */
-    public function show(int $booking): JsonResponse
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateBookingRequest  $booking
-     * @param  int  $id
-     * @return JsonResponse
-     */
-    public function update(UpdateBookingRequest $request, $booking): JsonResponse
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $booking

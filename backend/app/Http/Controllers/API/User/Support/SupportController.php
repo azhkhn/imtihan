@@ -51,29 +51,6 @@ class SupportController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $support
-     * @return JsonResponse
-     */
-    public function show(int $support): JsonResponse
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateSupportRequest  $support
-     * @param  int  $id
-     * @return JsonResponse
-     */
-    public function update(UpdateSupportRequest $request, $support): JsonResponse
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $support

@@ -79,7 +79,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::prefix('user')->group(function () {
-        Route::apiResource('bookings', \App\Http\Controllers\API\User\Booking\BookingController::class);
-        Route::apiResource('supports', SupportController::class);
+        Route::apiResource('bookings', \App\Http\Controllers\API\User\Booking\BookingController::class)->only(['index', 'store', 'destroy']);
+        Route::apiResource('supports', SupportController::class)->only(['index', 'store', 'destroy']);
     });
 });
