@@ -6,4 +6,4 @@
 
 eExam can help you reduce your time, cost and workforce to build your online course or move from physical courses to the ever-in-demand online world. Your business - whether small or large - can benefit. And setting it up is simple.
 
-**Read our documentation: [Dev Documents](https://github.com/codenteq/e-exam/wiki)**
+**Read our documentation: [Dev Documents](https://github.com/codenteq/imtihan/wiki)**
