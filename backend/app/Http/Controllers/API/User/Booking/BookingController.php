@@ -52,29 +52,6 @@ class BookingController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $booking
-     * @return JsonResponse
-     */
-    public function show(int $booking): JsonResponse
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateBookingRequest  $booking
-     * @param  int  $id
-     * @return JsonResponse
-     */
-    public function update(UpdateBookingRequest $request, $booking): JsonResponse
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $booking
@@ -82,6 +59,14 @@ class BookingController extends ApiController
      */
     public function destroy($booking): JsonResponse
     {
-        //
+        abort_unless(auth()->user()->tokenCan('user.booking.delete'),
+            Response::HTTP_FORBIDDEN
+        );
+
+        $this->authorize('delete', $this->bookingService->show($booking));
+
+        $this->bookingService->destroy($booking);
+
+        return $this->successResponse([], __('response.deleted'));
     }
 }

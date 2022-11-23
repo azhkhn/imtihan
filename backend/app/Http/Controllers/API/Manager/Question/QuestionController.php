@@ -79,6 +79,8 @@ class QuestionController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
+        $this->authorize('update', $this->questionService->show($question));
+
         $this->questionService->update($request, $question);
 
         return $this->successResponse([], __('response.updated'));
@@ -95,6 +97,8 @@ class QuestionController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.question.delete'),
             Response::HTTP_FORBIDDEN
         );
+
+        $this->authorize('delete', $this->questionService->show($question));
 
         $this->questionService->destroy($question);
 

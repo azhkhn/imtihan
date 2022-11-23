@@ -16,6 +16,7 @@ use App\Http\Controllers\API\Admin\Question\QuestionController;
 use App\Http\Controllers\API\Manager\Booking\BookingController;
 use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
 use App\Http\Controllers\API\Manager\Lesson\LiveLessonController;
+use App\Http\Controllers\API\Manager\Notification\NotificationController;
 use App\Http\Controllers\API\User\Support\SupportController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('lessons', \App\Http\Controllers\API\Manager\Lesson\LessonController::class);
         Route::apiResource('announcements', \App\Http\Controllers\API\Manager\Announcement\AnnouncementController::class);
         Route::apiResource('questions', \App\Http\Controllers\API\Manager\Question\QuestionController::class);
+        Route::apiResource('notifications', NotificationController::class)->only(['index', 'store']);
         Route::get('question/bugs', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'getBugList']);
         Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'destroyBug']);
         Route::apiResources([
@@ -79,7 +81,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::prefix('user')->group(function () {
-        Route::apiResource('bookings', \App\Http\Controllers\API\User\Booking\BookingController::class);
-        Route::apiResource('supports', SupportController::class);
+        Route::apiResource('bookings', \App\Http\Controllers\API\User\Booking\BookingController::class)->only(['index', 'store', 'destroy']);
+        Route::apiResource('supports', SupportController::class)->only(['index', 'store', 'destroy']);
     });
 });

@@ -43,4 +43,17 @@ class BookingControllerTest extends TestCase
         $response = $this->postJson($this->apiUrl, $booking->toArray());
         $response->assertStatus(201);
     }
+
+    public function test_booking_delete()
+    {
+        $company = Company::factory()->create();
+        $user = User::factory()->state(['role' => User::Normal])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        $booking = Booking::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+
+        Sanctum::actingAs($user, ['user.booking.delete']);
+
+        $response = $this->delete($this->apiUrl.$booking->id);
+        $response->assertStatus(200);
+    }
 }

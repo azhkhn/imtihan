@@ -51,29 +51,6 @@ class SupportController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $support
-     * @return JsonResponse
-     */
-    public function show(int $support): JsonResponse
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateSupportRequest  $support
-     * @param  int  $id
-     * @return JsonResponse
-     */
-    public function update(UpdateSupportRequest $request, $support): JsonResponse
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $support
@@ -81,6 +58,12 @@ class SupportController extends ApiController
      */
     public function destroy($support): JsonResponse
     {
-        //
+        abort_unless(auth()->user()->tokenCan('user.support.delete'),
+            Response::HTTP_FORBIDDEN
+        );
+
+        $this->supportService->destroy($support);
+
+        return $this->successResponse([], __('response.deleted'));
     }
 }
