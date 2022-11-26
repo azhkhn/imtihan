@@ -47,7 +47,7 @@ class SupportControllerTest extends TestCase
     public function test_support_delete()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->state(['role' => User::Normal])->create();
+        $user = User::factory()->state(['role' => User::Student])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $booking = Support::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
 
