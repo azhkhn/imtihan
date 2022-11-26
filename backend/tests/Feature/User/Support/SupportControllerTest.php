@@ -19,7 +19,7 @@ class SupportControllerTest extends TestCase
     public function test_support_list()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->state(['role' => User::Normal])->create();
+        $user = User::factory()->state(['role' => User::Student])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         Support::factory(20)->state(['company_id' => $company->id, 'user_id' => $user->id])->create();
 
@@ -34,7 +34,7 @@ class SupportControllerTest extends TestCase
     public function test_support_create()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->state(['role' => User::Normal])->create();
+        $user = User::factory()->state(['role' => User::Student])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $support = Support::factory()->make();
 

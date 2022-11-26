@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('class_exams', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('exam_id')->index();
             $table->foreignId('company_id')->index();
             $table->foreignId('class_id')->index();
             $table->boolean('is_active')->default(true);

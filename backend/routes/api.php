@@ -64,6 +64,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('notifications', NotificationController::class)->only(['index', 'store']);
         Route::get('question/bugs', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'getBugList']);
         Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'destroyBug']);
+        Route::prefix('exam')->group(function () {
+            Route::apiResource('classes', \App\Http\Controllers\API\Manager\Exam\ClassExamController::class);
+            Route::apiResource('reports', \App\Http\Controllers\API\Manager\Exam\ReportController::class)->only(['index', 'show']);
+        });
         Route::apiResources([
             'bookings' => BookingController::class,
             'booking/settings' => BookingSettingController::class,

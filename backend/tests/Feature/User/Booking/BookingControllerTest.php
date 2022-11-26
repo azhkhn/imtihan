@@ -19,7 +19,7 @@ class BookingControllerTest extends TestCase
     public function test_booking_list()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->state(['role' => User::Normal])->create();
+        $user = User::factory()->state(['role' => User::Student])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         Booking::factory(20)->state(['company_id' => $company->id, 'user_id' => $user->id])->create();
 
@@ -34,7 +34,7 @@ class BookingControllerTest extends TestCase
     public function test_booking_create()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->state(['role' => User::Normal])->create();
+        $user = User::factory()->state(['role' => User::Student])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $booking = Booking::factory()->make();
 
