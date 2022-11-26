@@ -25,7 +25,7 @@ class ClassExamController extends ApiController
      */
     public function index(): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.class_exam.list'),
+        abort_unless(auth()->user()->tokenCan('manager.class-exam.list'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -41,7 +41,7 @@ class ClassExamController extends ApiController
      */
     public function store(StoreClassExamRequest $request): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.class_exam.create'),
+        abort_unless(auth()->user()->tokenCan('manager.class-exam.create'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -59,7 +59,7 @@ class ClassExamController extends ApiController
      */
     public function show(int $class_exam): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.class_exam.show'),
+        abort_unless(auth()->user()->tokenCan('manager.class-exam.show'),
             Response::HTTP_FORBIDDEN
         );
         return $this->successResponse(new ClassExamResource($this->classExamService->show($class_exam, ['classExamCategories'])));
@@ -74,7 +74,7 @@ class ClassExamController extends ApiController
      */
     public function update(UpdateClassExamRequest $request, int $class_exam): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.class_exam.update'),
+        abort_unless(auth()->user()->tokenCan('manager.class-exam.update'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -91,7 +91,7 @@ class ClassExamController extends ApiController
      */
     public function destroy(int $class_exam): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.class_exam.delete'),
+        abort_unless(auth()->user()->tokenCan('manager.class-exam.delete'),
             Response::HTTP_FORBIDDEN
         );
 

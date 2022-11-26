@@ -29,7 +29,7 @@ class ClassExamControllerTest extends TestCase
             ClassExamCategory::factory()->state(['class_exam_id' => $classExam->id, 'category_id' => $category->id])->create();
         });
 
-        Sanctum::actingAs($user, ['manager.class_exam.list']);
+        Sanctum::actingAs($user, ['manager.class-exam.list']);
 
         $response = $this->get($this->apiUrl);
 
@@ -51,7 +51,7 @@ class ClassExamControllerTest extends TestCase
             'categories' => $classExamCategories->toArray(),
         ];
 
-        Sanctum::actingAs($user, ['manager.class_exam.create']);
+        Sanctum::actingAs($user, ['manager.class-exam.create']);
 
         $response = $this->postJson($this->apiUrl, $data);
         $response->assertStatus(201);
@@ -66,7 +66,7 @@ class ClassExamControllerTest extends TestCase
         $classExam = ClassExam::factory()->create();
         ClassExamCategory::factory(4)->state(['class_exam_id' => $classExam->id, 'category_id' => $category->id])->create();
 
-        Sanctum::actingAs($user, ['manager.class_exam.show']);
+        Sanctum::actingAs($user, ['manager.class-exam.show']);
 
         $response = $this->get($this->apiUrl . $classExam->id);
 
@@ -88,7 +88,7 @@ class ClassExamControllerTest extends TestCase
             'categories' => $classExamCategories->toArray(),
         ];
 
-        Sanctum::actingAs($user, ['manager.class_exam.update']);
+        Sanctum::actingAs($user, ['manager.class-exam.update']);
 
         $response = $this->putJson($this->apiUrl . $classExam->id, $data);
         $response->assertStatus(200);
@@ -103,7 +103,7 @@ class ClassExamControllerTest extends TestCase
         $classExam = ClassExam::factory()->create();
         ClassExamCategory::factory(4)->state(['class_exam_id' => $classExam->id, 'category_id' => $category->id])->create();
 
-        Sanctum::actingAs($user, ['manager.class_exam.delete']);
+        Sanctum::actingAs($user, ['manager.class-exam.delete']);
 
         $response = $this->delete($this->apiUrl . $classExam->id);
 
