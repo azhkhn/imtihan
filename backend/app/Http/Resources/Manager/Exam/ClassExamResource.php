@@ -17,7 +17,7 @@ class ClassExamResource extends JsonResource
         return [
             'id' => $this->id,
             'is_active' => $this->is_active,
-            'classExamCategories' => $this->classExamCategories,
+            'categories' => $this->classExamCategories,
         ];
     }
 }
