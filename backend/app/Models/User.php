@@ -20,7 +20,7 @@ class User extends Authenticatable
 
     const Teacher = 3;
 
-    const Normal = 4;
+    const Student = 4;
 
     /**
      * The attributes that are mass assignable.

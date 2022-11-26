@@ -16,7 +16,7 @@ class ClassExamControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected string $apiUrl = '/api/manager/class-exams/';
+    protected string $apiUrl = '/api/manager/exam/classes/';
 
     public function test_class_exam_list()
     {
