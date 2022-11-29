@@ -62,6 +62,8 @@ class SupportController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
+        $this->authorize('delete', $this->supportService->show($support));
+
         $this->supportService->destroy($support);
 
         return $this->successResponse([], __('response.deleted'));

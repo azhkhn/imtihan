@@ -54,7 +54,7 @@ class BookingControllerTest extends TestCase
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Teacher])->create();
         UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
-        $booking = Booking::factory()->state(['company_id' => $company->id])->create();
+        $booking = Booking::factory()->state(['company_id' => $company->id, 'teacher_id' => $user->id])->create();
 
         Sanctum::actingAs($user, ['teacher.booking.delete']);
 
