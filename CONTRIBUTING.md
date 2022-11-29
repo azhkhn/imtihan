@@ -1,4 +1,4 @@
-# eExam Contribution Guide
+# Imtihan Contribution Guide
 
 **BUGS:**
 
