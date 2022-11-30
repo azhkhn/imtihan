@@ -17,6 +17,8 @@ use App\Http\Controllers\API\Manager\Booking\BookingController;
 use App\Http\Controllers\API\Manager\Booking\BookingSettingController;
 use App\Http\Controllers\API\Manager\Lesson\LiveLessonController;
 use App\Http\Controllers\API\Manager\Notification\NotificationController;
+use App\Http\Controllers\API\Manager\User\StudentController;
+use App\Http\Controllers\API\Manager\User\TeacherController;
 use App\Http\Controllers\API\User\Support\SupportController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,7 +67,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('question/bugs', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'getBugList']);
         Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Manager\Question\QuestionController::class, 'destroyBug']);
         Route::prefix('user')->group(function () {
-            Route::apiResource('students', \App\Http\Controllers\API\Manager\User\StudentController::class);
+            Route::apiResource('students', StudentController::class);
+            Route::apiResource('teachers', TeacherController::class);
         });
         Route::prefix('exam')->group(function () {
             Route::apiResource('classes', \App\Http\Controllers\API\Manager\Exam\ClassExamController::class);

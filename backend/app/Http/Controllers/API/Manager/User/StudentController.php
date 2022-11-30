@@ -25,7 +25,7 @@ class StudentController extends ApiController
      */
     public function index(): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.student.list'),
+        abort_unless(auth()->user()->tokenCan('manager.user.student.list'),
             Response::HTTP_FORBIDDEN
         );
         return $this->successResponse(StudentResource::collection($this->studentService->list([], ['role' => User::Student])));
@@ -39,7 +39,7 @@ class StudentController extends ApiController
      */
     public function store(StoreStudentRequest $request): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.student.create'),
+        abort_unless(auth()->user()->tokenCan('manager.user.student.create'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -58,7 +58,7 @@ class StudentController extends ApiController
      */
     public function show(int $student): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.student.show'),
+        abort_unless(auth()->user()->tokenCan('manager.user.student.show'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -74,7 +74,7 @@ class StudentController extends ApiController
      */
     public function update(UpdateStudentRequest $request, $student): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.student.update'),
+        abort_unless(auth()->user()->tokenCan('manager.user.student.update'),
             Response::HTTP_FORBIDDEN
         );
 
@@ -91,7 +91,7 @@ class StudentController extends ApiController
      */
     public function destroy($student): JsonResponse
     {
-        abort_unless(auth()->user()->tokenCan('manager.student.delete'),
+        abort_unless(auth()->user()->tokenCan('manager.user.student.delete'),
             Response::HTTP_FORBIDDEN
         );
 

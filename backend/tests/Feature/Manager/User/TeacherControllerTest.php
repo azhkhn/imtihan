@@ -9,20 +9,20 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
-class StudentControllerTest extends TestCase
+class TeacherControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected string $apiUrl = '/api/manager/user/students/';
+    protected string $apiUrl = '/api/manager/user/teachers/';
 
-    public function test_student_list()
+    public function test_teacher_list()
     {
         $company = Company::factory()->create();
         $user = User::factory()->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
-        User::factory(20)->state(['role' => User::Student])->create();
+        User::factory(20)->state(['role' => User::Teacher])->create();
 
-        Sanctum::actingAs($user, ['manager.user.student.list']);
+        Sanctum::actingAs($user, ['manager.user.teacher.list']);
 
         $response = $this->get($this->apiUrl);
 
@@ -30,45 +30,45 @@ class StudentControllerTest extends TestCase
             ->assertJsonCount(20, 'data');
     }
 
-    public function test_student_create()
+    public function test_teacher_create()
     {
         $company = Company::factory()->create();
         $user = User::factory()->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
 
-        $student = [
-            ...User::factory()->state(['role' => User::Student, 'password' => 'test'])->make()->toArray(),
+        $teacher = [
+            ...User::factory()->state(['role' => User::Teacher, 'password' => 'test'])->make()->toArray(),
             'password' => '12345678',
         ];
 
-        Sanctum::actingAs($user, ['manager.user.student.create']);
+        Sanctum::actingAs($user, ['manager.user.teacher.create']);
 
-        $response = $this->postJson($this->apiUrl, $student);
+        $response = $this->postJson($this->apiUrl, $teacher);
         $response->assertStatus(201);
     }
 
-    public function test_student_show()
+    public function test_teacher_show()
     {
         $company = Company::factory()->create();
         $user = User::factory()->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
-        User::factory()->state(['role' => User::Student])->create();
+        User::factory()->state(['role' => User::Teacher])->create();
 
-        Sanctum::actingAs($user, ['manager.user.student.show']);
+        Sanctum::actingAs($user, ['manager.user.teacher.show']);
 
         $response = $this->get($this->apiUrl.$user->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $user->id]);
     }
 
-    public function test_student_update()
+    public function test_teacher_update()
     {
         $company = Company::factory()->create();
         $user = User::factory()->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
-        User::factory()->state(['role' => User::Student])->create();
+        User::factory()->state(['role' => User::Teacher])->create();
 
-        Sanctum::actingAs($user, ['manager.user.student.update']);
+        Sanctum::actingAs($user, ['manager.user.teacher.update']);
 
         $response = $this->putJson($this->apiUrl.$user->id, [
             'full_name' => 'Test User',
@@ -76,14 +76,14 @@ class StudentControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_student_delete()
+    public function test_teacher_delete()
     {
         $company = Company::factory()->create();
         $user = User::factory()->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
-        User::factory()->state(['role' => User::Student])->create();
+        User::factory()->state(['role' => User::Teacher])->create();
 
-        Sanctum::actingAs($user, ['manager.user.student.delete']);
+        Sanctum::actingAs($user, ['manager.user.teacher.delete']);
 
         $response = $this->delete($this->apiUrl.$user->id);
         $response->assertStatus(200);
