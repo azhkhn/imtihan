@@ -8,12 +8,7 @@ use App\Models\BookingSetting;
 use App\Models\LessonByCompany;
 use App\Models\LiveLesson;
 use App\Models\QuestionByCompany;
-use App\Policies\Manager\Announcement\AnnouncementPolicy;
-use App\Policies\Manager\Booking\BookingPolicy;
-use App\Policies\Manager\Booking\BookingSettingPolicy;
-use App\Policies\Manager\Lesson\LessonByCompanyPolicy;
-use App\Policies\Manager\Lesson\LiveLessonPolicy;
-use App\Policies\Manager\Question\QuestionByCompanyPolicy;
+use App\Models\Support;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -26,12 +21,15 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        Booking::class => BookingPolicy::class,
-        BookingSetting::class => BookingSettingPolicy::class,
-        Announcement::class => AnnouncementPolicy::class,
-        LiveLesson::class => LiveLessonPolicy::class,
-        LessonByCompany::class => LessonByCompanyPolicy::class,
-        QuestionByCompany::class => QuestionByCompanyPolicy::class,
+        Booking::class => \App\Policies\Manager\Booking\BookingPolicy::class,
+        \App\Policies\Teacher\Booking\BookingPolicy::class,
+        \App\Policies\User\Booking\BookingPolicy::class,
+        BookingSetting::class => \App\Policies\Manager\Booking\BookingSettingPolicy::class,
+        Announcement::class => \App\Policies\Manager\Announcement\AnnouncementPolicy::class,
+        LiveLesson::class => \App\Policies\Manager\Lesson\LiveLessonPolicy::class,
+        LessonByCompany::class => \App\Policies\Manager\Lesson\LessonByCompanyPolicy::class,
+        QuestionByCompany::class => \App\Policies\Manager\Question\QuestionByCompanyPolicy::class,
+        Support::class => \App\Policies\User\Support\SupportPolicy::class,
     ];
 
     /**

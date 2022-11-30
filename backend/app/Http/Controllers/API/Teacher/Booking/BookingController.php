@@ -29,25 +29,7 @@ class BookingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(BookingResource::collection($this->bookingService->list([], ['company_id' => Helper::userInfo()->company_id])));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  StoreBookingRequest  $request
-     * @return JsonResponse
-     */
-    public function store(StoreBookingRequest $request): JsonResponse
-    {
-        abort_unless(auth()->user()->tokenCan('teacher.booking.create'),
-            Response::HTTP_FORBIDDEN
-        );
-
-        $request->merge(['company_id' => Helper::userInfo()->company_id]);
-        $this->bookingService->create($request);
-
-        return $this->successResponse([], __('response.created'), Response::HTTP_CREATED);
+        return $this->successResponse(BookingResource::collection($this->bookingService->list([], ['company_id' => Helper::userInfo()->company_id, 'teacher_id' => auth()->id()])));
     }
 
     /**
@@ -62,27 +44,8 @@ class BookingController extends ApiController
             Response::HTTP_FORBIDDEN
         );
 
-        return $this->successResponse(new BookingResource($this->bookingService->show($booking, [], ['company_id' => Helper::userInfo()->company_id])));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateBookingRequest  $booking
-     * @param  int  $id
-     * @return JsonResponse
-     */
-    public function update(UpdateBookingRequest $request, $booking): JsonResponse
-    {
-        abort_unless(auth()->user()->tokenCan('teacher.booking.update'),
-            Response::HTTP_FORBIDDEN
-        );
-
-        $this->authorize('update', $this->bookingService->show($booking));
-
-        $this->bookingService->update($request, $booking);
-
-        return $this->successResponse([], __('response.updated'));
+        return $this->successResponse(new BookingResource($this->bookingService->show($booking, [],
+            ['company_id' => Helper::userInfo()->company_id, 'teacher_id' => auth()->id()])));
     }
 
     /**

@@ -1,6 +1,6 @@
 # Introduction
-[![License](https://poser.pugx.org/codenteq/e-exam/license)](https://github.com/codenteq/e-exam/blob/master/LICENSE)
-[![Actions](https://github.com/codenteq/e-exam/actions/workflows/test.yml/badge.svg)](https://github.com/codenteq/e-exam/actions/workflows/test.yml)
+[![License](https://poser.pugx.org/codenteq/imtihan/license)](https://github.com/codenteq/imtihan/blob/master/LICENSE)
+[![Actions](https://github.com/codenteq/imtihan/actions/workflows/test.yml/badge.svg)](https://github.com/codenteq/imtihan/actions/workflows/test.yml)
 
 [eExam (Imtihan)](https://www.codenteq.com/) is a hand-tailored E-Exam framework built on some of the hottest open-source technologies such as [Laravel](https://laravel.com/) (a [PHP](https://secure.php.net/) framework) and [Next.js](https://nextjs.org/) a progressive React framework.
 
