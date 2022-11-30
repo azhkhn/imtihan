@@ -81,7 +81,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::prefix('teacher')->group(function () {
-        Route::apiResource('announcements', \App\Http\Controllers\API\Teacher\Announcement\AnnouncementController::class);
         Route::apiResource('lessons', \App\Http\Controllers\API\Teacher\Lesson\LessonController::class);
         Route::apiResource('live-lessons', \App\Http\Controllers\API\Teacher\Lesson\LiveLessonController::class);
         Route::apiResource('bookings', \App\Http\Controllers\API\Teacher\Booking\BookingController::class)->only(['index', 'show', 'destroy']);
