@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Teacher\Announcement;
+namespace App\Http\Resources\Manager\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AnnouncementResource extends JsonResource
+class TeacherResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,9 @@ class AnnouncementResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'content' => $this->content,
-            'src' => $this->src,
+            'full_name' => $this->full_name,
+            'email' => $this->email,
+            'avatar' => $this->avatar,
         ];
     }
 }

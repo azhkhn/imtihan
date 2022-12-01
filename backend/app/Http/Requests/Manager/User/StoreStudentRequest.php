@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Teacher\Announcement;
+namespace App\Http\Requests\Manager\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAnnouncementRequest extends FormRequest
+class StoreStudentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,12 @@ class UpdateAnnouncementRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|max:255',
-            'content' => 'string',
-            'src' => 'nullable|string',
-            'company_id' => 'nullable',
+            'full_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'passport_id' => 'required|numeric',
+            'avatar' => 'string|max:255',
+            'role' => 'integer',
         ];
     }
 }
