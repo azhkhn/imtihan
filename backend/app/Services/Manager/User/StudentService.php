@@ -5,7 +5,6 @@ namespace App\Services\Manager\User;
 use App\Helper\Helper;
 use App\Models\User;
 use App\Services\Base\BaseService;
-use Illuminate\Support\Facades\Log;
 
 class StudentService extends BaseService
 {

@@ -28,6 +28,7 @@ class TeacherController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.user.teacher.list'),
             Response::HTTP_FORBIDDEN
         );
+
         return $this->successResponse(TeacherResource::collection($this->teacherService->list([], ['role' => User::Teacher])));
     }
 

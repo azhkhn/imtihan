@@ -19,7 +19,7 @@ class StudentControllerTest extends TestCase
     {
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Manager])->create();
-        UserInfo::factory()->state(['user_id' => $user->id,'company_id' => $company->id])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $student = User::factory(20)->state(['role' => User::Student])->create();
         $student->each(function ($student) use ($company) {
             UserInfo::factory()->state(['user_id' => $student->id, 'company_id' => $company->id])->create();
@@ -59,7 +59,7 @@ class StudentControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.user.student.show']);
 
-        $response = $this->get($this->apiUrl . $user->id);
+        $response = $this->get($this->apiUrl.$user->id);
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $user->id]);
     }
@@ -73,7 +73,7 @@ class StudentControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.user.student.update']);
 
-        $response = $this->putJson($this->apiUrl . $user->id, [
+        $response = $this->putJson($this->apiUrl.$user->id, [
             'full_name' => 'Test User',
         ]);
         $response->assertStatus(200);
@@ -88,7 +88,7 @@ class StudentControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.user.student.delete']);
 
-        $response = $this->delete($this->apiUrl . $user->id);
+        $response = $this->delete($this->apiUrl.$user->id);
         $response->assertStatus(200);
     }
 }

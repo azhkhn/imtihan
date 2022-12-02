@@ -19,10 +19,10 @@ class TeacherControllerTest extends TestCase
     {
         $company = Company::factory()->create();
         $user = User::factory()->state(['role' => User::Manager])->create();
-        UserInfo::factory()->state(['user_id' => $user->id,'company_id' => $company->id])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
         $student = User::factory(20)->state(['role' => User::Teacher])->create();
         $student->each(function ($student) use ($company) {
-            UserInfo::factory()->state(['user_id' => $student->id ,'company_id' => $company->id])->create();
+            UserInfo::factory()->state(['user_id' => $student->id, 'company_id' => $company->id])->create();
         });
 
         Sanctum::actingAs($user, ['manager.user.teacher.list']);

@@ -68,7 +68,7 @@ class ClassExamControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.class-exam.show']);
 
-        $response = $this->get($this->apiUrl . $classExam->id);
+        $response = $this->get($this->apiUrl.$classExam->id);
 
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonFragment(['id' => $classExam->id]);
@@ -90,7 +90,7 @@ class ClassExamControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.class-exam.update']);
 
-        $response = $this->putJson($this->apiUrl . $classExam->id, $data);
+        $response = $this->putJson($this->apiUrl.$classExam->id, $data);
         $response->assertStatus(200);
     }
 
@@ -105,9 +105,8 @@ class ClassExamControllerTest extends TestCase
 
         Sanctum::actingAs($user, ['manager.class-exam.delete']);
 
-        $response = $this->delete($this->apiUrl . $classExam->id);
+        $response = $this->delete($this->apiUrl.$classExam->id);
 
         $response->assertStatus(200);
     }
-
 }

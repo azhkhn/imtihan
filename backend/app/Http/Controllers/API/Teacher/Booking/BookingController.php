@@ -4,8 +4,6 @@ namespace App\Http\Controllers\API\Teacher\Booking;
 
 use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
-use App\Http\Requests\Teacher\Booking\StoreBookingRequest;
-use App\Http\Requests\Teacher\Booking\UpdateBookingRequest;
 use App\Http\Resources\Teacher\Booking\BookingResource;
 use App\Services\Teacher\Booking\BookingService;
 use Illuminate\Http\JsonResponse;
