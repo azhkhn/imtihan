@@ -9,6 +9,7 @@ use App\Http\Resources\Manager\User\StudentResource;
 use App\Models\User;
 use App\Services\Manager\User\StudentService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class StudentController extends ApiController
@@ -28,7 +29,7 @@ class StudentController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.user.student.list'),
             Response::HTTP_FORBIDDEN
         );
-        return $this->successResponse(StudentResource::collection($this->studentService->list([], ['role' => User::Student])));
+        return $this->successResponse(StudentResource::collection($this->studentService->list(['info'], ['role' => User::Student])));
     }
 
     /**
