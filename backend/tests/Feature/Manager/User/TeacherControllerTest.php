@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class TeacherControllerTest extends TestCase
 {
-    //use RefreshDatabase;
+    use RefreshDatabase;
 
     protected string $apiUrl = '/api/manager/user/teachers/';
 
