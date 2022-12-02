@@ -2,6 +2,8 @@
 
 namespace App\Services\Base;
 
+use Illuminate\Support\Facades\Log;
+
 class BaseService
 {
     /**
@@ -15,8 +17,9 @@ class BaseService
     /**
      * Display a listing of the resource.
      */
-    public function list($with = [], $where = [])
+    public function list(array $with = [], array $where = [])
     {
+        Log::info($where);
         return $this->model::with($with)->where($where)->latest()->get();
     }
 
@@ -33,7 +36,7 @@ class BaseService
      *
      * @param  int  $id
      */
-    public function show(int $id, $with = [], $where = [])
+    public function show(int $id, array $with = [], array $where = [])
     {
         return $this->model::with($with)->where($where)->findOrFail($id);
     }
@@ -44,7 +47,7 @@ class BaseService
      * @param    $request
      * @param  int  $id
      */
-    public function update($request, int $id, $where = []): void
+    public function update($request, int $id, array $where = []): void
     {
         $this->model::where($where)->findOrFail($id)->update($request->validated());
     }
@@ -54,7 +57,7 @@ class BaseService
      *
      * @param  int  $id
      */
-    public function destroy(int $id, $where = []): void
+    public function destroy(int $id, array $where = []): void
     {
         $this->model::where($where)->findOrFail($id)->delete();
     }
