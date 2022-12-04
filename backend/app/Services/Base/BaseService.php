@@ -2,8 +2,6 @@
 
 namespace App\Services\Base;
 
-use Illuminate\Support\Facades\Log;
-
 class BaseService
 {
     /**
@@ -19,8 +17,6 @@ class BaseService
      */
     public function list(array $with = [], array $where = [])
     {
-        Log::info($where);
-
         return $this->model::with($with)->where($where)->latest()->get();
     }
 
