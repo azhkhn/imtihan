@@ -28,7 +28,8 @@ class StudentController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.user.student.list'),
             Response::HTTP_FORBIDDEN
         );
-        return $this->successResponse(StudentResource::collection($this->studentService->list([], ['role' => User::Student])));
+
+        return $this->successResponse(StudentResource::collection($this->studentService->list(['info'], ['role' => User::Student])));
     }
 
     /**

@@ -18,9 +18,12 @@ class StudentControllerTest extends TestCase
     public function test_student_list()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->create();
-        UserInfo::factory()->state(['company_id' => $company->id])->create();
-        User::factory(20)->state(['role' => User::Student])->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
+        UserInfo::factory()->state(['user_id' => $user->id, 'company_id' => $company->id])->create();
+        $student = User::factory(20)->state(['role' => User::Student])->create();
+        $student->each(function ($student) use ($company) {
+            UserInfo::factory()->state(['user_id' => $student->id, 'company_id' => $company->id])->create();
+        });
 
         Sanctum::actingAs($user, ['manager.user.student.list']);
 
@@ -33,7 +36,7 @@ class StudentControllerTest extends TestCase
     public function test_student_create()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
 
         $student = [
@@ -50,7 +53,7 @@ class StudentControllerTest extends TestCase
     public function test_student_show()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
         User::factory()->state(['role' => User::Student])->create();
 
@@ -64,7 +67,7 @@ class StudentControllerTest extends TestCase
     public function test_student_update()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
         User::factory()->state(['role' => User::Student])->create();
 
@@ -79,7 +82,7 @@ class StudentControllerTest extends TestCase
     public function test_student_delete()
     {
         $company = Company::factory()->create();
-        $user = User::factory()->create();
+        $user = User::factory()->state(['role' => User::Manager])->create();
         UserInfo::factory()->state(['company_id' => $company->id])->create();
         User::factory()->state(['role' => User::Student])->create();
 

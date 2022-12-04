@@ -29,7 +29,7 @@ class ReportControllerTest extends TestCase
 
         $category = QuestionCategory::factory(2)->create();
         $exam = Exam::factory()->create(['user_id' => $student->id]);
-        $category->each(function ($category) use ($company, $exam, $student) {
+        $category->each(function ($category) use ($exam, $student) {
             $questions = Question::factory(5)->state(['category_id' => $category->id])->create();
             ExamResultCategory::factory()->state([
                 'total_questions' => $questions->count(),
@@ -50,7 +50,7 @@ class ReportControllerTest extends TestCase
             'correct' => 6,
             'in_correct' => 2,
             'blank' => 2,
-            'point' => 50
+            'point' => 50,
         ])->create();
 
         Sanctum::actingAs($user, ['manager.exam.report.list']);
@@ -69,7 +69,7 @@ class ReportControllerTest extends TestCase
 
         $category = QuestionCategory::factory(2)->create();
         $exam = Exam::factory()->create(['user_id' => $student->id]);
-        $category->each(function ($category) use ($company, $exam, $student) {
+        $category->each(function ($category) use ($exam, $student) {
             $questions = Question::factory(5)->state(['category_id' => $category->id])->create();
             ExamResultCategory::factory()->state([
                 'total_questions' => $questions->count(),
@@ -90,12 +90,12 @@ class ReportControllerTest extends TestCase
             'correct' => 6,
             'in_correct' => 2,
             'blank' => 2,
-            'point' => 50
+            'point' => 50,
         ])->create();
 
         Sanctum::actingAs($user, ['manager.exam.report.show']);
 
-        $response = $this->get($this->apiUrl . $exam->id);
+        $response = $this->get($this->apiUrl.$exam->id);
 
         $response->assertJsonStructure(['success', 'message', 'data'])
             ->assertJsonCount(2, 'data.categories');

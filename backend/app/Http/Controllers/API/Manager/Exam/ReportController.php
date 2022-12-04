@@ -5,14 +5,12 @@ namespace App\Http\Controllers\API\Manager\Exam;
 use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Resources\Manager\Exam\ReportResource;
-use App\Models\Report;
 use App\Services\Manager\Exam\ReportService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class ReportController extends ApiController
 {
-
     public function __construct(ReportService $service)
     {
         $this->reportService = $service;
@@ -37,7 +35,7 @@ class ReportController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param int $report
+     * @param  int  $report
      * @return JsonResponse
      */
     public function show(int $report): JsonResponse

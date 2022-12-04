@@ -4,12 +4,10 @@ namespace App\Http\Controllers\API\User\Booking;
 
 use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
-use App\Http\Requests\Teacher\Booking\UpdateBookingRequest;
 use App\Http\Requests\User\Booking\StoreBookingRequest;
 use App\Http\Resources\User\Booking\BookingResource;
 use App\Services\User\Booking\BookingService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class BookingController extends ApiController

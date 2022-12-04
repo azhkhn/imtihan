@@ -36,7 +36,7 @@ class ClassExamController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreClassExamRequest $request
+     * @param  StoreClassExamRequest  $request
      * @return JsonResponse
      */
     public function store(StoreClassExamRequest $request): JsonResponse
@@ -54,7 +54,7 @@ class ClassExamController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param int $class_exam
+     * @param  int  $class_exam
      * @return JsonResponse
      */
     public function show(int $class_exam): JsonResponse
@@ -62,14 +62,15 @@ class ClassExamController extends ApiController
         abort_unless(auth()->user()->tokenCan('manager.class-exam.show'),
             Response::HTTP_FORBIDDEN
         );
+
         return $this->successResponse(new ClassExamResource($this->classExamService->show($class_exam, ['classExamCategories'])));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateClassExamRequest $request
-     * @param int $class_exam
+     * @param  UpdateClassExamRequest  $request
+     * @param  int  $class_exam
      * @return JsonResponse
      */
     public function update(UpdateClassExamRequest $request, int $class_exam): JsonResponse
@@ -86,7 +87,7 @@ class ClassExamController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $class_exam
+     * @param  int  $class_exam
      * @return JsonResponse
      */
     public function destroy(int $class_exam): JsonResponse

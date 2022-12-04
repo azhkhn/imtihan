@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\User\Support;
 use App\Helper\Helper;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\User\Support\StoreSupportRequest;
-use App\Http\Requests\User\Support\UpdateSupportRequest;
 use App\Http\Resources\User\Support\SupportResource;
 use App\Services\User\Support\SupportService;
 use Illuminate\Http\JsonResponse;

@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\ClassExam;
 use App\Models\ClassRoom;
 use App\Models\Company;
-use App\Models\Exam;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

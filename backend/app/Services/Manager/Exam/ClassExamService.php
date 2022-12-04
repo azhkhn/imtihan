@@ -25,7 +25,7 @@ class ClassExamService extends BaseService
     public function update($request, $id, $where = []): void
     {
         $classExam = $this->model::findOrFail($id);
-        DB::transaction(function () use ($request, $id, $classExam) {
+        DB::transaction(function () use ($request, $classExam) {
             $classExam->update($request->validated());
 
             $classExam->classExamCategories()->delete();
@@ -37,7 +37,7 @@ class ClassExamService extends BaseService
     public function destroy($id, $where = []): void
     {
         $classExam = $this->model::findOrFail($id);
-        DB::transaction(function () use ($id, $classExam) {
+        DB::transaction(function () use ($classExam) {
             $classExam->classExamCategories()->delete();
             $classExam->delete();
         });
