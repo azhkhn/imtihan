@@ -1,3 +1,5 @@
+<p align="center"><a href="https://codenteq.com" target="_blank"><img src="https://codenteq.com/wp-content/uploads/2022/12/imtihan-default.webp" width="300"></a></p>
+
 # Introduction
 [![License](https://poser.pugx.org/codenteq/imtihan/license)](https://github.com/codenteq/imtihan/blob/master/LICENSE)
 [![Actions](https://github.com/codenteq/imtihan/actions/workflows/test.yml/badge.svg)](https://github.com/codenteq/imtihan/actions/workflows/test.yml)
