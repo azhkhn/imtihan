@@ -85,6 +85,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('live-lessons', \App\Http\Controllers\API\Teacher\Lesson\LiveLessonController::class);
         Route::apiResource('bookings', \App\Http\Controllers\API\Teacher\Booking\BookingController::class)->only(['index', 'show', 'destroy']);
         Route::apiResource('booking/settings', \App\Http\Controllers\API\Teacher\Booking\BookingSettingController::class);
+        Route::apiResource('questions', \App\Http\Controllers\API\Teacher\Question\QuestionController::class);
+        Route::get('question/bugs', [\App\Http\Controllers\API\Teacher\Question\QuestionController::class, 'getBugList']);
+        Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Teacher\Question\QuestionController::class, 'destroyBug']);
     });
 
     Route::prefix('user')->group(function () {
