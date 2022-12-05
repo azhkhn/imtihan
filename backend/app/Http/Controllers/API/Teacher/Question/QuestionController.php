@@ -69,8 +69,8 @@ class QuestionController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateQuestionRequest $request
-     * @param int $question
+     * @param  UpdateQuestionRequest  $request
+     * @param  int  $question
      * @return JsonResponse
      */
     public function update(UpdateQuestionRequest $request, int $question)
@@ -87,7 +87,7 @@ class QuestionController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $question
+     * @param  int  $question
      * @return JsonResponse
      */
     public function destroy(int $question): JsonResponse
