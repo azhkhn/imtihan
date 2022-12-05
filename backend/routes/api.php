@@ -88,6 +88,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('questions', \App\Http\Controllers\API\Teacher\Question\QuestionController::class);
         Route::get('question/bugs', [\App\Http\Controllers\API\Teacher\Question\QuestionController::class, 'getBugList']);
         Route::delete('question/bugs/{question}', [\App\Http\Controllers\API\Teacher\Question\QuestionController::class, 'destroyBug']);
+        Route::prefix('exam')->group(function () {
+            Route::apiResource('classes', \App\Http\Controllers\API\Teacher\Exam\ClassExamController::class);
+            Route::apiResource('reports', \App\Http\Controllers\API\Teacher\Exam\ReportController::class)->only(['index', 'show']);
+        });
     });
 
     Route::prefix('user')->group(function () {
