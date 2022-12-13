@@ -34,6 +34,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::get('/user', function () {
+        return request()->user();
+    });
+
     Route::prefix('admin')->group(function () {
         Route::apiResource('languages', LanguageController::class);
         Route::apiResource('class-rooms', ClassRoomController::class);
