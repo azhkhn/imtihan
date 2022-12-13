@@ -110,7 +110,7 @@ const Register = () => {
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
-                        <Link href="/login">
+                        <Link href="/auth/login">
                             <a className="underline text-sm text-gray-600 hover:text-gray-900">
                                 Already registered?
                             </a>
