@@ -10,11 +10,13 @@
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^2.0.13",
+    "@tanem/react-nprogress": "^5.0.20",
     "axios": "^0.21.1",
     "next": "^12.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "swr": "^1.2.2"
+    "swr": "^1.2.2",
+    "zustand": "^4.1.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.12.1",
