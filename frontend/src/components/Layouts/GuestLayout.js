@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const GuestLayout = ({ children }) => {
+export default function GuestLayout({ children }) {
     return (
         <div>
             <Head>
@@ -13,5 +13,3 @@ const GuestLayout = ({ children }) => {
         </div>
     )
 }
-
-export default GuestLayout

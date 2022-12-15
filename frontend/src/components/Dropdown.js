@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
-const Dropdown = ({
+export default function Dropdown({
     align = 'right',
     width = 48,
     contentClasses = 'py-1 bg-white',
     trigger,
     children,
-}) => {
+}) {
     let alignmentClasses
 
     switch (width) {
@@ -57,5 +57,3 @@ const Dropdown = ({
         </Menu>
     )
 }
-
-export default Dropdown

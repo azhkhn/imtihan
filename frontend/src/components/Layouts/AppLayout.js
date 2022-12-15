@@ -3,7 +3,7 @@ import { useAuth } from '@/hooks/auth'
 import Header from '@/components/Header'
 import MobileBar from '@/components/MobileBar'
 
-const AppLayout = ({ name, children }) => {
+export default function AppLayout({ name, children }) {
     const { user } = useAuth({ middleware: 'auth' })
 
     return (
@@ -20,5 +20,3 @@ const AppLayout = ({ name, children }) => {
         </>
     )
 }
-
-export default AppLayout
