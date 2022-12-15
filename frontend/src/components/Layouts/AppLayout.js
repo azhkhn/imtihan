@@ -1,23 +1,23 @@
-import Navigation from '@/components/Layouts/Navigation'
+import Sidebar from '@/components/Layouts/Sidebar'
 import { useAuth } from '@/hooks/auth'
+import Header from '@/components/Header'
+import MobileBar from '@/components/MobileBar'
 
-const AppLayout = ({ header, children }) => {
+const AppLayout = ({ name, children }) => {
     const { user } = useAuth({ middleware: 'auth' })
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <Navigation user={user} />
-
+        <>
             {/* Page Heading */}
-            <header className="bg-white shadow">
-                <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {header}
-                </div>
-            </header>
+            <Header name={name} />
 
             {/* Page Content */}
-            <main>{children}</main>
-        </div>
+            <main className="pt-16">
+                <Sidebar user={user} />
+                {children}
+                <MobileBar />
+            </main>
+        </>
     )
 }
 

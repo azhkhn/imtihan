@@ -1,5 +1,6 @@
 import ApplicationLogo from '@/components/ApplicationLogo'
 import AuthCard from '@/components/AuthCard'
+import AuthSessionStatus from '@/components/AuthSessionStatus'
 import Button from '@/components/Button'
 import GuestLayout from '@/components/Layouts/GuestLayout'
 import Input from '@/components/Input'
@@ -7,24 +8,35 @@ import InputError from '@/components/InputError'
 import Label from '@/components/Label'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
-const Register = () => {
-    const { register } = useAuth({
+const Login = () => {
+    const router = useRouter()
+
+    const { login } = useAuth({
         middleware: 'guest',
         redirectIfAuthenticated: '/dashboard',
     })
 
-    const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [shouldRemember, setShouldRemember] = useState(false)
     const [errors, setErrors] = useState([])
+    const [status, setStatus] = useState(null)
 
-    const submitForm = event => {
+    useEffect(() => {
+        if (router.query.reset?.length > 0 && errors.length === 0) {
+            setStatus(atob(router.query.reset))
+        } else {
+            setStatus(null)
+        }
+    })
+
+    const submitForm = async event => {
         event.preventDefault()
 
-        register({ full_name: fullName, email, password, password_confirmation: passwordConfirmation, setErrors })
+        login({ email, password, remember: shouldRemember, setErrors, setStatus })
     }
 
     return (
@@ -38,26 +50,12 @@ const Register = () => {
                     </Link>
                 }>
 
+                {/* Session Status */}
+                <AuthSessionStatus className="mb-4" status={status} />
+
                 <form onSubmit={submitForm}>
-                    {/* Name */}
-                    <div>
-                        <Label htmlFor="name">Full Name</Label>
-
-                        <Input
-                            id="full_name"
-                            type="text"
-                            value={fullName}
-                            className="block mt-1 w-full"
-                            onChange={event => setFullName(event.target.value)}
-                            required
-                            autoFocus
-                        />
-
-                        <InputError messages={errors.name} className="mt-2" />
-                    </div>
-
                     {/* Email Address */}
-                    <div className="mt-4">
+                    <div>
                         <Label htmlFor="email">Email</Label>
 
                         <Input
@@ -67,6 +65,7 @@ const Register = () => {
                             className="block mt-1 w-full"
                             onChange={event => setEmail(event.target.value)}
                             required
+                            autoFocus
                         />
 
                         <InputError messages={errors.email} className="mt-2" />
@@ -83,40 +82,39 @@ const Register = () => {
                             className="block mt-1 w-full"
                             onChange={event => setPassword(event.target.value)}
                             required
-                            autoComplete="new-password"
+                            autoComplete="current-password"
                         />
 
                         <InputError messages={errors.password} className="mt-2" />
                     </div>
 
-                    {/* Confirm Password */}
-                    <div className="mt-4">
-                        <Label htmlFor="passwordConfirmation">
-                            Confirm Password
-                        </Label>
+                    {/* Remember Me */}
+                    <div className="block mt-4">
+                        <label
+                            htmlFor="remember_me"
+                            className="inline-flex items-center">
+                            <input
+                                id="remember_me"
+                                type="checkbox"
+                                name="remember"
+                                className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                onChange={event => setShouldRemember(event.target.checked)}
+                            />
 
-                        <Input
-                            id="passwordConfirmation"
-                            type="password"
-                            value={passwordConfirmation}
-                            className="block mt-1 w-full"
-                            onChange={event =>
-                                setPasswordConfirmation(event.target.value)
-                            }
-                            required
-                        />
-
-                        <InputError messages={errors.password_confirmation} className="mt-2" />
+                            <span className="ml-2 text-sm text-gray-600">
+                                Remember me
+                            </span>
+                        </label>
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
-                        <Link href="/login">
+                        <Link href="/auth/forgot-password">
                             <a className="underline text-sm text-gray-600 hover:text-gray-900">
-                                Already registered?
+                                Forgot your password?
                             </a>
                         </Link>
 
-                        <Button className="ml-4">Register</Button>
+                        <Button className="ml-3">Login</Button>
                     </div>
                 </form>
             </AuthCard>
@@ -124,4 +122,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Login
