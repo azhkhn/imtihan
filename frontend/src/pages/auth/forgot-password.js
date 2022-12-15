@@ -29,12 +29,12 @@ const ForgotPassword = () => {
                 logo={
                     <Link href="/">
                         <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                            <ApplicationLogo width={144} height={32} />
                         </a>
                     </Link>
                 }>
 
-                <div className="mb-4 text-sm text-gray-600">
+                <div className="mb-4 text-sm text-gray-600 dark:text-gray-300">
                     Forgot your password? No problem. Just let us know your
                     email address and we will email you a password reset link
                     that will allow you to choose a new one.
@@ -46,13 +46,13 @@ const ForgotPassword = () => {
                 <form onSubmit={submitForm}>
                     {/* Email Address */}
                     <div>
-                        <Label htmlFor="email">Email</Label>
                         <Input
                             id="email"
                             type="email"
                             name="email"
                             value={email}
                             className="block mt-1 w-full"
+                            placeholder="Email"
                             onChange={event => setEmail(event.target.value)}
                             required
                             autoFocus

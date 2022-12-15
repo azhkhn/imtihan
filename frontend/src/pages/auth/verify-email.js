@@ -20,12 +20,12 @@ const VerifyEmail = () => {
                 logo={
                     <Link href="/">
                         <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                            <ApplicationLogo width={144} height={32} />
                         </a>
                     </Link>
                 }>
 
-                <div className="mb-4 text-sm text-gray-600">
+                <div className="mb-4 text-sm text-gray-600 dark:text-gray-300">
                     Thanks for signing up! Before getting started, could you
                     verify your email address by clicking on the link we just
                     emailed to you? If you didn't receive the email, we will
@@ -47,7 +47,7 @@ const VerifyEmail = () => {
 
                     <button
                         type="button"
-                        className="underline text-sm text-gray-600 hover:text-gray-900"
+                        className="underline text-sm text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-600"
                         onClick={logout}>
                         Logout
                     </button>
