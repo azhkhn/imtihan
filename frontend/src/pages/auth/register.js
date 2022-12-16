@@ -33,7 +33,7 @@ const Register = () => {
                 logo={
                     <Link href="/">
                         <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                            <ApplicationLogo width={144} height={32} />
                         </a>
                     </Link>
                 }>
@@ -41,13 +41,12 @@ const Register = () => {
                 <form onSubmit={submitForm}>
                     {/* Name */}
                     <div>
-                        <Label htmlFor="name">Full Name</Label>
-
                         <Input
                             id="full_name"
                             type="text"
                             value={fullName}
                             className="block mt-1 w-full"
+                            placeholder="Full Name"
                             onChange={event => setFullName(event.target.value)}
                             required
                             autoFocus
@@ -58,13 +57,12 @@ const Register = () => {
 
                     {/* Email Address */}
                     <div className="mt-4">
-                        <Label htmlFor="email">Email</Label>
-
                         <Input
                             id="email"
                             type="email"
                             value={email}
                             className="block mt-1 w-full"
+                            placeholder="Email"
                             onChange={event => setEmail(event.target.value)}
                             required
                         />
@@ -74,13 +72,12 @@ const Register = () => {
 
                     {/* Password */}
                     <div className="mt-4">
-                        <Label htmlFor="password">Password</Label>
-
                         <Input
                             id="password"
                             type="password"
                             value={password}
                             className="block mt-1 w-full"
+                            placeholder="Password"
                             onChange={event => setPassword(event.target.value)}
                             required
                             autoComplete="new-password"
@@ -91,15 +88,12 @@ const Register = () => {
 
                     {/* Confirm Password */}
                     <div className="mt-4">
-                        <Label htmlFor="passwordConfirmation">
-                            Confirm Password
-                        </Label>
-
                         <Input
                             id="passwordConfirmation"
                             type="password"
                             value={passwordConfirmation}
                             className="block mt-1 w-full"
+                            placeholder="Confirm Password"
                             onChange={event =>
                                 setPasswordConfirmation(event.target.value)
                             }
@@ -111,7 +105,7 @@ const Register = () => {
 
                     <div className="flex items-center justify-end mt-4">
                         <Link href="/auth/login">
-                            <a className="underline text-sm text-gray-600 hover:text-gray-900">
+                            <a className="underline text-sm text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-500">
                                 Already registered?
                             </a>
                         </Link>

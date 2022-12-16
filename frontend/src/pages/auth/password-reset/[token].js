@@ -44,7 +44,7 @@ const PasswordReset = () => {
                 logo={
                     <Link href="/">
                         <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                            <ApplicationLogo width={144} height={32} />
                         </a>
                     </Link>
                 }>
@@ -54,13 +54,12 @@ const PasswordReset = () => {
                 <form onSubmit={submitForm}>
                     {/* Email Address */}
                     <div>
-                        <Label htmlFor="email">Email</Label>
-
                         <Input
                             id="email"
                             type="email"
                             value={email}
                             className="block mt-1 w-full"
+                            placeholder="Email"
                             onChange={event => setEmail(event.target.value)}
                             required
                             autoFocus
@@ -71,12 +70,12 @@ const PasswordReset = () => {
 
                     {/* Password */}
                     <div className="mt-4">
-                        <Label htmlFor="password">Password</Label>
                         <Input
                             id="password"
                             type="password"
                             value={password}
                             className="block mt-1 w-full"
+                            placeholder="Password"
                             onChange={event => setPassword(event.target.value)}
                             required
                         />
@@ -86,15 +85,12 @@ const PasswordReset = () => {
 
                     {/* Confirm Password */}
                     <div className="mt-4">
-                        <Label htmlFor="passwordConfirmation">
-                            Confirm Password
-                        </Label>
-
                         <Input
                             id="passwordConfirmation"
                             type="password"
                             value={passwordConfirmation}
                             className="block mt-1 w-full"
+                            placeholder="Confirm Password"
                             onChange={event =>
                                 setPasswordConfirmation(event.target.value)
                             }

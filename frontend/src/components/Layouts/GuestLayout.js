@@ -1,17 +1,15 @@
 import Head from 'next/head'
 
-const GuestLayout = ({ children }) => {
+export default function GuestLayout({ children }) {
     return (
         <div>
             <Head>
                 <title>Laravel</title>
             </Head>
 
-            <div className="font-sans text-gray-900 antialiased">
+            <main className="py-16 grid justify-items-center">
                 {children}
-            </div>
+            </main>
         </div>
     )
 }
-
-export default GuestLayout

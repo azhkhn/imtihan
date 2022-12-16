@@ -1,7 +1,7 @@
 import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
 
-const Dashboard = () => {
+export default function Dashboard() {
     return (
         <AppLayout name="Dashboard">
             <Head>
@@ -25,5 +25,3 @@ const Dashboard = () => {
         </AppLayout>
     )
 }
-
-export default Dashboard
