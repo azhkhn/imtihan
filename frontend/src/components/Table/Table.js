@@ -24,7 +24,7 @@ export default function Table({head, body, searchable}) {
 
     if (!body || body?.length === 0) {
         return (
-            <div className="p-4 rounded bg-gray-100 text-blue dark:bg-gray-900 text-sm">Gösterilecek veri bulunmuyor.</div>
+            <div className="p-4 rounded bg-gray-100 text-brand dark:bg-gray-900 text-sm">Gösterilecek veri bulunmuyor.</div>
         )
     }
 

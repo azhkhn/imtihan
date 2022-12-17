@@ -122,15 +122,34 @@ const Login = () => {
                         <InputError messages={errors.password} className="mt-2" />
                     </div>
 
+                    {/* Remember Me */}
+                    <div className="block mt-4">
+                        <label
+                            htmlFor="remember_me"
+                            className="inline-flex items-center">
+                            <Input
+                                id="remember_me"
+                                type="checkbox"
+                                name="remember"
+                                className="rounded w-2 h-2 border-gray-300 text-brand shadow-sm focus:ring focus:ring-brand focus:ring-opacity-20"
+                                onChange={event => setShouldRemember(event.target.checked)}
+                            />
+
+                            <span className="ml-2 text-sm text-gray-600">
+                                Remember me
+                            </span>
+                        </label>
+                    </div>
+
                     {/* Button */}
-                    <div className="flex items-center justify-end mt-4">
+                    <div className="flex items-center justify-between mt-4">
                         <Link href="/auth/forgot-password">
                             <a className="underline text-sm text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-500">
                                 Forgot your password?
                             </a>
                         </Link>
 
-                        <Button className="ml-3">Login</Button>
+                        <Button>Sign in</Button>
                     </div>
                 </form>
 

@@ -16,7 +16,7 @@ export default function Edit() {
             </Head>
 
             <main>
-                <BackButton href="admin/company"/>
+                <BackButton href="/admin/company"/>
             </main>
         </>
     )

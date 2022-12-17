@@ -16,7 +16,7 @@ export default function Create() {
             </Head>
 
             <main>
-                <BackButton href="admin/company"/>
+                <BackButton href="/admin/company"/>
             </main>
         </>
     )
