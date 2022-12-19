@@ -3,7 +3,7 @@ export default function NavLink({ name, href, className }) {
     return (
         <Link href={href}>
             <a
-                className={`${className} dark:text-white border border-brand hover:bg-brand hover:text-white transition-all p-2 px-5 rounded-lg`}>
+                className={`${className} dark:text-white border border-brand hover:bg-brand hover:text-white transition-all rounded-lg`}>
                 {name}
             </a>
         </Link>

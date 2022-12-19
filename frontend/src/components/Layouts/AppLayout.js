@@ -15,8 +15,10 @@ export default function AppLayout({ name, children }) {
             <main className="flex">
                 <Sidebar user={user} />
                 <div className="container mx-auto">{children}</div>
-                <MobileBar />
             </main>
+
+            {/* Mobile Menu */}
+            <MobileBar />
         </>
     )
 }

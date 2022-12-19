@@ -58,9 +58,9 @@ export default function Index() {
                 <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"/>
             </Head>
 
-            <main className="pt-16">
+            <main className="px-4 pt-16">
                 <div className="flex justify-end px-4">
-                    <NavLink name="Create" href="/admin/company/create"/>
+                    <NavLink name="Create" href="/admin/company/create" className="p-2 px-5"/>
                 </div>
 
                 <Table

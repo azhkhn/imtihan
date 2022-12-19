@@ -9,7 +9,7 @@ export default function Sidebar(className) {
 
     return (
         <nav
-            className={`${className} top-0 pt-14 bg-gray-50 dark:bg-gray-900 rounded-lg drop-shadow-md sm:hidden md:hidden lg:block xl:block 2xl:block hidden overflow-auto w-64 h-screen`}>
+            className={`${className} top-0 pt-14 bg-gray-50 dark:bg-gray-900 rounded-lg drop-shadow-md sm:hidden md:hidden lg:block xl:block 2xl:block hidden overflow-auto w-72 h-screen`}>
             <Avatar />
             <ul className="text-lg">
                 {
