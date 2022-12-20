@@ -12,11 +12,13 @@ export default function AppLayout({ name, children }) {
             <Header name={name} />
 
             {/* Page Content */}
-            <main className="pt-16">
+            <main className="flex">
                 <Sidebar user={user} />
-                {children}
-                <MobileBar />
+                <div className="container mx-auto">{children}</div>
             </main>
+
+            {/* Mobile Menu */}
+            <MobileBar />
         </>
     )
 }

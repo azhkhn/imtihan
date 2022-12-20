@@ -7,6 +7,7 @@ import {Progress} from 'components/Progress/Progress';
 import {useProgressStore} from '../../store';
 
 function App({Component, pageProps}) {
+    const getLayout = Component.getLayout || ((page) => page)
     const setIsAnimating = useProgressStore((state) => state.setIsAnimating);
     const isAnimating = useProgressStore((state) => state.isAnimating);
     const router = useRouter();
@@ -28,7 +29,7 @@ function App({Component, pageProps}) {
             router.events.off('routeChangeError', handleStop);
         };
     }, [router]);
-    return (
+    return getLayout(
         <>
             <Progress isAnimating={isAnimating}/>
             <Component {...pageProps} />

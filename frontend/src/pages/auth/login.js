@@ -66,7 +66,7 @@ const Login = () => {
                     </Link>
 
                     <Link href="">
-                        <a className="text-black border hover:border-blue dark:bg-[#fff] dark:hover:bg-[#e5e7eb]/90 font-medium rounded-full text-lg px-5 py-2.5 text-center inline-flex items-center mb-2">
+                        <a className="text-black border hover:border-brand dark:bg-[#fff] dark:hover:bg-[#e5e7eb]/90 font-medium rounded-full text-lg px-5 py-2.5 text-center inline-flex items-center mb-2">
                             <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
                                 <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
                             </svg>
@@ -122,15 +122,34 @@ const Login = () => {
                         <InputError messages={errors.password} className="mt-2" />
                     </div>
 
+                    {/* Remember Me */}
+                    <div className="block mt-4">
+                        <label
+                            htmlFor="remember_me"
+                            className="inline-flex items-center">
+                            <Input
+                                id="remember_me"
+                                type="checkbox"
+                                name="remember"
+                                className="rounded w-2 h-2 border-brand text-brand shadow-sm focus:ring focus:ring-brand focus:ring-opacity-20"
+                                onChange={event => setShouldRemember(event.target.checked)}
+                            />
+
+                            <span className="ml-2 text-sm text-gray-600">
+                                Remember me
+                            </span>
+                        </label>
+                    </div>
+
                     {/* Button */}
-                    <div className="flex items-center justify-end mt-4">
+                    <div className="flex items-center justify-between mt-4">
                         <Link href="/auth/forgot-password">
                             <a className="underline text-sm text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-500">
                                 Forgot your password?
                             </a>
                         </Link>
 
-                        <Button className="ml-3">Login</Button>
+                        <Button>Sign in</Button>
                     </div>
                 </form>
 
@@ -140,7 +159,7 @@ const Login = () => {
                     <p className="my-4 text-center text-sm">Don't have an account?</p>
 
                     <Link href="/auth/register">
-                        <a className="dark:text-white border hover:border-blue font-medium rounded-full text-lg text-center py-2.5">
+                        <a className="dark:text-white border hover:border-brand font-medium rounded-full text-lg text-center py-2.5">
                             Register for the Imtihan
                         </a>
                     </Link>
