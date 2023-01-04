@@ -1,0 +1,41 @@
+{
+  "name": "codenteq/imtihan",
+  "type": "project",
+  "description": "The E-exam with Laravel and Next.js",
+  "keywords": [
+    "codenteq",
+    "laravel",
+    "nextjs",
+    "framework",
+    "opensource",
+    "e-exam"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/codenteq/imtihan",
+  "authors": [
+    {
+      "name": "Ahmet Sefa Arşiv",
+      "email": "ahmetarsivpm@gmail.com",
+      "homepage": "https://github.com/ahmetarsiv",
+      "role": "Developer"
+    },
+    {
+      "name": "Ali Karabay",
+      "email": "alikarabay77@gmail.com",
+      "homepage": "https://github.com/karabayyazilim",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "source": "https://github.com/codenteq/imtihan",
+    "issues": "https://github.com/codenteq/imtihan/issues",
+    "wiki": "https://github.com/codenteq/imtihan/wiki",
+    "email": "info@codenteq.com"
+  },
+  "funding": [
+    {
+      "type": "open_collective",
+      "url": "https://opencollective.com/codenteq"
+    }
+  ]
+}
